@@ -1,4 +1,79 @@
-.account_wrapper{
+.account-wrapper {
   background-color: $gray;
+}
 
+.account-header {
+  position: relative;
+}
+
+#account-logo{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+.account-footer {
+  position: relative;
+  ul {
+    margin: auto;
+    li {
+      display: inline-block;
+      margin: 0 0 0 16px;
+      font-size: 12px;
+      color: $black;
+    }
+  }
+}
+
+#account-bottom-logo {
+  width: 80px;
+  height: 65px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.copyright {
+  %p {
+    font-size: 13px;
+    color: $black;
+  }
+}
+
+//横767pxでスマホ用、横768pxでPC用
+
+//--------PC用--------
+@media screen and (min-width: 768px) {
+  .account-header {
+    height: 128px;
+  }
+  #account-logo {
+    width: 193px;
+    height: 49px;
+  }
+
+  .account-footer {
+    height: 220px;
+  }
+}
+
+//--------スマホ用--------
+@media screen and (max-width: 767px) {
+  .account-header {
+    height: 56px;
+  }
+  #account-logo {
+    width: 128px;
+    height: 33x;
+  }
+
+  .account-footer {
+    height: 250px;
+  }
 }
