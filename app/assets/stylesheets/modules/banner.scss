@@ -1,0 +1,63 @@
+.top-main-banner {
+  .bx-wrapper {
+    background-color: transparent;
+    margin: 0px auto 0px;
+    border: none;
+    box-shadow: none;
+  }
+  .bx-wrapper img {
+    display: block;
+    margin: 0px auto;
+  }
+  .bx-wrapper .bx-controls-auto,
+  .bx-wrapper .bx-pager {
+    bottom: 20px;
+  }
+  .slider {
+    .box1{
+      @include banner-size("banner-natsukashi.jpg");
+      background-size: center;
+    }
+    .box2 {
+      @include banner-size("banner-new-life.jpg");
+      background-position: center;
+    }
+    .box3 {
+      background-size: cover;
+      @include banner-size("main_bg_pc.jpg");
+      display: inline-block;
+      .top-main-banner {
+        width: 860px;
+        @include clearfix();
+        margin: 0 auto;
+        &__content {
+          height: 390px;
+          width: 420px;
+          float:left;
+          h2 {
+            font-size: 52px;
+            color: $black;
+            line-height: 1.2;
+          }
+          p {
+            line-height: 1.7;
+            font-size: 18px;
+          }
+          .appicon {
+            margin: 24px 0 0;
+            display: inline-block;
+          }
+          &__image {
+            float: left;
+          }
+        }
+      }
+    }
+    .box4 {
+      @include banner-size("banner-bokurano-heisei.jpg");
+      background-position: center;
+    }
+  }
+}
+
+

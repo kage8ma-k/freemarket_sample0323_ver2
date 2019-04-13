@@ -1,0 +1,24 @@
+.top-main-banner
+  .slider
+    .box1
+    .box2
+    .box3
+      .top-main-banner
+        .top-main-banner__content
+          %h2
+            スマホでかんたん
+            %br
+            フリマアプリ
+          %p
+            メルカリはスマホカメラからすぐに出品できる
+            購入時も安心な独自システムのアプリです
+          = link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8" do
+            = image_tag "app-store.svg", class: :appicon, alt: ""
+          = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja" do
+            = image_tag "google-play.svg", class: :appicon, alt: ""
+        .top-main-banner__image
+          = image_tag "main_content_pc.png", height: "390px", width: "440px", alt: "", border: :"0"
+    .box4
+.contents
+  %section.top-image
+  = render 'index'
