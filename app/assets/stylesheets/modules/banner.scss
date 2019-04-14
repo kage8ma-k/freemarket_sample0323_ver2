@@ -1,4 +1,12 @@
 .top-main-banner {
+  .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #eee;
+}
+  .bx-wrapper .bx-pager.bx-default-pager a:hover,
+  .bx-wrapper .bx-pager.bx-default-pager a.active,
+  .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #888;
+  }
   .bx-wrapper {
     background-color: transparent;
     margin: 0px auto 0px;
@@ -16,7 +24,7 @@
   .slider {
     .box1{
       @include banner-size("banner-natsukashi.jpg");
-      background-size: center;
+      background-position: center;
     }
     .box2 {
       @include banner-size("banner-new-life.jpg");
@@ -35,16 +43,19 @@
           width: 420px;
           float:left;
           h2 {
+            margin-top: 35px;
             font-size: 52px;
             color: $black;
             line-height: 1.2;
+            font-weight: bold;
           }
           p {
+            margin-top: 20px;
             line-height: 1.7;
             font-size: 18px;
           }
           .appicon {
-            margin: 24px 0 0;
+            margin-top: 15px;
             display: inline-block;
           }
           &__image {

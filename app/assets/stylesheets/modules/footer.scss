@@ -3,6 +3,7 @@
   height: 260px;
   width: 100vw;
   background: image-url("footer_image.jpg");
+  background-size: cover;
   &__content{
     height: 260px;
     width: 750px;
@@ -34,7 +35,6 @@
 
 .fa-twitter {
     font-size: 30px;
-    color: $white;
     font-weight: 400;
 }
 
@@ -46,6 +46,7 @@
 
 .under-footer--sociallinks {
   display:flex;
+  margin: 16px 18px 0 0;
   justify-content: space-between;
   align-items: center;
   width: 80px;
@@ -71,14 +72,14 @@
     &--list {
       display: inline-block;
       vertical-align: top;
-      opacity: .7;
-      padding-right: 6px;
+      padding-right: 16px;
       li {
         font-size: 12px;
         margin: 14px 0 0;
         color: $white;
        a {
           color: $white;
+          opacity: .7;
           text-decoration: none;
       }
     }
@@ -94,25 +95,22 @@
   font-size: 16px;
 }
 
-.under-footer--copyright {
-  display: block;
-  justify-content: center;
-  position: relative;
-  &__logo {
-    width: 124px;
-    position: absolute;
-    margin-left: 145px;
-    bottom: -5px;
+.footer-bottom{
+  color:white;
+  height: 33px;
+  width: 1020px;
+  margin: 30px 0 20px 0;
+  li {
+    float:left;
   }
-  &__text {
-    vertical-align: middle;
+  .copyright{
+    margin-top: 5px;
+    width: 745px;
+    display: inline-block;
     text-align: center;
-    small {
-      font-size: 12px;
-    }
+    font-size: 12px;
   }
 }
-
 
   .footer-sell-btn {
     height: 160px;
@@ -134,4 +132,3 @@
       margin-top: 8px;
     }
 }
-
