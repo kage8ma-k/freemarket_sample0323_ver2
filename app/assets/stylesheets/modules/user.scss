@@ -1,5 +1,5 @@
 .account-wrapper {
-  background-color: $gray;
+  background-color: $lightgray;
 }
 
 .account-header {
@@ -17,31 +17,49 @@
 
 
 .account-footer {
-  position: relative;
+  width: 700px;
+  padding: 40px 0;
+  margin: 0 auto;
   ul {
-    margin: auto;
+    margin: 0 auto;
+    display: table;
     li {
-      display: inline-block;
-      margin: 0 0 0 16px;
+      display: table-cell;
+      text-align: center;
+      padding: 0 16px 0 0;
       font-size: 12px;
-      color: $black;
+      a {
+        text-decoration: none;
+        &:link {
+          color: $black;
+        }
+        &:visited {
+          color: $black;
+        }
+        &:hover {
+          color: $darkgray;
+        }
+      }
     }
   }
 }
 
 #account-bottom-logo {
+  display: block;
   width: 80px;
   height: 65px;
-  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: 40px auto 0 auto;
 }
 .copyright {
-  %p {
-    font-size: 13px;
+  width: 700px;
+  margin: 8px auto;
+  p {
+    text-align: center;
+    font-size: 8px;
     color: $black;
   }
 }
