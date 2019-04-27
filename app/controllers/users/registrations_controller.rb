@@ -5,9 +5,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    render :layout => "user_registration1"
+  end
+
+  def new1
+    render :layout => "user_registration2"
+  end
+
+  def new2
+    render :layout => "user_registration2"
+  end
+
+  def new3
+    render :layout => "user_registration2"
+  end
+
+  def new4
+    render :layout => "user_registration2"
+  end
+
+  def new5
+    render :layout => "user_registration2"
+  end
+
+  def new6
+    render :layout => "user_registration2"
+  end
+
 
   # POST /resource
   # def create
