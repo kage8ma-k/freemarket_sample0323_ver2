@@ -1,6 +1,7 @@
 .account-wrapper {
   background-color: $lightgray;
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  height: 100vh;
 }
 
 .account-header {
@@ -33,10 +34,96 @@ article {
   }
   .content-head {
     border-top: 1px solid #f5f5f5;
+    padding: 64px;
     .content-inner {
       width: 320px;
       height: 182px;
-      margin: 0 126px;
+      margin: 0 auto;
+
+      .btn-mail-link {
+        text-decoration: none;
+        color: $black;
+        .btn-mail {
+          width: 320px;
+          height: 50px;
+          background-color: #eee;
+          position: relative;
+          &:hover {
+            background-color: #f2f2f2;
+          }
+          i {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            transform: translate(0, -50%);
+            font-size: 16px;
+            color: #ccc;
+          }
+          span {
+            position: absolute;
+            font-size: 14px;
+            line-height: 48px;
+            left: 50%;
+            transform: translate(-50%, 0);
+          }
+        }
+      }
+
+      .btn-fb-link {
+        text-decoration: none;
+        color: $white;
+        .btn-fb {
+          width: 320px;
+          height: 50px;
+          margin-top: 16px;
+          background-color: #385185;
+          position: relative;
+          i {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            transform: translate(0, -50%);
+            font-size: 26px;
+            color: $white;
+          }
+          span {
+            position: absolute;
+            font-size: 14px;
+            line-height: 48px;
+            left: 50%;
+            transform: translate(-50%, 0);
+          }
+        }
+      }
+
+      .btn-ggl-link {
+        text-decoration: none;
+        color: $white;
+        .btn-ggl {
+          width: 318px;
+          height: 48px;
+          border: #979797 solid 1px;
+          margin-top: 16px;
+          background-color: $white;
+          position: relative;
+          i {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            transform: translate(0, -50%);
+            font-size: 18px;
+            color: $black;
+          }
+          span {
+            position: absolute;
+            color: $black;
+            font-size: 14px;
+            line-height: 48px;
+            left: 50%;
+            transform: translate(-50%, 0);
+          }
+        }
+      }
     }
   }
 }
