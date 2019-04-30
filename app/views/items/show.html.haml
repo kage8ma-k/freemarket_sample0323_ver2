@@ -12,18 +12,18 @@
         %tr
           %th 出品者
           %td
-            %a{:href => ""} あきぞー
+            = link_to "あきぞー" , ""
             %div
               #rating
         %tr
           %th カテゴリー
           %td
             %div
-              %a{:href => ""} レディース
+              = link_to "レディース", ""
             %div
-              %a{:href => ""} 小物
+              = link_to "小物", ""
             %div
-              %a{:href => ""} ベルト
+              = link_to "ベルト", ""
         %tr
           %th ブランド
           %td ビトン
@@ -39,7 +39,7 @@
         %tr
           %th 配送元地域
           %td
-            %a{:href => ""} 埼玉県
+            = link_to "埼玉県", ""
         %tr
           %th 発送日の目安
           %td 2~3日で発送
@@ -48,7 +48,7 @@
       %span.item-price-box__price ¥ 333
       %span.item-price-box__tax (税込)
       %span.item-price-box__shippingfee (送料込み)
-    %a.item-buy-btn{:href => ""} 購入画面に進む
+    = link_to "購入画面に進む" , "", class: "item-buy-btn"
     .description
       %p.description__inner
         【商品説明】
@@ -67,7 +67,7 @@
         ❁﻿.プロフィールを一読された方が安心かと思われます
     .item-button-container
       .item-button-left
-        %button.item-button-left__like{:type => "button"}
+        = button_tag "",class: "item-button-left__like" do
           %i.far.fa-heart 4
           %span いいね!
           %span 5
@@ -86,40 +86,40 @@
       %form.message-content__form
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         %textarea{:name => "body"}
-        %button.message-content__submit{:type => "submit"}
+        = button_tag "",class: "message-content__submit" do
           %span コメントする
     / コメント欄ここまで
     / ナビリンクここから
 %ul.navi-item-link
   %li.navi-item-link__prev
-    %a{:href => ""}
+    = link_to "" do
       %i.fa.fa-angle-left
       %span ポロシャツ
   %li.navi-item-link__next
-    %a{:href => ""}
+    = link_to "" do
       %span スニーカー
       %i.fa.fa-angle-right
 / ナビリンクここまで
 .item-social-media-box
   %ul
     %li
-      %a{:href => ""}
-      %i.item-social-media-box__facebook.fab.fa-facebook-square.fa-3x
+      = link_to "" do
+        %i.item-social-media-box__facebook.fab.fa-facebook-square.fa-3x
     %li
-      %a{:href => ""}
-      %i.item-social-media-box__twitter.fab.fa-twitter-square.fa-3x
+      = link_to "" do
+        %i.item-social-media-box__twitter.fab.fa-twitter-square.fa-3x
     %li
-      %a{:href => ""}
-      %i.item-social-media-box__pinterest.fab.fa-pinterest-square.fa-3x
+      = link_to "" do
+        %i.item-social-media-box__pinterest.fab.fa-pinterest-square.fa-3x
 .items-in-user-profile
   %section.items-box-container
     %h2
-      %a{:href => ""} あきぞーさんのその他の出品
+      = link_to "あきぞーさんのその他の出品" , ""
     %div
       %section.items-box.first-box
-        %a{:href => ""}
+        = link_to "" do
           %figure.items-box__photo
-            %img{:src => "https://static.mercdn.net/thumb/photos/m65147348981_1.jpg?1555494812"}/
+            = image_tag("https://static.mercdn.net/thumb/photos/m65147348981_1.jpg?1555494812")
         .items-box__body
           %h3.items-box__name ボーダー
           .items-box__num
@@ -129,9 +129,9 @@
               %span 1
           %p.items-box__tax (税込)
       %section.items-box.other-box
-        %a{:href => ""}
+        = link_to "" do
           %figure.items-box__photo
-            %img{:src => "https://static.mercdn.net/thumb/photos/m34184515003_1.jpg?1555495230"}/
+            = image_tag("https://static.mercdn.net/thumb/photos/m34184515003_1.jpg?1555495230")
         .items-box__body
           %h3.items-box__name ボーダー
           .items-box__num
@@ -141,9 +141,9 @@
               %span 5
           %p.items-box__tax (税込)
       %section.items-box.other-box
-        %a{:href => ""}
+        = link_to "" do
           %figure.items-box__photo
-            %img{:src => "https://static.mercdn.net/thumb/photos/m78904710701_1.jpg?1554028260"}/
+            = image_tag("https://static.mercdn.net/thumb/photos/m78904710701_1.jpg?1554028260")
         .items-box__body
           %h3.items-box__name ボーダー
           .items-box__num
