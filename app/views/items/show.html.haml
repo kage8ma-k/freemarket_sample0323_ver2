@@ -85,7 +85,7 @@
     .message-content
       %form.message-content__form
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %textarea{:name => "body"}
+        = text_area :comment, placeholder: 'コメントを書いてください'
         = button_tag "",class: "message-content__submit" do
           %span コメントする
     / コメント欄ここまで
