@@ -1,0 +1,149 @@
+/ メインここから
+%section#main
+  %h1#itemname ベルト
+  #item-main
+    #item-left
+      %img#item-left__image/
+      #item-left__subimage
+        %div
+          %img/
+    %table#item-right
+      %tbody
+        %tr
+          %th 出品者
+          %td
+            = link_to "あきぞー" , ""
+            %div
+              #rating
+        %tr
+          %th カテゴリー
+          %td
+            %div
+              = link_to "レディース", ""
+            %div
+              = link_to "小物", ""
+            %div
+              = link_to "ベルト", ""
+        %tr
+          %th ブランド
+          %td ビトン
+        %tr
+          %th 商品の状態
+          %td 未使用に近い
+        %tr
+          %th 配送料の負担
+          %td 送料込み(出品者負担)
+        %tr
+          %th 配送の方法
+          %td ゆうゆうメルカリ便
+        %tr
+          %th 配送元地域
+          %td
+            = link_to "埼玉県", ""
+        %tr
+          %th 発送日の目安
+          %td 2~3日で発送
+    .clear
+    .item-price-box
+      %span.item-price-box__price ¥ 333
+      %span.item-price-box__tax (税込)
+      %span.item-price-box__shippingfee (送料込み)
+    = link_to "購入画面に進む" , "", class: "item-buy-btn"
+    .description
+      %p.description__inner
+        【商品説明】
+        しまむらで購入
+        長さ→2m3cm
+        幅→3.5cm
+        長さがありますのでゆったり使えます。
+        【状態】
+        数回使用しました。
+        ❁﻿.即購入OK
+        ❁﻿.プロフィールを一読された方が安心かと思われます
+    .item-button-container
+      .item-button-left
+        = button_tag "",class: "item-button-left__like" do
+          %i.far.fa-heart 4
+          %span いいね!
+          %span 5
+        %a
+          %i.far.fa-flag
+          %span 不適切な商品の報告
+      .item-button-right
+        %a
+          %i.fas.fa-lock
+          %span あんしん・あんぜんへの取り組み
+    / メインここまで
+    / コメント欄ここから
+.item-detail-message
+  .message-container
+    .message-content
+      %form.message-content__form
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = text_area :comment, placeholder: 'コメントを書いてください'
+        = button_tag "",class: "message-content__submit" do
+          %span コメントする
+    / コメント欄ここまで
+    / ナビリンクここから
+%ul.navi-item-link
+  %li.navi-item-link__prev
+    = link_to "" do
+      %i.fa.fa-angle-left
+      %span ポロシャツ
+  %li.navi-item-link__next
+    = link_to "" do
+      %span スニーカー
+      %i.fa.fa-angle-right
+/ ナビリンクここまで
+.item-social-media-box
+  %ul
+    %li
+      = link_to "" do
+        %i.item-social-media-box__facebook.fab.fa-facebook-square.fa-3x
+    %li
+      = link_to "" do
+        %i.item-social-media-box__twitter.fab.fa-twitter-square.fa-3x
+    %li
+      = link_to "" do
+        %i.item-social-media-box__pinterest.fab.fa-pinterest-square.fa-3x
+.items-in-user-profile
+  %section.items-box-container
+    %h2
+      = link_to "あきぞーさんのその他の出品" , ""
+    %div
+      %section.items-box.first-box
+        = link_to "" do
+          %figure.items-box__photo
+            = image_tag("https://static.mercdn.net/thumb/photos/m65147348981_1.jpg?1555494812")
+        .items-box__body
+          %h3.items-box__name ボーダー
+          .items-box__num
+            .items-box__price ¥2,980
+            .items-box__font
+              %i.far.fa-heart
+              %span 1
+          %p.items-box__tax (税込)
+      %section.items-box.other-box
+        = link_to "" do
+          %figure.items-box__photo
+            = image_tag("https://static.mercdn.net/thumb/photos/m34184515003_1.jpg?1555495230")
+        .items-box__body
+          %h3.items-box__name ボーダー
+          .items-box__num
+            .items-box__price ¥2,980
+            .items-box__font
+              %i.far.fa-heart
+              %span 5
+          %p.items-box__tax (税込)
+      %section.items-box.other-box
+        = link_to "" do
+          %figure.items-box__photo
+            = image_tag("https://static.mercdn.net/thumb/photos/m78904710701_1.jpg?1554028260")
+        .items-box__body
+          %h3.items-box__name ボーダー
+          .items-box__num
+            .items-box__price ¥3,200
+            .items-box__font
+              %i.far.fa-heart
+              %span 7
+          %p.items-box__tax (税込)
