@@ -1,0 +1,45 @@
+%main#personal-main
+  #personal-content
+    %section#personal-container
+      %h2#personal-header 本人情報の登録
+      %form#personal-inner
+        %div
+          %p
+            お客さまの本人情報をご登録ください。
+            %br/
+            登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          %p.text-right
+            =link_to "本人確認書類のアップロードについて","/"
+        .group-form
+          %label.group-form__lbl お名前
+          %p.group-form__personal-data あきぞー
+        .group-form
+          %label.group-form__lbl お名前カナ
+          %p.group-form__personal-data アキゾー
+        .group-form
+          %label.group-form__lbl 生年月日
+          %p.group-form__personal-data 2999/1/1
+        .group-form
+          %label.group-form__lbl 郵便番号
+          %span.group-form--any 任意
+          %input.group-form__input-data{:placeholder => "例) 1234567", :type => "text"}/
+        .group-form
+          %label.group-form__lbl 都道府県
+          %span.group-form--any 任意
+          %select.group-form__cmb
+        .group-form
+          %label.group-form__lbl 市区町村
+          %span.group-form--any 任意
+          %input.group-form__input-data{:placeholder => "例 )横浜市緑区", :type => "text"}/
+        .group-form
+          %label.group-form__lbl 番地
+          %span.group-form--any 任意
+          %input.group-form__input-data{:placeholder => "例 )青山1-1-1", :type => "text"}/
+        .group-form
+          %label.group-form__lbl 建物名
+          %span.group-form--any 任意
+          %input.group-form__input-data{:placeholder => "例) 柳ビル103", :type => "text"}/
+        %button.btn-regist{:type => "submit"} 登録する
+        .group-form
+          %p.group-form__supplement
+            = link_to "本人情報の登録について", "/"
