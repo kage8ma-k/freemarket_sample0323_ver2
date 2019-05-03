@@ -1,188 +1,123 @@
-body {
-  height:100%;
-  width:100%;
-}
-.single-main {
-  height:2458px;
+.single-container {
+  height: auto;
   width: 1440px;
-  background-color: $deep-gray;
+  padding-bottom: 220px;
+  background-color: $light-gray;
   display: block;
-  .l-single-container--buy-item-container{
-    width: 700px;
-    height:2458px;
-    margin: 0px 370px;
-    display: block;
-    background-color: $white;
-    margin: 0 auto;
+  &--single-main {
+    height:auto;
   }
 }
-div {
-display: block;
-background-color: $white;
-color: $black;
-}
-.data-reactroot {
-height: 2016px;
-color: $black;
-}
-// 商品の情報を入力
-.sell-container-inner h2 {
-  height: 33px;
-  width: 668px;
-  padding: 32px 16px;
-  line-height: 1.4;
+.l-single-container--buy-item-container{
+  width: 700px;
+  height: auto;
+  margin: 0px 370px;
   display: block;
-  font-weight: bold;
-  font-size: 22px;
+  background-color: $white;
+  margin: 0 auto;
+  h2.l-single-head{
+    height:33px;
+    width:668px;
+    padding:32px 16px;
+    font-size:22px;
+    line-height:1.5;
+    text-align:center;
+    font-weight:bold;
+    font-family:"Source Sans Pro";
+    color:$black;
+  }
 }
-.l-single-head {
-  text-align: center;
-  width: 668px;
-  height: 33px;
-  text-align: center;
-  padding :24px 8px;
-  font-size : 18px;
-  line-height: 1.5;
-}
-#sell-container {
-  height:2458px;
+.sell-form {
+  height:auto;
   width:700px;
-  div {
-    display: block;
-  }
-  .sell-container-inner {
-    height:2016px;
-    width:700px;
-  }
-    h2.l-single-head{
-      height:33px;
-      width:668px;
-      padding:32px 16px;
-      font-size:22px;
-      line-height:1.5;
-      text-align:center;
-      font-weight:bold;
-      font-family:"Source Sans Pro";
-      color:$black;
-    }
-    .sell-form {
-      height:1918px;
-      width:700px;
-      border-top: 1px solid #eee;
-      .sell-upload-box {
-        height:223px;
-        width: 540px;
-        padding: 40px;
-      }
-    }
-
-// 出品画像
-    h3.sell-upload-head {
-      width:540px;
-      font-size:100%;
-      display: block;
-      font-weight:bold;
-      color: $black;
-    }
-  .form-group:first-child{
-    margin-top: 0;
-  }
-  .form-group {
-    height:70px;
-    width:620px;
-  }
+  border-top: 1px solid #eee;
   .sell-upload-box {
-    width: 100%;
-    height: 100%;
+    height:233px;
+    width: 540px;
     padding: 40px;
   }
-  .sell-upload-head {
-    font-size: 16px !important;
-  }
+}
 
-  .error-messages{
-    padding: 40px 100px;
-    font-size: 14px;
-    color: red;
-    border-bottom: 1px solid #eee;
-    &__message{
-      margin: 0 0 10px 0;
-    }
-  }
-
-  .sell-upload-errors{
-    margin: 0 0 20px 0;
-    color: #ea352d;
-  }
-  .sell-upload-file{
-    width: 114px;
-    margin: 0 0 10px 10px;
-    float: left;
-    &__image{
-    height: 114px;
-    width: 114px;
-    object-fit: cover;
-    transform: none;
-    background: #f5f5f5;
+// 出品画像
+  h3.sell-upload-head {
+    // width:540px;
+    font-size:100%;
     display: block;
-    }
-    &__buttons{
-      width: 100%;
-      &--button{
-        display: block;
-        width: 50%;
-        height: 44px;
-        line-height: 44px;
-        float: left;
-        text-align: center;
-        background: #f5f5f5;
-        color: #0099e8;
-        text-decoration: none;
-        font-size: 1.0em
-      }
-      &--button--delete{
-        display: block;
-        width: 50%;
-        height: 44px;
-        line-height: 44px;
-        float: left;
-        text-align: center;
-        background: #f5f5f5;
-        border-left: 1px solid #eee;
-        color: #0099e8;
-        text-decoration: none;
-        font-size: 1.0em
-      }
-    }
+    font-weight:bold;
+    color: $black;
   }
-  .sell-upload-file:first-of-type{
-    @extend .sell-upload-file;
-    margin:  0 0 10px 0px;
+.sell-dropbox-container--state-image-number-10 {
+  .sell-upload-drop-box {
+    position: relative;
+    min-height: 162px;
+    background-color: $gray;
+    border: dashed 1px $light-gray;
+    text-align:center;
+    height:172px;
+    width:620px;
+    margin:16px -80px 0 0;
+    margin-left:2%;
   }
+}
 
-  .sell-upload-file:nth-of-type(6){
-    @extend .sell-upload-file;
-    margin:  0 0 10px 0px;
-  }
+// .sell-upload-drop-box--have-item-1 {
+//   height:80px;
+//   width:409px;
+//   padding:40px;
+//   border: dashed 1px $light-gray;
+//   margin-bottom: 10px;
+//   background-color: $light-gray;
+//   margin-left:12.391px;
+// }
 
-  .sell-upload-drop-file{
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-  }
-  .sell-upload-head+p {
-    margin: 8px 0 0;
-    line-height: 1.5;
-  }
-  .sell-upload-items ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
-  }
+
+  // .sell-upload-box {
+  //   width: 540px;
+  //   height: 233px;
+  //   padding: 40px;
+  // }
+  // .sell-upload-items--have-item-1 {
+  //   height:172px;
+  //   width:116px;
+  //   .sell-upload-item {
+  //     height:160px;
+  //     border: solid 1px $light-gray;
+  //     margin-bottom: 10px;
+  //     background-color: $light-gray;
+  //   }
+  //   .sell-upload-figure--portrait {
+  //     height:116px;
+  //     width:114px;
+  //   }
+  // }
+  // .sell-upload-file:first-of-type{
+  //   @extend .sell-upload-file;
+  //   margin:  0 0 10px 0px;
+  // }
+
+  // .sell-upload-file:nth-of-type(6){
+  //   @extend .sell-upload-file;
+  //   margin:  0 0 10px 0px;
+  // }
+
+  // .sell-upload-drop-file{
+  //   height: 100%;
+  //   width: 100%;
+  //   opacity: 0;
+  // }
+  // .sell-upload-head+p {
+  //   margin: 8px 0 0;
+  //   line-height: 1.5;
+  // }
+  // .sell-upload-items ul {
+  //   display: -webkit-box;
+  //   display: -ms-flexbox;
+  //   display: flex;
+  //   width: 100%;
+  // }
    .sell-upload-drop-box{
     margin: 0 0 20px 0;
-    background-color:$gray;
+    background-color:$light-gray;
    }
 
   .sell-upload-drop-box .icon-camera {
@@ -221,40 +156,6 @@ color: $black;
     font-size: 12px;
     vertical-align: top;
   }
-  .sell-dropbox-container.state-image-number-10 {
-    display: block;
-    height:162px;
-    margin: 16px auto 0;
-  }
-  .sell-dropbox-container.state-image-number-10 .sell-upload-items-container .sell-upload-items {
-    display: inline;
-  }
-  .sell-dropbox-container.state-image-number-10 .sell-upload-items-container .sell-upload-items ul {
-    display: inline;
-  }
-
-  .sell-dropbox-container.state-image-number-10 .sell-upload-drop-box.have-item-0 {
-    width: 100%;
-    margin-left: 0;
-  }
-  .sell-dropbox-container.state-image-number-10 .sell-upload-drop-box {
-    height:80px;
-    width:538px;
-    padding: 40px;
-    position: relative;
-    min-height: 80px;
-    background: $gray;
-    border: 1px dashed $deep-gray;
-    font-size: 0;
-    text-align: center;
-    -webkit-transition: -webkit-box-shadow ease-out .3s;
-    transition: -webkit-box-shadow ease-out .3s;
-    transition: box-shadow ease-out .3s;
-    transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
-    cursor: pointer;
-    margin-left: 2%;
-  }
-
   pre {
     overflow: auto;
   }
@@ -501,4 +402,7 @@ a {
   border: solid 1px #aaa;
   color: $white;
 }
+li {
+  list-style-type: none;
 }
+// }
