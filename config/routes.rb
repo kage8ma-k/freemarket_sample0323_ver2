@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   resources :items
   resources :creditcards, only: [:index, :edit]
   resources :buy
+  resources :users do
+    get 'personalinfomation'
+  end
 end
