@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :buy
   resources :users,only: [] do
     get 'personalinfomation'
+    get 'logout'
   end
 end
