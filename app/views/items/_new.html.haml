@@ -15,7 +15,7 @@
                   .sell-upload-items.have-item-0
                     %ul
                 .sell-upload-drop-box.have-item-0
-                  %input.sell-upload-drop-file{:multiple => "multiple", :name => "image1", :style => "display: none;", :type => "file"}/
+                  %input.sell-upload-drop-file{ multiple: "multiple", name: "image1", style: "display: none;", type: "file"}/
                   %pre.visible-pc
                     :preserve
                       ドラッグアンドドロップ
@@ -26,12 +26,12 @@
                   商品名
                   %span.form-require 必須
                 %div
-                  %input.input-default{:placeholder => "商品名（必須 40文字まで)", :value => ""}/
+                  %input.input-default{ placeholder: "商品名（必須 40文字まで)", value: ""}/
               .form-group__info
                 %label
                   商品の説明
                   %span.form-require 必須
-                %textarea.textarea-default{:placeholder => "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", :rows => "5"}
+                %textarea.textarea-default{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"}
             .sell-content2
               %h3.sell-sub-head 商品の詳細
               .sell-form-box
@@ -61,7 +61,7 @@
                     ブランド
                     %span.form-arbitrary 任意
                   %div
-                    %input.input-default{:placeholder => "例）シャネル", :value => ""}/
+                    %input.input-default{placeholder: "例）シャネル", value: ""}/
                     %div
                 .form-group__condition
                   %label
@@ -72,7 +72,7 @@
                     %i.icon-arrow-bottom
             .sell-content3
               %h3.sell-sub-head 配送について
-              %a.form-question{:href => "/jp/help_center/article/68/", :target => "_blank"} ?
+              = link_to "?", "/jp/help_center/article/68/", class: "form-question"
               .sell-form-box
                 .form-group__fee
                   %label
@@ -104,7 +104,7 @@
                     %i.icon-arrow-bottom
             .sell-content4
               %h3.sell-sub-head 販売価格(300〜9,999,999)
-              %a.form-question{:href => "/jp/help_center/article/64/", :target => "_blank"} ?
+              = link_to "?", "/jp/help_center/article/68/", class: "form-question"
               .sell-form-box
                 %ul.sell-price
                   %li.form-group-price
@@ -114,33 +114,33 @@
                         %span.form-require 必須
                       .l-right.sell-price-input
                         %div
-                          %input.input-default{:placeholder => "例）300", :value => "¥300"}/
+                          %input.input-default{placeholder: "例）300", value: "¥300"}/
                   %li.clearfix
                     .l-left 販売手数料 (10%)
                     .l-right ¥300
                   %li.clearfix.bold
                     .l-left 販売利益
                     .l-right ¥270
-            .modal{:role => "dialog", :tabindex => "-1"}
+            .modal{role: "dialog", tabindex: "-1"}
               .modal-inner
               .sell-content.sell-btn-box
                 %div
                   %p
-                    %a{:href => "https://www.mercari.com/jp/help_center/getting_started/prohibited_items/", :target => "_blank"} 禁止されている出品
+                    = link_to "禁止されている出品", "https://www.mercari.com/jp/help_center/getting_started/prohibited_items/"
                     、
-                    %a{:href => "https://www.mercari.com/jp/help_center/getting_started/prohibited_conduct/", :target => "_blank"} 行為
+                    = link_to "行為", "https://www.mercari.com/jp/help_center/getting_started/prohibited_conduct/"
                     を必ずご確認ください。
                   %p
                     またブランド品でシリアルナンバー等がある場合はご記載ください。
-                    %a{:href => "https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/", :target => "_blank"} 偽ブランドの販売
+                    = link_to "偽ブランドの販売", "https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/"
                     は犯罪であり処罰される可能性があります。
                   %p
                     また、出品をもちまして
-                    %a{:href => "https://www.mercari.com/jp/seller_terms/"} 加盟店規約
+                    = link_to "加盟店規約", "https://www.mercari.com/jp/seller_terms/"
                     に同意したことになります。
-                %button.btn-default.btn-red{:type => "submit"}
+                %button.btn-default.btn-red{type: "submit"}
                   出品する
-                %button.btn-default.btn-gray{:type => "button"}
+                %button.btn-default.btn-gray{type: "button"}
                   もどる
             .overlay
 = render 'shared/second_footer'
