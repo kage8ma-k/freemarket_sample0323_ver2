@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    render :layout => nil
+    render layout: nil
   end
 
   def show
