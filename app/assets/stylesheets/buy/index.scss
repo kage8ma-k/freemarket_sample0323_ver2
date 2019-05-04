@@ -1,16 +1,17 @@
 .single-container {
-  height:1054.220px;
+  height:1052.720px;
   padding-bottom: 220px;
-  width: 1440px;
   background-color: $light-gray;
   display: block;
-  &＿_single-main {
-    height:926.219px;
-  }
 }
-.l-single-container--buy-item-container{
+.single-main {
+  height:924.719px;
+  background-color: $light-gray;
+  display: block;
+}
+.l-single-container.buy-item-container{
   width: 700px;
-  height:926.219px;
+  // height:926.219px;
   margin: 0px 370px;
   display: block;
   background-color: $white;
@@ -28,7 +29,7 @@
   }
 }
 .buy-content--buy-item {
-  height:420px;
+  // height:420px;
   width:525px;
   padding:24px 87.5px 0px;
   border-top: solid 1px $light-gray;
