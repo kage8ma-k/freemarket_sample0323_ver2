@@ -1,0 +1,98 @@
+.content{
+    width: 700px;
+}
+    .mypage-user-icon{
+        background-image: url(user-bg.jpg);
+        height: 200px;
+        width: 700px;
+        padding: 20px;
+        background-size: cover;
+        text-align: center;
+    }
+        .bold{
+            display: inline-block;
+            margin: 8px 0 0;
+            font-size: 14px;
+        }
+        .mypage-number{
+            margin: 8px 0 0;
+            font-size: 0;
+        }
+    .mypage-tab-container-notification-todo{
+            margin: 0;
+            background: #fff;
+    }
+        .mypage-tabs{
+           display: flex;
+        }
+        .news{
+            width: 350px;
+            height: 74px;
+            list-style: none;
+            text-align: center;
+        }
+        .todo{
+            width: 350px;
+            height: 74px;
+            background-color: #C0C0C0;
+            list-style: none;
+            text-align: center;
+            text-decoration: none;
+        }
+        .tab{
+            color: #333;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .tab-content{
+            width: 700px;
+        }
+          .tab-style{
+            list-style: none;
+            display: flex;
+          }
+            .fa-angle-right{
+                float: right;
+                margin-right: 10px;
+                font-size: 15px;
+            }
+        .mypage-go-list{
+            height: 88px;
+            list-style: none;
+        }
+             .ichiran{
+                width: 668px;
+                height: 56px;
+                background-color: #eeeeee;
+                text-align: center;
+                line-height: 55px;
+                margin: auto;
+             }
+
+        .mypage-tab-head{
+            background: #fafafa;
+            font-size: 16px;
+            line-height: 72px;
+        }
+        .trading{
+            width: 350px;
+            height: 74px;
+            list-style: none;
+            text-align: center;
+        }
+        .past-trading{
+            width: 350px;
+            height: 74px;
+            background-color: #C0C0C0;
+            list-style: none;
+            text-align: center;
+            text-decoration: none;
+        }
+        .mypage-tab-transaction-now{
+            height: 236px;
+            text-align: center;
+            font-size: 16px;
+            color: #ccc;
+            line-height: 370px;
+        }
