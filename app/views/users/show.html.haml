@@ -2,7 +2,8 @@
   = render "shared/sidebar"
   .content
     %section.mypage-user-icon
-      %a{:href => "https://www.mercari.com/jp"}
+      %a
+        = link_to "", href:"https://www.mercari.com/jp"
         %figure
           = image_tag("profile_photo.png")
         %h2.bold 山田太郎
@@ -17,12 +18,12 @@
       %ul.mypage-tabs
         %li.news
           %h3
-            %a.tab{href:"#mypage-tab-notification"}
-              お知らせ
+            %a.tab
+              = link_to "お知らせ", href:"#mypage-tab-notification"
         %li.todo
           %h3
-            %a.tab{href:"mypage-tab-todo"}
-              やることリスト
+            %a.tab
+              = link_to "やることリスト", href:"mypage-tab-todo"
       .tab-content
         %li.tab-style
           .tab-text
