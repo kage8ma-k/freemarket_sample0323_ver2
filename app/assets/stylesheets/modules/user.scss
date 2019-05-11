@@ -1,7 +1,7 @@
 .account-wrapper {
   background-color: $lightgray;
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-  height: 100vh;
+  height: 100%;
 }
 
 .account-header {
@@ -177,6 +177,44 @@ article {
   }
 }
 
+//-----------------------------------account-header2
+
+.account-header-step-box {
+  position: relative;
+}
+
+#account-logo-step{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+h1 {
+  padding-top: 40px;
+  text-align: center;
+}
+
+nav {
+  padding: 40px 0 0 44px;
+  border: 0;
+  text-align: center;
+  ol {
+    margin: 0;
+    .active{
+      color: $red;
+    }
+    li{
+
+    }
+  }
+}
+
+
+
+
+
 //横767pxでスマホ用、横768pxでPC用
 
 //--------PC用--------
@@ -192,7 +230,22 @@ article {
   .account-footer {
     height: 220px;
   }
+
+  .account-header-step {
+    height: 128px;
+  }
+  .account-header-step-box {
+    width: 768px;
+    margin: 0 auto;
+  }
+  #account-logo-step {
+    width: 185px;
+    height: 49px;
+    margin: 40px 0 0 0;
+  }
 }
+
+
 
 //--------スマホ用--------
 @media screen and (max-width: 767px) {
@@ -206,5 +259,15 @@ article {
 
   .account-footer {
     height: 250px;
+  }
+
+  .account-header-step-box {
+    margin: 0 auto;
+  }
+
+  #account-logo-step {
+    width: 120px;
+    height: 33px;
+    margin: 12px auto;
   }
 }

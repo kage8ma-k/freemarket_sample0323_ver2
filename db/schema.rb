@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190427050026) do
+ActiveRecord::Schema.define(version: 20190511104232) do
 
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "profile"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 20190427050026) do
     t.integer  "birth_year"
     t.integer  "birth_month"
     t.integer  "birth_day"
-    t.integer  "postal_code",               null: false
-    t.integer  "prefecture",                null: false
-    t.string   "city",                      null: false
+    t.integer  "postal_code"
+    t.integer  "prefecture"
+    t.string   "city"
     t.string   "block_number"
     t.string   "building_name"
     t.integer  "phone_number"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20190427050026) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "certification_number"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

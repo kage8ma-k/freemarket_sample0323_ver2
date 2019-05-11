@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  # devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup'}
+  resources :items
+
+  root 'items#index'
+
 
   devise_for :users, skip: :all
   devise_scope :user do
@@ -33,22 +36,4 @@ Rails.application.routes.draw do
     put    'password'                     =>  'users/passwords#update', as: :update_user_password
   end
 
-  root 'items#index'
-
-  resources :items
-
-  # namespace :signup do
-  #   collection do
-  #     get :registration
-  #     get :sms_confirmation
-  #     # get 'sms_confirmation/sms/', to: 'photos#index'
-  #   end
-  # end
-
 end
-
-
-# signup/　メール、FB、Gglでの新規登録選択
-# signup/registration/　メアド等登録　（入力フォーム記載ミスなどあっても戻るだけ）
-# signup/sms_confirmation/　電話番号の入力
-# 　　signup/sms_confirmation/sms/　過去登録している電話番号などエラーが起きた場合のURL
