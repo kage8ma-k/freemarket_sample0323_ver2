@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :items,only: [:index, :edit, :new, :show]
   resources :creditcards, only: [:index, :edit]
   resources :buy
-  resources :users,only: [] do
+  resources :users,only: [:show] do
     get 'personalinfomation'
     get 'logout'
   end
