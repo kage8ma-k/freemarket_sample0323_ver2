@@ -46,7 +46,7 @@
       font-weight: bold;
     }
     form.buy-form {
-      height:232px;
+      // height:232px;
     }
       p.buy-price-ja.bold {
         margin-top: 8px;
@@ -141,4 +141,11 @@
       text-align:left;
       margin:0;
     }
+}
+
+#payjp_checkout_box input[type=button]{
+   margin-top: 16px;
+   background-color: red;
+   height: 48px;
+   width: 100%;
 }
