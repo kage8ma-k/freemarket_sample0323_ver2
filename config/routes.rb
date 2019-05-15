@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     get 'personalinfomation'
     get 'logout'
+    get 'profile'
   end
 end
