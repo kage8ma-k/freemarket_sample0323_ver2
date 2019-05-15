@@ -1,3 +1,3 @@
-class Category < ApplicationRecord
-  has_many :items
+class Category < ActiveRecord::Base
+  has_ancestry
 end
