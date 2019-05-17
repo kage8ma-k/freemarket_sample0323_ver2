@@ -1,54 +1,50 @@
-.main-contents {
-.left_block{
+.main_contents {
+  .left_block{
     float: left;
     width: 280px;
     margin: 0 40px 0 0;
-}
-  .mypage_block{
-    list-style: none;
-  }
-
-    .mypage_block_list_item{
-    border: solid 0.5px #C0C0C0;
-    position: relative;
-    display: block;
-    height: 20px;
-    padding: 16px;
-    background: #fff;
-    font-size: 14px;
-    color: #333;
-      &:hover{
-      background-color: #C0C0C0;
+    .mypage_block{
+      list-style: none;
+      .mypage_block_list_item{
+        border: solid 0.5px #C0C0C0;
+        position: relative;
+        display: block;
+        height: 20px;
+        padding: 16px;
+        background: #fff;
+        font-size: 14px;
+        color: #333;
+        &:hover{
+          background-color: #C0C0C0;
+        }
+        a {
+          color: black;
+          text-decoration: none;
+        }
+        .fa-angle-right{
+          font-size: 25px;
+          position: absolute;
+          top: 25%;
+          right: 16px;
+          color: #ccc;
+          &:hover{
+            -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            -webkit-transition: all ease-out .2s;
+            transition: all ease-out .2s;
+          }
+        }
       }
     }
-    a {
-    color: black;
-    text-decoration: none;
-}
-
-    .fa-angle-right{
-    font-size: 25px;
-    position: absolute;
-    top: 25%;
-    right: 16px;
-    color: #ccc;
-      &:hover{
-      -webkit-transform: translate(0, -50%);
-      transform: translate(0, -50%);
-      -webkit-transition: all ease-out .2s;
-      transition: all ease-out .2s;
-      }
-    }
-
     .merupay{
       margin: 40px 0 0;
     }
     .configuration{
       margin: 40px 0 0;
     }
-
     .clearfix{
       clear: both;
     }
+  }
 }
 
