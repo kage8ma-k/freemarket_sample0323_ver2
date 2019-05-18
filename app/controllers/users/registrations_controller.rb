@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  include Common
 
   # GET /resource/sign_up
   def new
@@ -23,10 +24,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new4
     @user = User.find(session[:user_id])
+    @prefecture = prefecture_set
     render layout: 'user_registration2'
   end
 
   def new5
+    @user = User.find(session[:user_id])
     render layout: 'user_registration2'
   end
 
@@ -68,9 +71,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create4
+    @user_id = session[:user_id]
+    @user_profile = UserProfile.find_by(user_id: @user_id)
+    if @user_profile.update(user_profile_detail_params)
+      redirect_to signup_input_payment_path
+    else
+      render :new4, layout: 'user_registration2'
+    end
   end
 
   def create5
+    @user_id = session[:user_id]
+    @credit = Credit.new(credit_params.merge(user_id: @user_id))
+    if @credit.save
+      redirect_to signup_complete_path
+    else
+      render :new5, layout: 'user_registration2'
+    end
   end
 
   def create6
@@ -94,4 +111,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.permit(:certification_number)
   end
 
+  def user_profile_detail_params
+    params.permit(:lastname, :firstname, :lastname_kana, :firstname_kana, :postal_code, :prefecture, :city, :block_number, :building_name, :phone_number)
+  end
+
+  def credit_params
+    params.permit(:card_number, :expiration_month, :expiration_year, :security_code)
+  end
 end

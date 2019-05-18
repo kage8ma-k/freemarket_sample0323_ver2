@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190511104232) do
+ActiveRecord::Schema.define(version: 20190516073918) do
+
+  create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "card_number"
+    t.integer  "expiration_month"
+    t.integer  "expiration_year"
+    t.string   "security_code"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_credits_on_user_id", using: :btree
+  end
 
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "profile"
@@ -27,7 +38,7 @@ ActiveRecord::Schema.define(version: 20190511104232) do
     t.string   "city"
     t.string   "block_number"
     t.string   "building_name"
-    t.integer  "phone_number"
+    t.string   "phone_number"
     t.integer  "the_number_of_exhabitions"
     t.integer  "points"
     t.integer  "user_id"
@@ -56,5 +67,6 @@ ActiveRecord::Schema.define(version: 20190511104232) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "credits", "users"
   add_foreign_key "user_profiles", "users"
 end

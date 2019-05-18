@@ -3,7 +3,17 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   def new
+    # super
+    resource
     render :layout => "user_registration1"
+  end
+
+  def create
+    super
+    if user_signed_in?
+    else
+      render :new, layout: 'user_registration1'
+    end
   end
 
   # GET /resource/sign_in
@@ -27,4 +37,9 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  private
+
+  def resource
+    @resource ||= User.new
+  end
 end

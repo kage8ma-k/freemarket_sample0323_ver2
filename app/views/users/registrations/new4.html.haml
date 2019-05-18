@@ -28,73 +28,36 @@
           = text_field_tag :postal_code, nil, {placeholder: '例) 123-4567', class: 'field-input'}
           .field-title.clearfix
             .field-label
-              = label_tag(:password_confirmation, "パスワード(確認)")
+              = label_tag(:prefecture, "都道府県")
             .field-necessary
               %span 必須
-          = text_field_tag :password_confirmation, nil, {placeholder: '6文字以上', class: 'field-input'}
+          .prefecture-select-wrap
+            .select-wrap
+              = select_tag :prefecture, options_for_select(@prefecture), {placeholder: '北海道', class: 'select'}
           .field-title.clearfix
             .field-label
-              = label_tag(:password_confirmation, "パスワード(確認)")
+              = label_tag(:city, "市区町村")
             .field-necessary
               %span 必須
-          = text_field_tag :password_confirmation, nil, {placeholder: '6文字以上', class: 'field-input'}
+          = text_field_tag :city, nil, {placeholder: '例) 横浜市緑区', class: 'field-input'}
           .field-title.clearfix
             .field-label
-              = label_tag(:password_confirmation, "パスワード(確認)")
+              = label_tag(:block_number, "番地")
             .field-necessary
               %span 必須
-          = text_field_tag :password_confirmation, nil, {placeholder: '6文字以上', class: 'field-input'}
-        .field-text
-          %h3.text-title 本人確認
-          %p.text-content 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          = text_field_tag :block_number, nil, {placeholder: '例) 青山1-1-1', class: 'field-input'}
         .field
           .field-title.clearfix
             .field-label
-              = label_tag(:lastname, "姓(全角)")
+              = label_tag(:building_name, "建物名")
             .field-necessary
               %span 必須
-          = text_field_tag :lastname, nil, {placeholder: '例) 山田', class: 'field-input'}
+          = text_field_tag :building_name, nil, {placeholder: '例) 柳ビル103', class: 'field-input'}
           .field-title.clearfix
             .field-label
-              = label_tag(:firstname, "名(全角)")
+              = label_tag(:phone_number, "電話")
             .field-necessary
               %span 必須
-          = text_field_tag :firstname, nil, {placeholder: '例)彩', class: 'field-input'}
-        .field
-          .field-title.clearfix
-            .field-label
-              = label_tag(:lastname_kana, "姓カナ(全角)")
-            .field-necessary
-              %span 必須
-          = text_field_tag :lastname_kana, nil, {placeholder: '例) ヤマダ', class: 'field-input'}
-          .field-title.clearfix
-            .field-label
-              = label_tag(:firstname_kana, "名カナ(全角)")
-            .field-necessary
-              %span 必須
-          = text_field_tag :firstname_kana, nil, {placeholder: '例) アヤ', class: 'field-input'}
-        .field
-          .field-title.clearfix
-            .field-label
-              = label_tag(:birth, "生年月日")
-            .field-necessary
-              %span 必須
-          .birthday-select-wrap
-            .select-wrap
-              = select_tag(:birth_year, options_for_select((1900..2019).to_a.unshift("--")), {class:'select', id: 'birth'})
-              %i.fas.fa-chevron-down
-              %span 年
-          .birthday-select-wrap
-            .select-wrap
-              = select_tag(:birth_month, options_for_select((1..12).to_a.unshift("--")), {class:'select', id: 'birth'})
-          .birthday-select-wrap
-            .select-wrap
-              = select_tag(:birth_day, options_for_select((1..31).to_a.unshift("--")), {class:'select', id: 'birth'})
-          %p.text-content ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-
+          = text_field_tag :phone_number, nil, {placeholder: '例) 09012345678', class: 'field-input'}
           %p.text-content
-            「次へ進む」のボタンを押すことにより、
-            %a{:href => "/", :target => "_blank"}> 利用規約
-            に同意したものとみなします
-
           = submit_tag('次に進む', class: 'submit')

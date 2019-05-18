@@ -1,17 +1,33 @@
--#%h2 Log in
--#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
--#  .field
--#    = f.label :email
--#    %br/
--#    = f.email_field :email, autofocus: true, autocomplete: "email"
--#  .field
--#    = f.label :password
--#    %br/
--#    = f.password_field :password, autocomplete: "current-password"
--#  - if devise_mapping.rememberable?
--#    .field
--#      = f.check_box :remember_me
--#      = f.label :remember_me
--#  .actions
--#    = f.submit "Log in"
--#= render "users/shared/links"
+%article.maincontent
+  .content-head
+    .content-inner-form
+      .field
+        %p.text-content アカウントをお持ちでない方はこちら
+        %a{:href => "/signup/registration"}
+          .blue-button 新規会員登録
+    .content-inner
+      = link_to signup_sms_confirmation_path, class: "btn-fb-link" do
+        .btn-fb
+          %i.fab.fa-facebook
+          %span
+            Facebookでログイン
+      = link_to signup_sms_confirmation_path, class: "btn-ggl-link" do
+        .btn-ggl
+          %i.fab.fa-google
+          %span
+            Googleでログイン
+    -#.content-inner-form
+    -#  = form_tag("/login", method: "post") do
+    -#    .field
+    -#      .field-title.clearfix
+    -#      = text_field_tag :email, nil, {placeholder: "メールアドレス", class: 'field-input'}
+    -#      = text_field_tag :password, nil, {placeholder: "パスワード", class: 'field-input'}
+    -#      = submit_tag('次に進む', class: 'submit')
+    .content-inner-form
+      -#= resource = User.new unless resource
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          .field-title.clearfix
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: 'field-input', placeholder: "メールアドレス"
+          = f.password_field :password, autocomplete: "current-password", class: 'field-input', placeholder: "パスワード"
+          = f.submit "ログイン", class: 'submit'
