@@ -1,9 +1,15 @@
 .card {
-  padding-top: 24px;
-  background-color: $light-gray;
+ @include right-container;
+  margin-top: 40px;
+  background-color: $deep-gray;
   height: 100%;
+  width: 1020px;
+  display: flex;
+  padding-bottom: 40px;
   &__container {
-    @include right-container;
+    width: 700px;
+    background-color: white;
+    height: 666px;
     &__title {
       height: 50px;
       width: 100%;
@@ -21,6 +27,9 @@
       height: 600px;
       margin: 40px auto;
       .field {
+        input{
+            width: 300px;
+          }
         &__icon{
           margin: 10px 0;
           &__size{
@@ -33,6 +42,7 @@
           margin-top: 20px;
            position: relative;
           select {
+            width: 320px;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
@@ -50,7 +60,11 @@
           }
         }
         &__security{
+          width: 320px;
           margin-top: 40px;
+          input{
+            width: 300px;
+          }
           &__question{
             margin-top: 10px;
             text-align: right;
@@ -70,6 +84,3 @@
     }
   }
 }
-
-
-

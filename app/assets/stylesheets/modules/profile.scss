@@ -1,9 +1,12 @@
 .profile {
-  padding-top: 24px;
-  background-color: $light-gray;
+  @include right-container;
+  margin-top: 40px;
+  background-color: $deep-gray;
   height: 100%;
+  width: 1020px;
+  display: flex;
+  padding-bottom: 40px;
   &__container {
-    @include right-container;
     &__title {
       height: 50px;
       width: 100%;
