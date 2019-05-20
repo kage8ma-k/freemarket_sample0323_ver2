@@ -89,7 +89,7 @@
                   サイズ
                   %span.form-require 必須
                   .select-wrap
-                    = f.select :size, Item.size_i18n.invert, {prompt: "---"}, class: 'select-default'
+                    / = f.select :size, Item.size_i18n.invert, {prompt: "---"}, class: 'select-default'
                   // %select.select-default
                   // %i.icon-arrow-bottom
               .form-group--form-suggest-container
@@ -138,7 +138,7 @@
                   発送元の地域
                   %span.form-require 必須
                 .select-wrap
-                  / = f.collection_select :delivery_area_id, Delivery_area.all, :id, :name, { prompt: "---" }, class: "select-default"
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "---"}, {class: "select-default"}
                   / %select.select-default
                   / %i.icon-arrow-bottom
               .form-group
