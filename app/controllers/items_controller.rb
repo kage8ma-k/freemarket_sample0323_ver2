@@ -3,15 +3,23 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @items = Item.new
-    @item = Category.all.order("id ASC").limit(13)
+    @item = Item.new
+    @parents = Category.all.order("id ASC").limit(13)
+    if params[:root_id].present?
+      @children = Category.where(ancestry: params[:root_id])
+      render json: @new_children
+    elsif params[:child_id].present?
+      @grand_children = Category.where("ancestry LIKE ?", "%/#{params[:child_id]}")
+      render json: @new_grand_children
+    else params[:grand_child_id].present?
+    end
+      # render json: @new_great_grand_children
     # 10.times{@item.photos.build}画像S3に保存するとき
     render layout: nil
-    binding.pry
   end
 
   def create
-    @item = Item.ner(item_params)
+    @item = Item.new(item_params)
     render action: :new
   end
 
