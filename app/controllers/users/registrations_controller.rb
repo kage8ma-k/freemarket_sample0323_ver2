@@ -11,29 +11,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new1
+    @active = ['active', '', '', '', '']
     render layout: 'user_registration2'
   end
 
   def new2
+    @active = ['active', 'active', '', '', '']
     render layout: 'user_registration2'
   end
 
   def new3
+    @active = ['active', 'active', '', '', '']
     render layout: 'user_registration2'
   end
 
   def new4
+    @active = ['active', 'active', 'active', '', '']
     @user = User.find(session[:user_id])
     @prefecture = prefecture_set
     render layout: 'user_registration2'
   end
 
   def new5
+    @active = ['active', 'active', 'active', 'active', '']
     @user = User.find(session[:user_id])
     render layout: 'user_registration2'
   end
 
   def new6
+    @active = ['active', 'active', 'active', 'active', 'active']
     render layout: 'user_registration2'
   end
 

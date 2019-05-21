@@ -177,41 +177,130 @@ article {
   }
 }
 
-//-----------------------------------account-header2
+//-----------------------------------account-account-header-step-box
 
 .account-header-step-box {
   position: relative;
-}
 
-#account-logo-step{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
+  #account-logo-step {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 
-h1 {
-  padding-top: 40px;
-  text-align: center;
-}
+  h1 {
+    padding-top: 40px;
+    text-align: center;
+    float: left;
+  }
 
-nav {
-  padding: 40px 0 0 44px;
-  border: 0;
-  text-align: center;
-  ol {
-    margin: 0;
-    .active{
-      color: $red;
-    }
-    li{
+  nav {
+    border: 0;
+    text-align: center;
+    float: right;
+  }
+  .progress-bar {
+    padding: 21px 0 0 44px;
+    border: 0;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    font-size: 12px;
+    line-height: 50px;
+    ol {
+      margin: 0;
 
+      li {
+        float: left;
+        margin: 0 40px 0 0;
+        min-width: 60px;
+        position: relative;
+        &:after{
+          left: 50%;
+          content: "";
+          position: absolute;
+          bottom: 5px;
+          border-radius: 0;
+          border-bottom: 2px solid #ccc;
+          width: 100%;
+          z-index: 0;
+          display: block;
+          height: 2px;
+        }
+        &:before{
+          right: 50%;
+          content: "";
+          position: absolute;
+          bottom: 5px;
+          border-radius: 0;
+          border-bottom: 2px solid #ccc;
+          width: 100%;
+          z-index: 0;
+          display: block;
+          height: 2px;
+        }
+      }
+      .active {
+        font-weight: 600;
+        color: $red;
+        min-width: 60px;
+        position: relative;
+
+        &:after {
+          left: 50%;
+          content: "";
+          position: absolute;
+          bottom: 5px;
+          border-radius: 0;
+          border-bottom: 2px solid $red;
+          width: 100%;
+          z-index: 1;
+          display: block;
+          height: 2px;
+        }
+
+        &:before {
+          right: 50%;
+          content: "";
+          position: absolute;
+          bottom: 5px;
+          border-radius: 0;
+          border-bottom: 2px solid $red;
+          width: 100%;
+          z-index: 1;
+          display: block;
+          height: 2px;
+        }
+
+        .progress-status {
+          height: 11px;
+          width: 11px;
+          border-radius: 50px;
+          background: $red;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        }
+      }
+      .first::before {
+        content: none;
+      }
+      .last::after {
+        content: none;
+      }
+      .progress-status {
+        height: 11px;
+        width: 11px;
+        border-radius: 50px;
+        background: #ccc;
+        margin: 0 auto;
+        position: relative;
+      }
     }
   }
 }
-
-
 
 
 
