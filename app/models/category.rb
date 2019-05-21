@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  has_many :item, through: :category
-  has_many :category
+  has_many :items, through: :categories
+  has_many :categories
   has_ancestry
 end

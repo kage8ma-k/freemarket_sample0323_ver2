@@ -4,20 +4,22 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @parents = Category.all.order("id ASC").limit(13)
-    if params[:root_id].present?
-      @new_children = Category.where(ancestry: params[:root_id])
-      render json: @new_children
-    elsif params[:child_id].present?
-      @new_grand_children = Category.where("ancestry LIKE ?", "%/#{params[:child_id]}")
-      render json: @new_grand_children
-    elsif params[:grand_child_id].present?
-      @new_great_grand_children = Category.where("ancestry LIKE ?", "%/#{params[:grand_child_id]}")
-      render json: @new_great_grand_children
-    end
-      # render json: @new_great_grand_children
     # 10.times{@item.photos.build}画像S3に保存するとき
     render layout: nil
+  end
+
+  def search
+    if params[:l_cat]
+      @m_cat = Category.find(params[:l_cat]).children
+    else
+      @s_cat = Category.find(params[:m_cat]).children
+# このあと親を取ってきたら子（m）とだす。違ったら孫をだす（s）。違ったらブランドとサイズカテゴリーをだす。
+
+    end
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create

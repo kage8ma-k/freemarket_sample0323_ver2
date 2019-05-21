@@ -68,13 +68,11 @@
                   %span.form-require 必須
                 %div
                   .select-wrap#new-first-category
-                    = select_tag 'root-category', options_from_collection_for_select(@parents, :id, :name), prompt: "---", class: 'select-default'
+                    = f.select :category_id, Category.roots.map {|i| ["#{i.name}", i.id]}, { selected: @item.category_id, prompt: "---"}, {id: "l_category",class: 'select-default'}
                     // %i.icon-arrow-bottom
-                  .select-wrap#new-second-category
-                    = select_tag 'child-category', options_for_select([]), prompt: "---", class: 'select-default'
+                  .select-wrap#m_category
                     // %i.icon-arrow-bottom
-                  .select-wrap#new-third-category
-                    = select_tag 'grand-child-category', options_for_select([]), prompt: "---", class: 'select-default'
+                  .select-wrap#s_category
                     // %i.icon-arrow-bottom
               / .form-group--form-suggest-container
               .form-group__size
@@ -150,7 +148,7 @@
                   %span.form-require 必須
                   .l-right.sell-price-input
                     %div
-                    = f.text_field :price, placeholder: "例) 300" ,class: "input-default", id: "new-item-price"
+                      = f.text_field :price, placeholder: "例) 300" ,class: "input-default", id: "new-item-price"
                     / %input.input-default{placeholder: "例）300", value: "¥300"}/
                 %li.clearfix
                   .l-left 販売手数料 (10%)
