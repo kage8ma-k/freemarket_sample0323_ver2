@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190511053020) do
+ActiveRecord::Schema.define(version: 20190521101603) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -35,15 +35,13 @@ ActiveRecord::Schema.define(version: 20190511053020) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-  create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "card_number",            null: false
-    t.integer  "carrd_expiration_month", null: false
-    t.integer  "card_expiration_year",   null: false
-    t.integer  "digit_code",             null: false
+  create_table "creditcards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "card_id",     null: false
+    t.string   "customer_id", null: false
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index ["user_id"], name: "index_credits_on_user_id", using: :btree
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_creditcards_on_user_id", using: :btree
   end
 
   create_table "evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -117,7 +115,7 @@ ActiveRecord::Schema.define(version: 20190511053020) do
 
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
-  add_foreign_key "credits", "users"
+  add_foreign_key "creditcards", "users"
   add_foreign_key "evaluations", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"

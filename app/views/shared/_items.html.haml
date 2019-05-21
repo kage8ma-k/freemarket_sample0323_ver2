@@ -2,7 +2,7 @@
   %section.items-box
     = link_to items_path, class: "item-link" do
       %figure.items-box-photo
-        = image_tag item.item_images.first.image, class: "items-box-photo"
+        / = image_tag item.item_images.first.image, class: "items-box-photo"
       .items-box-body
         %h3.items-box-name
           = item.name
