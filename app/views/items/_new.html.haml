@@ -3,7 +3,6 @@
     #sell-container
       .sell-container-inner
         %h2.l-single-head 商品の情報を入力
-        / %form.sell-form
         = form_for @item, html: {class: "sell-form"} do |f|
           .sell-upload-box
             %h3.sell-upload-head
@@ -53,14 +52,12 @@
                 %span.form-require 必須
               %div
                 = f.text_field :name, class: 'input-default-name', placeholder: "商品名（必須 40文字まで)"
-                / %input.input-default{ placeholder: "商品名（必須 40文字まで)", value: ""}/
             .form-group__info
               %label
               = f.label :content do
                 商品の説明
                 %span.form-require 必須
               = f.text_area :content, rows: '5', placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "textarea__default"
-              / %textarea.textarea-default{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"}
           .sell-content2
             %h3.sell-sub-head 商品の詳細
             .sell-form-box
@@ -72,15 +69,12 @@
                 %div
                   .select-wrap#new-first-category
                     = select_tag 'root-category', options_from_collection_for_select(@parents, :id, :name), prompt: "---", class: 'select-default'
-                    // %select.select-default
                     // %i.icon-arrow-bottom
                   .select-wrap#new-second-category
                     = select_tag 'child-category', options_for_select([]), prompt: "---", class: 'select-default'
-                    // %select.select-default
                     // %i.icon-arrow-bottom
                   .select-wrap#new-third-category
                     = select_tag 'grand-child-category', options_for_select([]), prompt: "---", class: 'select-default'
-                    // %select.select-default
                     // %i.icon-arrow-bottom
               / .form-group--form-suggest-container
               .form-group__size
@@ -89,8 +83,7 @@
                   サイズ
                   %span.form-require 必須
                   .select-wrap
-                    / = f.select :size, Item.size_i18n.invert, {prompt: "---"}, class: 'select-default'
-                  // %select.select-default
+                    = f.collection_select :size_id, Size.all, :id, :volume, {prompt: "---"}, class: 'select-default'
                   // %i.icon-arrow-bottom
               .form-group--form-suggest-container
               %label
@@ -106,8 +99,7 @@
                   商品の状態
                   %span.form-require 必須
                 .select-wrap
-                  / = f.select :item_condition, Item.item_conditions_i18n.invert, {prompt: "---"}, class: 'select-default'
-                  // %select.select-default
+                  = f.select :item_condition, Item.item_conditions.keys {}, {prompt: "---"}, {class: 'select-default', id: 'item_condition_form'}
                   // %i.icon-arrow-bottom
           .sell-content3
             %h3.sell-sub-head 配送について
@@ -120,8 +112,7 @@
                   配送料の負担
                   %span.form-require 必須
                 .select-wrap
-                  / = f.select :delivery_burden, Item.delivery_burdens_i18n.invert, {prompt: "---"}, class: 'select-default'
-                  / %select.select-default
+                  = f.select :delivery_burden, Item.delivery_burdens.keys {}, {prompt: "---"}, {class: 'select-default', id: 'delivery_burden_form'}
                   / %i.icon-arrow-bottom
               .form-group
                 %label
@@ -129,8 +120,7 @@
                   配送の方法
                   %span.form-require 必須
                 .select-wrap#delivery_method
-                  / = f.select :delivery_method, Item.delivery_methods_i18n.invert, {prompt: "---"}, class: 'select-default'
-                  / %select.select-default
+                  = f.select :delivery_method, Item.delivery_methods.keys {}, {prompt: "---"}, {class: 'select-default', id: 'delivery_method_form'}
                   / %i.icon-arrow-bottom
               .form-group
                 %label
@@ -139,7 +129,6 @@
                   %span.form-require 必須
                 .select-wrap
                   = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "---"}, {class: "select-default"}
-                  / %select.select-default
                   / %i.icon-arrow-bottom
               .form-group
                 %label
@@ -147,8 +136,7 @@
                   発送までの日数
                   %span.form-require 必須
                 .select-wrap
-                  / = f.select :delivery_date, Item.delivery_dates_i18n.invert, {prompt: "---"}, class: 'select-default'
-                  / %select.select-default
+                  = f.select :delivery_date, Item.delivery_dates.keys {}, {prompt: "---"}, {class: 'select-default', id: 'delivery_date_form'}
                   / %i.icon-arrow-bottom
           .sell-content4
             %h3.sell-sub-head 販売価格(300〜9,999,999)
@@ -158,8 +146,7 @@
               %ul.sell-price
                 %li.form-group-price
                   = f.label :price,class: "l-left" do
-                    / %label.l-left
-                  価格
+                    価格
                   %span.form-require 必須
                   .l-right.sell-price-input
                     %div
