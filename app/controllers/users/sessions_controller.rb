@@ -13,7 +13,6 @@ class Users::SessionsController < Devise::SessionsController
     # super
     if user_signed_in?
       redirect_to :root
-      binding.pry
       return
     else
       render :new
