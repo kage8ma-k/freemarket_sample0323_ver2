@@ -316,7 +316,7 @@
       }
 
       .sell-price>li:first-child {
-        padding: 0 0 24px;
+        // padding: 0 0 24px;
         border: 0;
         height: 72px;
       }
@@ -331,7 +331,9 @@
         width: 50%;
       }
       .sell-price .clearfix {
-        padding: 24px 0;
+        height: 14px;
+        padding: 24px 0 24px;
+        margin-top: 8px;
       }
       .sell-price .bold .l-left {
         font-size: 16px;
@@ -340,19 +342,24 @@
         font-size: 34px;
       }
       .sell-price-input {
-        margin: 0;
-      }
-      .sell-price-input {
         text-align: center;
-        div {
+        width: 50%;
+        height: 40px;
+        .input-price {
+          margin: 0;
+          width: 100%;
+          text-align: right;
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+          box-sizing: border-box;
           display: inline-block;
           width: 80%;
           margin: 0 0 0 5%;
-          .input-default {
-            margin: 0;
-            text-align: right;
-            width: 126px;
-          }
         }
       }
       .sell-price-input>div {

@@ -78,18 +78,19 @@
               .form-group__size
                 %label
                 = f.label :size_id do
-                  サイズ
+                  サイズ*
                   %span.form-require 必須
-                  .select-wrap
+                  .select-wrap#size_category
                     = f.collection_select :size_id, Size.all, :id, :volume, {prompt: "---"}, class: 'select-default'
                   // %i.icon-arrow-bottom
               .form-group--form-suggest-container
               %label
                 = f.label :bland_id do
-                  ブランド
+                  ブランド*
                   %span.form-arbitrary 任意
                 %div
-                  %input.input-default{placeholder: "例）シャネル", value: ""}/
+                  = f.collection_select :brand_id, Brand.all, :id, :name, {prompt: "---"}, class: 'select-default'
+                  / %input.input-default{placeholder: "例）シャネル", value: ""}/
                   %div
               .form-group__condition
                 %label
@@ -115,7 +116,7 @@
               .form-group
                 %label
                 = f.label :delivery_method do
-                  配送の方法
+                  配送の方法*
                   %span.form-require 必須
                 .select-wrap#delivery_method
                   = f.select :delivery_method, Item.delivery_methods.keys {}, {prompt: "---"}, {class: 'select-default', id: 'delivery_method_form'}
@@ -147,15 +148,16 @@
                     価格
                   %span.form-require 必須
                   .l-right.sell-price-input
-                    %div
-                      = f.text_field :price, placeholder: "例) 300" ,class: "input-default", id: "new-item-price"
+                    ¥
+                    .sell-price-input-box
+                      = f.text_field :price, placeholder: "例) 300" ,class: "input-price", id: "new-item-price"
                     / %input.input-default{placeholder: "例）300", value: "¥300"}/
                 %li.clearfix
                   .l-left 販売手数料 (10%)
-                  .l-right ¥300
+                  .l-right#fee -
                 %li.clearfix.bold
                   .l-left 販売利益
-                  .l-right ¥270
+                  .l-right#profit -
           .sell-content__sell-btn-box
             %div
               %p
