@@ -60,25 +60,27 @@
               %span 必須
           = text_field_tag :firstname_kana, nil, {placeholder: '例) アヤ', class: 'field-input'}
         .field
-          .field-title.clearfix
+          .field-title
             .field-label
               = label_tag(:birth, "生年月日")
             .field-necessary
               %span 必須
-          .birthday-select-wrap
+          .birthday-select-wrap.clearfix
             .select-wrap
               = select_tag(:birth_year, options_for_select((1900..2019).to_a.unshift("--")), {class:'select', id: 'birth'})
               %i.fas.fa-chevron-down
-              %span 年
-          .birthday-select-wrap
+              %p 年
             .select-wrap
               = select_tag(:birth_month, options_for_select((1..12).to_a.unshift("--")), {class:'select', id: 'birth'})
-          .birthday-select-wrap
+              %i.fas.fa-chevron-down
+              %p 月
             .select-wrap
               = select_tag(:birth_day, options_for_select((1..31).to_a.unshift("--")), {class:'select', id: 'birth'})
-          %p.text-content ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-
-          %p.text-content
+              %i.fas.fa-chevron-down
+              %p 日
+        .field
+          %p.text-content2 ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          %p.text-content2
             「次へ進む」のボタンを押すことにより、
             %a{:href => "/", :target => "_blank"}> 利用規約
             に同意したものとみなします

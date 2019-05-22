@@ -17,7 +17,7 @@
           %span
             Googleでログイン
     .content-inner-form
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = form_for(resource, as: resource_name, url: user_session_path) do |f|
         .field
           .field-title.clearfix
           = f.email_field :email, autofocus: true, autocomplete: "email", class: 'field-input', placeholder: "メールアドレス"

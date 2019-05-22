@@ -51,6 +51,7 @@
     margin: 0 0 10px 0;
   }
   .text-content {
+    position: relative;
     font-size: 14px;
     font-weight: lighter;
     %p {
@@ -58,14 +59,20 @@
     }
   }
 }
+.text-content2 {
+  max-width: 320px;
+  font-size: 14px;
+  font-weight: lighter;
+  text-align: center;
+}
 
 .birthday-select-wrap{
 
   .select-wrap{
-    width: 140px;
-    margin: 8px 0 0;
-    display: inline-block;
+    width: 25%;
+    margin: 8px 8.3% 0 0;
     position: relative;
+    float: left;
     .select{
       width: 100%;
       position: relative;
@@ -77,18 +84,29 @@
       background: 0;
       font-size: 16px;
       line-height: 1.5;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
     }
-    %i::before{
+    .select::-ms-expand{
+      display: none;
+    }
+    i {
       position: absolute;
-      right: 16px;
+      right: 10px;
       top: 50%;
       z-index: 2;
       color: #888;
-      font-size: 8px;
       transform: translate(0, -50%);
-
     }
-
+    p {
+      position: absolute;
+      right: -18px;
+      top: 50%;
+      z-index: 2;
+      color: #888;
+      transform: translate(0, -50%);
+    }
   }
 }
 

@@ -2,17 +2,21 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  layout 'user_registration1'
+
   def new
-    # super
+    super
     resource
-    render :layout => "user_registration1"
   end
 
   def create
-    super
+    # super
     if user_signed_in?
+      redirect_to :root
+      binding.pry
+      return
     else
-      render :new, layout: 'user_registration1'
+      render :new
     end
   end
 

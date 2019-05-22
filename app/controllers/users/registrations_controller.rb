@@ -44,25 +44,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create1
-    if @user = User.create(user_params)
-      @user_profile = UserProfile.new(user_profile_params)
-      @user_profile.user_id = @user.id
-      if @user_profile.save
-        session[:user_id] = @user.id
-        redirect_to signup_sms_confirmation_path(@user)
+    @user = User.new(user_params)
+    @user_profile = UserProfile.new(user_profile_params)
+    if [@user.valid?, @user_profile.valid?, password_confirmation_validates].all?
+      ActiveRecord::Base.transaction do
+        @user.save
+        @user_profile.save
+        ActiveRecord::Base.transaction do
+          @user_profile.user_id = @user.id
+          @user_profile.save
+        end
       end
+      session[:user_id] = @user.id
+      redirect_to signup_sms_confirmation_path(@user)
     else
-      render :new1, layout: 'user_registration2'
+      @active = ['active', '', '', '', '']
+      render :new1, locals: { active: @active }, layout: 'user_registration2'
     end
+
   end
 
   def create2
     @user_id = session[:user_id]
     @user_profile = UserProfile.find_by(user_id: @user_id)
-    if @user_profile.update(user_profile_phone_params)
+    @user_profile.attributes = user_profile_phone_params
+    if @user_profile.save(context: :phone_number_validates)
       redirect_to signup_sms_confirmation_sms_path
     else
-      render :new2, layout: 'user_registration2'
+      @active = ['active', 'active', '', '', '']
+      render :new2, locals: { active: @active }, layout: 'user_registration2'
     end
   end
 
@@ -72,17 +82,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.update(certification_number_params)
       redirect_to signup_input_address_path
     else
-      render :new3, layout: 'user_registration2'
+      @active = ['active', 'active', '', '', '']
+      render :new3, locals: { active: @active }, layout: 'user_registration2'
     end
   end
 
   def create4
     @user_id = session[:user_id]
     @user_profile = UserProfile.find_by(user_id: @user_id)
-    if @user_profile.update(user_profile_detail_params)
+    @user_profile.attributes = user_profile_detail_params
+    if @user_profile.save(context: :address)
       redirect_to signup_input_payment_path
     else
-      render :new4, layout: 'user_registration2'
+      @active = ['active', 'active', 'active', '', '']
+      render :new4, locals: { active: @active }, layout: 'user_registration2'
     end
   end
 
@@ -92,7 +105,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @credit.save
       redirect_to signup_complete_path
     else
-      render :new5, layout: 'user_registration2'
+      @active = ['active', 'active', 'active', 'active', '']
+      render :new5, locals: { active: @active }, layout: 'user_registration2'
     end
   end
 
@@ -109,6 +123,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.permit(:lastname, :firstname, :lastname_kana, :firstname_kana, :birth_year, :birth_month, :birth_day)
   end
 
+  def password_confirmation_validates
+    params.permit(:password)["password"] == params.permit(:password_confirmation)["password_confirmation"]
+  end
+
   def user_profile_phone_params
     params.permit(:phone_number)
   end
@@ -118,7 +136,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_profile_detail_params
-    params.permit(:lastname, :firstname, :lastname_kana, :firstname_kana, :postal_code, :prefecture, :city, :block_number, :building_name, :phone_number)
+    params.permit(:lastname, :firstname, :lastname_kana, :firstname_kana, :postal_code, :prefecture, :city, :block_number, :building_name)
   end
 
   def credit_params
