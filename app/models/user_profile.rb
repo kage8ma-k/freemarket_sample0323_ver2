@@ -18,7 +18,7 @@ class UserProfile < ApplicationRecord
   # context: :phone_number_validatesのときだけバリデーションをかける
 
   with_options on: :address do |address|
-    address.validates :postal_code, presence: true
+    address.validates :postal_code, presence: true, length: { maximum: 5}
     address.validates :prefecture, presence: true
     address.validates :city, presence: true
     address.validates :block_number, presence: true

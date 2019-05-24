@@ -209,14 +209,20 @@ ja:
     user: ユーザー
     user_profile: ユーザープロフィール
     credit: クレジット
-  attributes:
-    user:
-      name: 名前
-      email: メールアドレス
-    user_profile:
-      lastname: 姓
-      firstname: 名
-      lastname_kana: セイ
-      firstname_kana: メイ
-      prefecture: 都道府県
-      phone_number: 電話番号
+#  attributes:
+#    user:
+#      nickname: ニックネーム
+#      email: メールアドレス
+#      password: パスワード
+#    user_profile:
+#      lastname: 姓
+#      firstname: 名
+#      lastname_kana: セイ
+#      firstname_kana: メイ
+#      prefecture: 都道府県
+#      phone_number: 電話番号
+#    credit:
+#      card_number: カード番号
+#      expiration_month: 期限（月）
+#      expiration_year: 期限（年）
+#      security_code: セキュリティコード
