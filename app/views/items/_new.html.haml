@@ -9,41 +9,15 @@
               出品画像
               %span.form-require 必須
             %p 最大10枚までアップロードできます
-            .sell-dropbox-container.state-image-number-10
+            .sell-dropbox-container.clearfix.state-image-number-10
               .sell-upload-items-container
-                .sell-upload-items.have-item-0
-                  %ul
-          /     = f.fields_for :item_images do |i|
-          /     .sell-upload-drop-box.have-item-0
-          /       = i.file_field :image, name: "item[item_images_attributes][][image]", multiple: "true", class: "file-0"
-          /       %pre.visible__pc
-          /         ドラッグアンドドロップ
-          /         またはクリックしてファイルをアップロード
-
-          /     %label.sell-upload-drop-box.have-item-1
-          /       = i.file_field :image, name: "item[item_images_attributes][][image]", multiple: "true", class: "file-1"
-          /       %pre.visible__pc
-          /         ドラッグアンドドロップ
-          /         またはクリックしてファイルをアップロード
-
-          /     %label.sell-upload-drop-box.have-item-2
-          /       = i.file_field :image, name: "item[item_images_attributes][][image]", multiple: "true", class: "file-2"
-          /       %pre.visible__pc
-          /         ドラッグアンドドロップ
-          /         またはクリックしてファイルをアップロード
-
-          /     %label.sell-upload-drop-box.have-item-3
-          /       = i.file_field :image, name: "item[item_images_attributes][][image]", multiple: "true", class: "file-3"
-          /       %pre.visible__pc
-          /         ドラッグアンドドロップ
-          /         またはクリックしてファイルをアップロード
-
-          /     %label.sell-upload-drop-box.have-item-4
-          /       = i.file_field :image, name: "item[item_images_attributes][][image]", multiple: "true", class: "file-4"
-          /       / %input.sell-upload-drop-file{ multiple: "multiple", name: "image1", style: "display: none;", type: "file"}/
-          /       %pre.visible-pc
-          /         ドラッグアンドドロップ
-          /         またはクリックしてファイルをアップロード
+                .sell-upload-items.have-item
+                  %ul.sell-upload-files
+              .sell-upload-drop-box.have-item
+                = f.fields_for :item_images do |image|
+                  = image.file_field :image, class: "sell-upload-drop-file image-input-form"
+                %pre.visible-pc ドラッグアンドドロップ またはクリックしてファイルをアップロード
+                %i.icon-camera
           .sell-content
             .form-group__name
               %label
@@ -113,7 +87,7 @@
                 .select-wrap
                   = f.select :delivery_burden, Item.delivery_burdens.keys {}, {prompt: "---"}, {class: 'select-default', id: 'delivery_burden_form'}
                   / %i.icon-arrow-bottom
-              .form-group
+              .form-group.method
                 %label
                 = f.label :delivery_method do
                   配送の方法*

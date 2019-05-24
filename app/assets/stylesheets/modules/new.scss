@@ -151,24 +151,22 @@
     }
       // カテゴリー部分
     .sell-content2 {
-        height:512px;
-        width:620px;
-        padding:40px;
-        border-top: 1px solid $light-gray;
-        h3.sell-upload-head {
-          width:540px;
-          font-size:100%;
-          display: block;
-          font-weight:bold;
-          color: $black;
-        }
+      @include clearfix();
+      width:620px;
+      padding:40px;
+      border-top: 1px solid $light-gray;
+      h3.sell-upload-head {
+        width:540px;
+        font-size:100%;
+        display: block;
+        font-weight:bold;
+        color: $black;
+      }
     }
     .sell-form-box {
-        height: 512px;
         width: 400px;
         float: right;
         .form-group__category {
-          height:182px;
         }
         .form-group__size {
           height: 70px;
@@ -196,17 +194,21 @@
         margin-top: 40px;
     }
     .sell-content3 {
-      height:400px;
+      @include clearfix();
+      // height:400px;
       width: 620px;
       padding:40px;
       border-top: solid 1px $light-gray;
       .sell-form-box {
         width: 400px;
-        height:400px;
         float: right;
         .form-group__fee {
           height:70px;
           width:400px;
+        }
+        .form-group.method {
+          margin-top: 40px;
+          display:none;
         }
         .form-group {
           margin-top: 40px;
@@ -214,12 +216,12 @@
       }
     }
     .sell-content4 {
-      height:218px;
+      @include clearfix();
       width:620px;
       padding:40px;
       border-top: solid 1px $light-gray;
       .sell-form-box {
-        height:218px;
+        // height:218px;
         width:400px;
         float: right;
         .sell-price {
@@ -273,12 +275,12 @@
         font-size: 14px;
         display: inline-block;
         float:left;
-      }
-      .select-wrap {
-        position: relative;
-        background-color: $white;
-        height: 48px;
-        margin-top: 8px;
+        .select-wrap {
+          position: relative;
+          background-color: $white;
+          height: 48px;
+          margin-top: 8px;
+        }
       }
       .select-default {
         position: relative;

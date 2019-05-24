@@ -102,35 +102,6 @@ $(document).on('turbolinks:load', function() {
 //     $('#item_transportation').append(html);
 //   }
 
-//   // カテゴリー4層目を表示(サイズ)
-//   $('#new-third-category').change(function(){
-//     var grand_child_id = $('#new-third-category option:selected').val();
-//     console.log(grand_child_id);
-//     $('#size').css('display','none')
-//     $('#grand_category_id').remove();
-//     $.ajax({
-//       url: '/items/new',
-//       type: 'get',
-//       data: { grand_child_id: grand_child_id },
-//       dataType: 'json'
-//     })
-//     .always(function(categories){
-//       console.log(categories)
-//       if(categories.length !== 0) {
-//         $('#new-size-category').append($('<select id="grand_category_id" class="select__default" name="item[category_id]">'));
-//         $('#grand_category_id').empty().append(`<option value>---</option>`);
-//         categories.forEach(function(category){
-//           addSelectGreatGrandChildren(category)
-//           $('#size').css('display','block')
-//         });
-//       }
-//       else {
-//         $('#size').css('display','none');
-//         changeAttr(grand_child_id)
-//       }
-//     });
-//   });
-
 //    // 配送方法の指定
 //   $('#delivery_burden').change(function(){
 //     var delivery_burden = $('#delivery_burden option:selected').val();

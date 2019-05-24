@@ -9,8 +9,8 @@ $(function() {
       document.getElementById('profit').innerHTML = "¥"+ Number(fee).toLocaleString();
     }
     else{
-      document.getElementById('comission').innerHTML = "";
-      document.getElementById('profit').innerHTML = "";
+      document.getElementById('fee').innerHTML = "-";
+      document.getElementById('profit').innerHTML = "-";
     }
   });
 });

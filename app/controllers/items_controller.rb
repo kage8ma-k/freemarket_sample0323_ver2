@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
       @m_cat = Category.find(params[:l_cat]).children
     else
       @s_cat = Category.find(params[:m_cat]).children
-# このあと親を取ってきたら子（m）とだす。違ったら孫をだす（s）。違ったらブランドとサイズカテゴリーをだす。
 
     end
     respond_to do |format|
@@ -33,7 +32,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :cotent, :category_id, :brand_id, :size_id, :delivery_burden, :delivery_method, :prefecture_id, :delivery_date, :price, :item_condition, item_image_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :content, :category_id, :brand_id, :size_id, :delivery_burden, :delivery_method, :prefecture_id, :delivery_date, :price, :item_condition, item_image_attributes: [:image])
   end
 
 end

@@ -1,5 +1,6 @@
-# 1:カテゴリー部分のコメントアウトを外してrake db:seed
-# 2:都道府県、サイズ部分のコメントアウトを外してrake:db:seed
+#まずベタ打ちしたDBファイルを全てrake db:resetで消す。
+# 1:カテゴリー部分のコメントアウトを外してrake db:seedをターミナルでうつ
+# 2:都道府県、サイズ、ブランド部分のコメントアウトを外してrake:db:seedをうつとデータが入ります！
 
 require "csv"
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -471,14 +472,18 @@ require "csv"
  #  # その他・事務/店舗用品
  #  office_general, office_furniture, store_supplies, oa_equipment, wrapping, other = office.children.create([{ name: "オフィス用品一般" }, { name: "オフィス家具" }, { name: "店舗用品" }, { name: "OA機器" }, { name: "ラッピング/包装" }, { name: "その他" }])
 
-# 都道府県部分
+# #都道府県部分
 # CSV.foreach('db/seeds/csv/prefecture.csv') do |row|
 #   Prefecture.create!(name: row[0])
 # end
 
-# サイズ部分
+# # サイズ部分
 # CSV.foreach('db/seeds/csv/size.csv') do |row|
 #   Size.create(volume: row[0])
 # end
 
+# # ブランド
+# CSV.foreach('db/seeds/csv/brand.csv') do |row|
+#   Brand.create(name: row[0])
+# end
 

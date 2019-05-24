@@ -4,5 +4,6 @@ class AddAncestryToCategory < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :ancestry
       t.timestamps
+    end
   end
 end
