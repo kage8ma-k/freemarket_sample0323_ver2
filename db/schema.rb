@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190516073918) do
+ActiveRecord::Schema.define(version: 20190525083154) do
 
   create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "card_number"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20190516073918) do
     t.integer  "birth_month"
     t.integer  "birth_day"
     t.integer  "postal_code"
-    t.integer  "prefecture"
+    t.string   "prefecture_id"
     t.string   "city"
     t.string   "block_number"
     t.string   "building_name"
