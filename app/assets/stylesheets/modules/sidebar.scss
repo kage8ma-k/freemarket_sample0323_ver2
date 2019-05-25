@@ -17,6 +17,9 @@
         color: #333;
         &:hover{
           background-color: #eee;
+          opacity:0.7;
+          touch-action: manipulation;
+          cursor:pointer;
         }
         a {
           color: black;
@@ -29,6 +32,9 @@
           right: 16px;
           color: #ccc;
           &:hover{
+            opacity:0.7;
+            touch-action: manipulation;
+            cursor:pointer;
             -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
             -webkit-transition: all ease-out .2s;

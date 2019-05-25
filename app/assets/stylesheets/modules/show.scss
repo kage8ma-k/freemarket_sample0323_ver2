@@ -1,142 +1,82 @@
-// 山田さんのmypage
+.mypage{
+  @include right-container;
+  margin-top: 40px;
+  background-color: $deep-gray;
+  height: 100%;
+  width: 1020px;
+  display: flex;
+  padding-bottom: 40px;
+}
+  .contents-right{
+    width: 700px;
 
-.container{
-        margin: 40px auto 0;
-        width: 1020px;
-        display: flex;
-        padding-bottom: 40px;
-  .content{
-      width: 700px;
-      float: right;
-    .mypage-user-icon{
-        background-image: url(user-bg.jpg);
-        height: 200px;
-        padding: 20px;
+    .content-user{
+      $btn_class:'.tab_btn1';
+      $btn_name: 'tab_btn1';
+      margin: 0 auto;
+      margin-bottom: 50px;
+      &__header{
+        padding: 7%;
+        background-image: url("user-bg.jpg");
         background-size: cover;
-        text-align: center;
-      .icon-tag{
-        margin: -15px;
+        &__icons{
+          text-align: center;
+          line-height: 25px;
+          a{
+            color: #333;
+          }
+          img{
+            height: 50px;
+            width: 50px;
+            border-radius:  50%;
+          }
+          .user-name{
+            font-weight: 600;
+          }
+          .under-content{
+            display: inline-block;
+            width: 60px;
+          }
+          .counter-label{
+            font-size: 14px;
+          }
+          .counter{
+            font-weight: 600;
+          }
+        }
+      }
+      &__tab {
+        @include tab_style($btn_class,$btn_name);
+        #tab-info:checked~#info-contents,
+        #tab-todo:checked~#todo-contents {
+        display: block;
+        float:auto;
+        }
+      }
+    }
+    .content-buy-items{
+      $btn_class: '.tab_btn2';
+      $btn_name: 'tab_btn2';
+      margin: 0 auto;
+      margin-bottom: 50px;
+      width: 700px;
+
+      &__header{
+        height: 80px;
+        line-height: 80px;
+        font-size: 16px;
+        font-weight: 900;
+        background-color: #fafafa;
+        padding-left: 15px;
+      }
+      &__tab{
+        @include tab_style($btn_class,$btn_name);
+        #tab-transaction:checked~#transaction-contents,
+        #tab-past-transaction:checked~#past-transaction-contents{
+        display: block;
+        float: auto;
+        }
       }
     }
   }
-      .bold{
-          display: inline-block;
-          margin: 8px 0 0;
-          font-size: 14px;
-      }
-      .mypage-number{
-          margin: 8px 0 0;
-          font-size: 0;
-      }
-    .mypage-tab-container-notification-todo{
-        margin: 0;
-        background: #fff;
-        border-style: solid;
-        border-width: 0;
-      .mypage-tabs{
-         display: flex;
-            .news{
-                width: 350px;
-                height: 74px;
-                list-style: none;
-                text-align: center;
-                border-top: 2px solid #ea352d;
-                line-height: 70px;
-            }
-            .todo{
-                width: 350px;
-                height: 74px;
-                background-color: #C0C0C0;
-                list-style: none;
-                text-align: center;
-                text-decoration: none;
-                line-height: 70px;
-            }
-            .tab{
-                color: #333;
-                font-size: 16px;
-                text-decoration: none;
-            }
-      }
-    }
 
-    .tab-content{
-        width: 700px;
-        display: block;
-      .tab-style{
-        list-style: none;
-      }
-      .tab-text{
-          padding: 16px;
-          display: flex;
-          border-style: solid;
-          border-width: 0;
-      }
-        .mypage-item-body{
-          position: relative;
-          bottom: -16px;
-        }
-        fieldset, img {
-          border: 0;
-          height: 48px;
-          width: 48px;
-        }
-        .mypage-item-link{
-          position: relative;
-          bottom: -38px;
-          height: 17px;
-        }
-            .fa-clock:before {
-              font-size: 16px;
-              color: #888;
-            }
-            .s_icon{
-             position: relative;
-             bottom: -29px;
-             right: -376px;
-             color: black;
-            }
-    }
-      .mypage-go-list{
-          height: 88px;
-          list-style: none;
-      }
-        .ichiran{
-          width: 668px;
-          height: 56px;
-          background-color: #eeeeee;
-          text-align: center;
-          line-height: 55px;
-          margin: auto;
-        }
-
-        .mypage-tab-head{
-            background: #fafafa;
-            font-size: 16px;
-            line-height: 72px;
-        }
-          .trading{
-              width: 350px;
-              height: 74px;
-              list-style: none;
-              text-align: center;
-              line-height: 70px;
-              border-top: 2px solid #ea352d;
-          }
-          .past-trading{
-              width: 350px;
-              height: 74px;
-              background-color: #C0C0C0;
-              list-style: none;
-              text-align: center;
-              text-decoration: none;
-              line-height: 70px;
-          }
-          .mypage-tab-transaction-now{
-              height: 236px;
-              text-align: center;
-              font-size: 16px;
-              color: #ccc;
-              line-height: 370px;
-          }
-}
