@@ -3,7 +3,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  include Common
 
   # GET /resource/sign_up
   def new
@@ -28,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new4
     @active = ['active', 'active', 'active', '', '']
     @user = User.find(session[:user_id])
-    @prefecture = prefecture_set
+    @prefecture = Prefecture.all
     render layout: 'user_registration2'
   end
 
