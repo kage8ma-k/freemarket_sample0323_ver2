@@ -64,7 +64,8 @@
                   %span.form-arbitrary 任意
                   .select-wrap#brand_category
                 %div
-                  = f.text_field :name, class: "input-default__brand", placeholder: "例）シャネル"
+                  = f.collection_select :brand_id, Brand.all, :id, :name, {prompt: "---"}, class: 'select-default'
+                  / = f.text_field :name, class: "input-default__brand", placeholder: "例）シャネル"
               .form-group__condition
                 %label
                 = f.label :item_condition do
