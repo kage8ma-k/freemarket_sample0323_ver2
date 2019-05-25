@@ -38,3 +38,13 @@
   width: 700px;
   margin: 0 auto;
 }
+
+@mixin sns-icon($color) {
+  background-color: $color;
+  border-radius: 4px;
+  text-decoration: none;
+  line-height: 44px;
+  height: 44px;
+  width: 44px;
+  display: inline-block;
+}

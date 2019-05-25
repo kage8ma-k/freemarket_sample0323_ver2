@@ -1,6 +1,6 @@
 - @items.each do |item|
   %section.items-box
-    = link_to items_path, class: "item-link" do
+    = link_to item_path(item.id), class: "item-link" do
       %figure.items-box-photo
         = image_tag item.item_images.first.image, class: "items-box-photo"
       .items-box-body
