@@ -30,7 +30,7 @@
     }
   }
   #sell-container {
-    height:2458px;
+    // height:2458px;
     width:700px;
     div {
       display: block;
@@ -60,6 +60,7 @@
     }
     // 出品画像
     .sell-content {
+      @include clearfix();
       height:274px;
       width:620px;
       padding:40px;
@@ -119,18 +120,22 @@
       pre {
         overflow: auto;
       }
-      .form-group__info {
-        margin-top: 40px;
-        .input-default-name {
-        width: 586px;
+      .form-group__name {
+        width: 620px;
+        height:70px;
+        .input-default__name {
         height:28px;
+        width:586px;
+        margin-top: 1px;
         padding:10px 16px 8px;
         border:solid 1px $light-gray;
         line-height: 1.5;
         font-size: 16px;
         border-radius: 4px;
-        margin-top:8px;
         }
+      }
+      .form-group__info {
+        margin-top: 40px;
         .textarea__default {
         display: block;
         width: 598px;
@@ -164,29 +169,32 @@
       }
     }
     .sell-form-box {
-        width: 400px;
-        float: right;
-        .form-group__category {
+      width: 400px;
+      float: right;
+      .form-group__size {
+        height: 70px;
+        margin-top: 40px;
+        display: none;
+      }
+      .form-group__brand {
+        height: 70px;
+        margin-top: 40px;
+        display:none;
+        .input-default__brand {
+        position: relative;
+        z-index: 2;
+        height: 46px;
+        width: 366px;
+        padding:0 16px;
+        border-radius: 4px;
+        border: 1px solid $light-gray;
+        background: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        cursor: pointer;
+        margin-top:8px;
         }
-        .form-group__size {
-          height: 70px;
-          margin-top: 40px;
-        }
-        .form-group--form-suggest-container {
-          // position: relative;
-          // height: 70px;
-          margin-top: 40px;
-          .input-default-name {
-            width: 366px;
-            height:28px;
-            margin-top: 8px;
-            padding:10px 16px 8px;
-            border:solid 1px $light-gray;
-            line-height: 1.5;
-            font-size: 16px;
-            border-radius: 4px;
-          }
-        }
+      }
     }
     .form-group__condition {
         height: 70px;
@@ -195,7 +203,6 @@
     }
     .sell-content3 {
       @include clearfix();
-      // height:400px;
       width: 620px;
       padding:40px;
       border-top: solid 1px $light-gray;
@@ -235,7 +242,7 @@
       }
     }
     .sell-content__sell-btn-box {
-      height:248px;
+      // height:248px;
       width:620px;
       padding:40px;
       border-top: solid 1px $light-gray;
@@ -413,7 +420,6 @@
         border: solid 1px #aaa;
         color: $white;
         line-height: 48px;
-      }
       p {
         margin: 8px 0 0;
         line-height:1.5;
@@ -425,6 +431,7 @@
       a {
         color:$blue;
         text-decoration:none;
+      }
       }
     }
   }

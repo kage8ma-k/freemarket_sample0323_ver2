@@ -25,7 +25,7 @@
                 商品名
                 %span.form-require 必須
               %div
-                = f.text_field :name, class: 'input-default-name', placeholder: "商品名（必須 40文字まで)"
+                = f.text_field :name, class: "input-default__name", placeholder: "商品名（必須 40文字まで)"
             .form-group__info
               %label
               = f.label :content do
@@ -52,20 +52,19 @@
               .form-group__size
                 %label
                 = f.label :size_id do
-                  サイズ*
+                  サイズ
                   %span.form-require 必須
                   .select-wrap#size_category
                     = f.collection_select :size_id, Size.all, :id, :volume, {prompt: "---"}, class: 'select-default'
                   // %i.icon-arrow-bottom
-              .form-group--form-suggest-container
-              %label
-                = f.label :bland_id do
-                  ブランド*
+              .form-group__brand
+                %label
+                = f.label :brand_id do
+                  ブランド
                   %span.form-arbitrary 任意
+                  .select-wrap#brand_category
                 %div
-                  = f.collection_select :brand_id, Brand.all, :id, :name, {prompt: "---"}, class: 'select-default'
-                  / %input.input-default{placeholder: "例）シャネル", value: ""}/
-                  %div
+                  = f.text_field :name, class: "input-default__brand", placeholder: "例）シャネル"
               .form-group__condition
                 %label
                 = f.label :item_condition do
@@ -90,7 +89,7 @@
               .form-group.method
                 %label
                 = f.label :delivery_method do
-                  配送の方法*
+                  配送の方法
                   %span.form-require 必須
                 .select-wrap#delivery_method
                   = f.select :delivery_method, Item.delivery_methods.keys {}, {prompt: "---"}, {class: 'select-default', id: 'delivery_method_form'}

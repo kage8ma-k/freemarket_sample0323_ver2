@@ -74,55 +74,19 @@ $(document).on('turbolinks:load', function() {
     })
   })
 })
+// サイズとブランド部分の出現
+$(function() {
+  $(document).on('change', ".form-group__category", function() {
+    $('.form-group__category').nextAll().css('display', 'block');
+  });
+});
 
-//   // 送料が自己負担の時の処理（配達の方法出現）
-//   function selfHTML(delivery_method) {
-//     var html =
-//     `<option value="">---</option>
-//     <option value="nodecided">未定</option>
-//     <option value="merukaribin">メルカリ便</option>
-//     <option value="yuumail">ゆうメール</option>
-//     <option value="letter">レターパック</option>
-//     <option value="ordinary">普通郵便(定形、定形外)</option>
-//     <option value="kuroneko">クロネコ</option>
-//     <option value="yuupack">ゆうパック</option>
-//     <option value="clickpost">クリックポスト</option>
-//     <option value="yuupaket">ゆうパケット</option>`
-//     $('#item_transportation').append(html);
-//   }
-
-//   // 送料が着払いの時の処理（配達の方法出現）
-//   function otherHTML(delivery_burden) {
-//     var html =
-//     `<option value="">---</option>
-//     <option value="nodecided">未定</option>
-//     <option value="kuroneko">クロネコ</option>
-//     <option value="yuupack">ゆうパック</option>
-//     <option value="yuumail">ゆうメール</option>`
-//     $('#item_transportation').append(html);
-//   }
-
-//    // 配送方法の指定
-//   $('#delivery_burden').change(function(){
-//     var delivery_burden = $('#delivery_burden option:selected').val();
-//     $('#delivery_method').remove();
-//     console.log(delivery_burden);
-//     if(delivery_burden == 'self_burden') {
-//       $('#new-delivery_method').append($('<select id="delivery_method" class="select__default" name="item[delivery_method]">'));
-//       $('#delivery_method').empty();
-//       selfHTML(delivery_burden)
-//       $('#delivery_method').css('display','block');
-//     }
-//     else if(delivery_burden == 'other'){
-//       $('#new-delivery_method').append($('<select id="delivery_method" class="select__default" name="item[delivery_method]">'));
-//       $('#delivery_method').empty();
-//       otherHTML(delivery_burden)
-//       $('#delivery_method').css('display','block');
-//     }
-//     else {
-//       $('#delivery_method').css('display','none');
-//     }
-//   })
+// 配送方法の指定
+$(function() {
+  $(document).on('change', ".form-group__fee", function() {
+    $('.form-group__fee').next().css('display', 'block');
+  });
+});
 
 //   // submitボタンを押した時の処理
 //   $('#new-item-btn').on('submit', function(e){
