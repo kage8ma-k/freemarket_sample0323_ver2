@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190511053020) do
+ActiveRecord::Schema.define(version: 20190520082723) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -103,8 +103,27 @@ ActiveRecord::Schema.define(version: 20190511053020) do
   end
 
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "profile"
+    t.string   "profile_image"
+    t.string   "lastname",                  null: false
+    t.string   "firstname",                 null: false
+    t.string   "lastname_kana",             null: false
+    t.string   "firstname_kana",            null: false
+    t.integer  "birth_year"
+    t.integer  "birth_month"
+    t.integer  "birth_day"
+    t.string   "postal_code",               null: false
+    t.string   "prefecture",                null: false
+    t.string   "city",                      null: false
+    t.string   "block_number",              null: false
+    t.string   "building_name"
+    t.string   "phone_number"
+    t.integer  "the_number_of_exhabitions"
+    t.integer  "points"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -126,4 +145,5 @@ ActiveRecord::Schema.define(version: 20190511053020) do
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
+  add_foreign_key "user_profiles", "users"
 end
