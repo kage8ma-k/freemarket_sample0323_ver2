@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     # 10.times{@item.photos.build}画像S3に保存するとき
+    @item.item_images.build
     render layout: nil
   end
 
@@ -13,7 +14,6 @@ class ItemsController < ApplicationController
       @m_cat = Category.find(params[:l_cat]).children
     else
       @s_cat = Category.find(params[:m_cat]).children
-
     end
     respond_to do |format|
       format.html
@@ -23,7 +23,15 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    render action: :new
+    if @item.save
+        params[:item_images][:image].each do |image|
+          @item.item_images.create(image: image, item_id: @item.id)
+        end
+      redirect_to root_path
+    else
+      @item.item_images.build
+      render :new
+    end
   end
 
   def show
@@ -32,8 +40,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :content, :category_id, :brand_id, :size_id, :delivery_burden, :delivery_method, :prefecture_id, :delivery_date, :price, :item_condition, item_image_attributes: [:image])
-    # .merge(user_id: current_user.id)カレントユーザーができたらつける
+    params.require(:item).permit(:name, :content, :category_id, :brand_id, :size_id, :delivery_burden, :delivery_method, :prefecture_id, :delivery_date, :price, :item_condition, item_images_attributes:[:image]).merge(user_id: 1, sales_status: 0)
   end
-
 end

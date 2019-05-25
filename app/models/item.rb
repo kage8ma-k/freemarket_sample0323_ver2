@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
-  has_many :item_images
+  has_many :item_images, dependent: :destroy
+  accepts_nested_attributes_for :item_images
   has_many :comments
   has_many :orders
   belongs_to :user
@@ -7,7 +8,6 @@ class Item < ApplicationRecord
   belongs_to :size
   belongs_to :category
   belongs_to :prefecture
-   # accepts_nested_attributes_for :item_images
 
   enum item_condition: {"新品、未使用": 0, "未使用に近い": 1, "目立った傷や汚れなし": 2, "やや傷や汚れあり": 3, "傷や汚れあり": 4, "全体的に状態が悪い": 5}
 
@@ -17,5 +17,5 @@ class Item < ApplicationRecord
 
   enum delivery_date: {"1~2日で発送": 0, "2~3日で発送": 1, "4~7日で発送": 2}
 
-  enum sales_status: {published: 0, stopped: 1, trading: 2, sold: 3}
+  enum sales_status: {"published": 0, "stopped": 1, "trading": 2, "sold": 3}
   end
