@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :content, :category_id, :brand_id, :size_id, :delivery_burden, :delivery_method, :prefecture_id, :delivery_date, :price, :item_condition, item_image_attributes: [:image])
+    # .merge(user_id: current_user.id)カレントユーザーができたらつける
   end
 
 end

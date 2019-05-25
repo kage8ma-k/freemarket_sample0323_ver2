@@ -1,10 +1,10 @@
 .single-main2 {
-  height:2458px;
+  // height:2458px;
   background-color: $deep-gray;
   display: block;
   .l-single-container--buy-item-container{
     width: 700px;
-    height:2458px;
+    // height:2458px;
     margin: 0px 370px;
     display: block;
     background-color: $white;
@@ -30,7 +30,6 @@
     }
   }
   #sell-container {
-    // height:2458px;
     width:700px;
     div {
       display: block;
@@ -50,7 +49,7 @@
       color:$black;
     }
     .sell-form {
-      height:2250px;
+      // height:2250px;
       width:700px;
       border-top: 1px solid $light-gray;
     .sell-upload-box {
@@ -73,35 +72,35 @@
         color: $black;
       }
       // 画像アップロード部分
-      .sell-upload-drop-box pre {
-        position: absolute;
-        top: 50%;
-        left: 16px;
-        right: 16px;
-        text-align: center;
-        font-size: 14px;
-        line-height: 1.5;
-        -webkit-transform: translate(0, -50%);
-        transform: translate(0, -50%);
-        pointer-events: none;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-      }
-      .sell-dropbox-container.state-image-number-10 {
-        display: block;
-        height:162px;
-        margin: 16px auto 0;
+        .sell-upload-box {
+          padding: 40px;
+          .sell-upload-head {
+            font-weight: bold;
+            float: left;
+            color: #888;
+            font-size: 14px;
+            display: inline-block;
+            float:left;
+            .select-wrap {
+              position: relative;
+              background-color: $white;
+              height: 48px;
+              margin-top: 8px;
+            }
+          }
+          .sell-dropbox-container.state-image-number-10 {
+            display: block;
+            height:162px;
+            margin-top: 60px;
+          }
+        }
       }
       .sell-dropbox-container.state-image-number-10 .sell-upload-items-container .sell-upload-items {
         display: inline;
       }
-      .sell-dropbox-container.state-image-number-10 .sell-upload-items-container .sell-upload-items ul {
-        display: inline;
-      }
-
-      .sell-dropbox-container.state-image-number-10 .sell-upload-drop-box.have-item-0 {
+      .sell-dropbox-container.state-image-number-10 .sell-upload-drop-box.have-item {
         width: 100%;
-        margin-left: 0;
+        margin: 16px -80px 0px 0px;
       }
       .sell-dropbox-container.state-image-number-10 .sell-upload-drop-box {
         height:80px;
@@ -115,10 +114,7 @@
         font-size: 0;
         text-align: center;
         cursor: pointer;
-        margin-left: 2%;
-      }
-      pre {
-        overflow: auto;
+        // margin-left: 2%;
       }
       .form-group__name {
         width: 620px;
@@ -153,7 +149,6 @@
           overflow: auto;
         }
       }
-    }
       // カテゴリー部分
     .sell-content2 {
       @include clearfix();
@@ -180,6 +175,20 @@
         height: 70px;
         margin-top: 40px;
         display:none;
+        .input-default__brand {
+        position: relative;
+        z-index: 2;
+        height: 46px;
+        width: 366px;
+        padding:0 16px;
+        border-radius: 4px;
+        border: 1px solid $light-gray;
+        background: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        cursor: pointer;
+        margin-top:8px;
+        }
       }
     }
     .form-group__condition {
