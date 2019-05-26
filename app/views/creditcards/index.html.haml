@@ -6,9 +6,10 @@
     .payment__container__box
       %p クレジットカード一覧
       .actions
-        = button_to root_path, method: :get, class: "btn action-btn" do
+        = button_to new_creditcard_path, method: :get, class: "btn action-btn" do
           %i.fas.fa-credit-card
           クレジットカードを追加する
     .payment__container__about
       =link_to "支払い方法について", ""
       %i.fas.fa-chevron-right
+=render 'shared/sell_btn'
