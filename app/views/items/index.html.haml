@@ -11,11 +11,11 @@
             フリマアプリ
           %p
             メルカリはスマホカメラからすぐに出品できる
+            %br
             購入時も安心な独自システムのアプリです
-          = link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8" do
-            = image_tag "app-store.svg", class: :appicon, alt: ""
-          = link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja" do
-            = image_tag "google-play.svg", class: :appicon, alt: ""
+          .appicon
+            = link_to image_tag("app-store.svg", class: "appicon", height: "50px", width: "170px"), "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"
+            = link_to image_tag("google-play.svg", class: "appicon", height: "50px", width: "170px"), "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"
         .top-main-banner__image
           = image_tag "main_content_pc.png", height: "390px", width: "440px", alt: "", border: :"0"
     .box4

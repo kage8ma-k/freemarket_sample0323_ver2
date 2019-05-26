@@ -1,0 +1,14 @@
+.payment
+  = render partial: "shared/sidebar"
+  .payment__container
+    .payment__container__title
+      %h2 支払い方法
+    .payment__container__box
+      %p クレジットカード一覧
+      .actions
+        = button_to root_path, method: :get, class: "btn action-btn" do
+          %i.fas.fa-credit-card
+          クレジットカードを追加する
+    .payment__container__about
+      =link_to "支払い方法について", ""
+      %i.fas.fa-chevron-right

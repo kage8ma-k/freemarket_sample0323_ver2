@@ -14,5 +14,7 @@
 
   %body
     = render 'shared/header'
+    / = breadcrumbs separator: " &rsaquo; "
+    = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-caret-right')} "
     = yield
     = render 'shared/footer'

@@ -1,0 +1,51 @@
+.single-container2
+  %main.single-main
+    %section.l-single-container.buy-item-container
+      %h2.l-single-head 購入を確定しますか？
+      %section.buy-content--buy-item
+        .buy-content-inner
+          %h3.buy-item-image
+            = image_tag "confimation.jpg", alt: "sample", height: "148px", width: "148px"
+          %p.buy-item-name--bold Nissy2ndマスコッピー
+          %form.buy-form
+            %p.buy-price-ja.bold
+              ¥ 1,500
+              %span.item-shipping-fee.f14.bold 送料込み
+            %ul.buy__accordion--not-have
+              %li.accordion-parent
+                .accordion-toggle
+                  ポイントはありません
+            %ul.buy-price-table
+              %li.buy__price__row--buy-you-pay.bold
+                .buy-price-cell 支払い金額
+                .buy-price-cell
+                  %span¥ 1,500
+            / %button.btn__default--btn-red.bold{:disabled => "disabled", :type => "submit"} 購入する
+          = form_tag(action: :purchase, method: :post) do
+            %script.payjp-button{"data-key":'pk_test_0f478928652178c3402b438c', :src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する"}
+      %section.buy__content--buy-user-info
+        .buy__content--inner
+          %h3 配送先
+          %address.buy-user-info-text
+            〒123-4556
+            %br/
+            大阪府 いい市
+            いい1-3-9
+            あああ
+            %br/
+            田中 太郎
+          %p.buy-user-info-text
+          = link_to "#", target: '_blank', class: 'buy-user-info-fix' do
+            %span 変更する
+      %section.buy__content--buy-user-info
+        .buy__content--inner
+          %h3 支払い方法
+          %address.buy-user-info-text
+            ****************
+            %br/
+            12 / 21
+          %figure
+            = image_tag "jcb.svg", alt: "sample", height: "20px", width: "26px"
+            = link_to "#", target: '_blank', class: 'buy-user-info-fix' do
+              %span 変更する
+  = render 'shared/second_footer'

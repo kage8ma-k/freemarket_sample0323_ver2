@@ -1,0 +1,102 @@
+.main_contents
+  .left_block
+    %nav.mypage_block
+      %ul.mypage_block_list
+        %li
+        .mypage_block_list_item
+          =link_to "マイページ",root_path
+          = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "お知らせ",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "やることリスト",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "いいね！一覧",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "出品する",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "出品した商品-出品中",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "出品した商品-取引中",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "出品した商品-売却済み",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "購入した商品-取引中",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "購入した商品-過去の取引",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "ニュース一覧",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "評価一覧",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "ガイド",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "お問い合わせ",root_path
+            = fa_icon 'angle-right', class: 'icon'
+
+        %h3.merupay メルペイ
+        .merupay_list
+        %li
+          .mypage_block_list_item
+            =link_to "売上・振込申請", root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "ポイント",root_path
+            = fa_icon 'angle-right', class: 'icon'
+
+        %h3.configuration 設定
+        .configuration_list
+        %li
+          .mypage_block_list_item
+            =link_to "プロフィール", "/users/profile"
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "発送元・お届け先住所変更", root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "支払方法",new_creditcard_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "メール/パスワード",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "本人情報","/users/personalonfomation"
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "電話番号の確認",root_path
+            = fa_icon 'angle-right', class: 'icon'
+        %li
+          .mypage_block_list_item
+            =link_to "ログアウト","/users/logout"
+            = fa_icon 'angle-right', class: 'icon'

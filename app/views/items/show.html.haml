@@ -1,0 +1,157 @@
+/ メインここから
+%section#main
+  - breadcrumb :items
+  %h1#itemname
+    = @items.name
+  #item-main
+    #item-left
+      .owl-carousel.owl-loaded.owl-drag
+        .owl-stage-outer
+          .owl-stage
+            .owl-item.active
+              .owl-item-inner
+                - @items.item_images.each do |item_images|
+                  = image_tag "#{item_images.image}", size: "300x300", id: "main_image"
+            .owl-item
+              .owl-item-inner
+            .owl-item
+              .owl-item-inner.is-higher-width
+            .owl-item
+              .owl-item-inner.is-higher-width
+        .owl-nav.disabred
+        .owl-dots
+          - @items.item_images.limit(4).each do |item_images|
+            .owl-dot
+              %span
+              .owl-dot-inner
+                = image_tag "#{item_images.image}", size: "75x75", class: "owl"
+    %table#item-right
+      %tbody
+        %tr
+          %th 出品者
+          %td
+            = link_to @items.user.nickname, items_path, class: "seller-name"
+            %div
+              .item-user-ratings
+                = fa_icon 'smile', class: "smile"
+                %span 888
+              .item-user-ratings
+                = fa_icon 'meh', class: "meh"
+                %span 88
+              .item-user-ratings
+                = fa_icon 'frown', class: "bad"
+                %span 8
+        %tr
+          %th カテゴリー
+          %td
+            %div
+              = link_to @items.category.name, items_path, class: "category"
+            %div
+              = fa_icon 'angle-right', class: "right"
+              = link_to "小物", ""
+            %div
+              = fa_icon 'angle-right', class: "right"
+              = link_to "ベルト", ""
+        %tr
+          %th ブランド
+          %td
+            = link_to @items.brand.name, items_path, class: "brand" if @items.brand.present?
+        %tr
+          %th サイズ
+          %td= @items.size.volume if @items.size.present?
+        %tr
+          %th 商品の状態
+          %td= @items.item_condition
+        %tr
+          %th 配送料の負担
+          %td= @items.delivery_burden
+        %tr
+          %th 配送の方法
+          %td= @items.delivery_method
+        %tr
+          %th 配送元地域
+          %td
+            = link_to @items.delivery_area, items_path, class: "Prefectures"
+        %tr
+          %th 発送日の目安
+          %td= @items.delivery_date
+    .clear
+    .item-price-box
+      %span.item-price-box__price
+        ="¥" + number_with_delimiter(@items.price)
+      %span.item-price-box__tax (税込)
+      %span.item-price-box__shippingfee 送料込み
+    = link_to "購入画面に進む" , "", class: "item-buy-btn"
+    .description
+      %p.description__inner
+        =@items.content
+    .item-button-container
+      .item-button-left
+        = button_tag "",class: "item-button-left__like" do
+          %i.far.fa-heart
+          %span いいね!
+          %span 5
+        %a
+          %i.far.fa-flag
+          %span 不適切な商品の報告
+      .item-button-right
+        %a
+          %i.fas.fa-lock
+          %span あんしん・あんぜんへの取り組み
+    / メインここまで
+    / コメント欄ここから
+.item-detail-message
+  .message-container
+    .message-content
+      %form.message-content__form
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = text_area :comment, placeholder: 'コメントを書いてください'
+        = button_tag "",class: "message-content__submit" do
+          %span コメントする
+    / コメント欄ここまで
+    / ナビリンクここから
+%ul.navi-item-link
+  %li.navi-item-link__prev
+    = link_to "" do
+      %i.fa.fa-angle-left
+      %span ポロシャツ
+  %li.navi-item-link__next
+    = link_to "" do
+      %span スニーカー
+      %i.fa.fa-angle-right
+/ ナビリンクここまで
+.item-social-media-box
+  %ul.social-media-box
+    %li
+      = link_to items_path, class: "item-show-fb" do
+        %i.fab.fa-facebook
+    %li
+      = link_to items_path, class: "item-show-tw" do
+        %i.fab.fa-twitter
+    %li
+      = link_to items_path, class: "item-show-pin" do
+        %i.fab.fa-pinterest
+.items-in-user-profile
+  %section.items-box-container
+    %h2
+      = link_to "#{@items.user.nickname}さんのその他の出品"
+  .item-box-content
+    - @users_item.each do |item|
+      %section.items-box
+        = link_to item_path(item), class: "ltem-link" do
+          %figure.items-box__photo
+            = image_tag item.item_images.first.image, class: "items-box__photo"
+        .items-box__body
+          %h3.items-box__name
+            = item.name
+          .items-box__num
+            .items-box__price
+              = "¥" + number_with_delimiter(item.price)
+            .items-box__font
+              %i.far.fa-heart
+              %span 33
+          %p.items-box__tax (税込)
+
+
+
+

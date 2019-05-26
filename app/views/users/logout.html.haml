@@ -1,0 +1,8 @@
+%main#logout-main
+  = render 'shared/sidebar'
+  #logout-container
+    %form#logout-inner
+      #logout-inner__content
+        = button_to "/", id: "logout-inner__btn",type: "submit" do
+          ログアウト
+  .clearfix

@@ -64,12 +64,16 @@
       %li
         =link_to "有償ポイントに関する特約" , root_path
       %li
-        =link_to "あんしんスマホサポート制度に関する利用特約" , root_path
+        =link_to root_path do
+          あんしんスマホサポート制度に関
+          %br する利用特約
       %li
         =link_to "コンプライアンスポリシー" , root_path
     %ul.under-footer--list#privacy
       %li
-        =link_to "個人データの安全管理に係る基本方針" , root_path
+        =link_to root_path do
+          個人データの安全管理に係る基本
+          %br 方針
       %li
         =link_to "特定商取引に関する表記" , root_path
       %li
@@ -84,13 +88,11 @@
         =link_to "日本" , root_path
       %li
         =link_to "United States" , root_path
-  .under-footer--copyright
-    .under-footer--copyright__logo
-      =link_to root_path do
-        =image_tag "logo-white.svg",alt: "mercari", height: 33, width: 124
-    .under-footer--copyright__text
-      %span
-        %small © 2019 Mercari
+
+    .footer-bottom
+      %li
+        = image_tag "logo-white.svg", alt: "mercari", class: "mercarilogo-white"
+      %span.copyright ©︎ 2019 Mercari
 
   = link_to items_path, class: 'footer-sell-btn' do
     .sell 出品

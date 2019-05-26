@@ -1,0 +1,40 @@
+.card
+  = render partial: "shared/sidebar"
+  .card__container
+    .card__container__title
+      %h2 クレジットカード情報入力
+    .card__container__field
+      = form_for "card" do |f|
+        .field
+          = f.label :card_no, "カード番号"
+          %span.required 必須
+          %br/
+          = f.text_field "card_no", placeholder: "半角英数字のみ"
+          .field__icon
+            = image_tag "visa.svg", class: "field__icon__size"
+            = image_tag "master-card.svg", class: "field__icon__size"
+            = image_tag "saison-card.svg", class: "field__icon__size"
+            = image_tag "jcb.svg", class: "field__icon__size"
+            = image_tag "american_express.svg", class: "field__icon__size"
+            = image_tag "dinersclub.svg", class: "field__icon__size"
+            = image_tag "discover.svg", class: "field__icon__size"
+          .field__validity
+            .field__validity__month
+              = f.label :validity, "有効期限"
+              %span.required 必須
+              %br/
+              = f.select "month", ["--",1,2,3,4,5,6,7,8,9,10,11,12]
+              %span.unit 月
+            .field__validity__year
+              = f.select "year", ["--",19,20,21,22,23,24,25,26,27]
+              %span.unit 年
+          .field__security
+            = f.label :security, "セキュリティーコード"
+            %span.required 必須
+            %br/
+            = f.text_field "security", placeholder: "カード背面４桁もしくは３桁の番号"
+            .field__security__question
+              %i.fas.fa-question-circle
+              = link_to "カード裏面の番号とは？" , ""
+        .actions
+          = f.submit "追加する", class: "btn action-btn"
