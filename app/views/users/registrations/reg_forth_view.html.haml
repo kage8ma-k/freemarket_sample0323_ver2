@@ -1,0 +1,58 @@
+%article.maincontent
+  %h2.head-title
+    発送元・お届け先住所入力
+  .content-head
+    .content-inner-form
+      = form_tag("/signup/input_address", method: "post") do
+        .field
+          .field-title.clearfix
+            .field-label
+              = label_tag(:name, "お名前")
+            .field-necessary
+              %span 必須
+          = text_field_tag :lastname, "#{@user.user_profile.lastname}", {class: 'field-input'}
+          = text_field_tag :firstname, "#{@user.user_profile.firstname}", {class: 'field-input'}
+          .field-title.clearfix
+            .field-label
+              = label_tag(:name_kana, "お名前カナ")
+            .field-necessary
+              %span 必須
+          = text_field_tag :lastname_kana, "#{@user.user_profile.lastname_kana}", {class: 'field-input'}
+          = text_field_tag :firstname_kana, "#{@user.user_profile.firstname_kana}", {class: 'field-input'}
+        .field
+          .field-title.clearfix
+            .field-label
+              = label_tag(:postal_code, "郵便番号")
+            .field-necessary
+              %span 必須
+          = text_field_tag :postal_code, nil, {placeholder: '例) 1234567', class: 'field-input'}
+          .field-title.clearfix
+            .field-label
+              = label_tag(:prefecture, "都道府県")
+            .field-necessary
+              %span 必須
+          .prefecture-select-wrap
+            .select-wrap
+              = select_tag :prefecture_id, options_from_collection_for_select(@prefectures, :id, :name), {placeholder: '北海道', class: 'select'}
+              -#= select_tag :prefecture, options_for_select(@prefecture), {placeholder: '北海道', class: 'select'}
+          .field-title.clearfix
+            .field-label
+              = label_tag(:city, "市区町村")
+            .field-necessary
+              %span 必須
+          = text_field_tag :city, nil, {placeholder: '例) 横浜市緑区', class: 'field-input'}
+          .field-title.clearfix
+            .field-label
+              = label_tag(:block_number, "番地")
+            .field-necessary
+              %span 必須
+          = text_field_tag :block_number, nil, {placeholder: '例) 青山1-1-1', class: 'field-input'}
+        .field
+          .field-title.clearfix
+            .field-label
+              = label_tag(:building_name, "建物名")
+            .field-necessary
+              %span 必須
+          = text_field_tag :building_name, nil, {placeholder: '例) 柳ビル103', class: 'field-input'}
+          %p.text-content
+          = submit_tag('次に進む', class: 'submit')

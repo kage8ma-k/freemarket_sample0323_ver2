@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190520082723) do
+ActiveRecord::Schema.define(version: 20190525083154) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 20190520082723) do
   end
 
   create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "card_number",            null: false
-    t.integer  "carrd_expiration_month", null: false
-    t.integer  "card_expiration_year",   null: false
-    t.integer  "digit_code",             null: false
+    t.string   "card_number"
+    t.integer  "expiration_month"
+    t.integer  "expiration_year"
+    t.string   "security_code"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["user_id"], name: "index_credits_on_user_id", using: :btree
   end
 
@@ -103,9 +103,7 @@ ActiveRecord::Schema.define(version: 20190520082723) do
   end
 
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "profile"
+    t.integer  "profile"
     t.string   "profile_image"
     t.string   "lastname",                  null: false
     t.string   "firstname",                 null: false
@@ -114,24 +112,38 @@ ActiveRecord::Schema.define(version: 20190520082723) do
     t.integer  "birth_year"
     t.integer  "birth_month"
     t.integer  "birth_day"
-    t.string   "postal_code",               null: false
-    t.string   "prefecture",                null: false
-    t.string   "city",                      null: false
-    t.string   "block_number",              null: false
+    t.integer  "postal_code"
+    t.string   "prefecture_id"
+    t.string   "city"
+    t.string   "block_number"
     t.string   "building_name"
     t.string   "phone_number"
     t.integer  "the_number_of_exhabitions"
     t.integer  "points"
     t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "nickname",   null: false
-    t.string   "email",      null: false
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "nickname",               default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "facebook_uid"
+    t.string   "facebook_provider"
+    t.string   "google_provider"
+    t.string   "google_uid"
+    t.string   "google_token"
+    t.string   "google_meta"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "certification_number"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "comments", "items"
