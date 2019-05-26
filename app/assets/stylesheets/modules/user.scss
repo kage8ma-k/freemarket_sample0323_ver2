@@ -8,7 +8,7 @@
   position: relative;
 }
 
-#account-logo{
+.account-logo{
   position: absolute;
   top: 0;
   bottom: 0;
@@ -157,7 +157,7 @@ article {
   }
 }
 
-#account-bottom-logo {
+.account-bottom-logo {
   display: block;
   width: 80px;
   height: 65px;
@@ -182,7 +182,7 @@ article {
 .account-header-step-box {
   position: relative;
 
-  #account-logo-step {
+  .account-logo-step {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -311,7 +311,7 @@ article {
   .account-header {
     height: 128px;
   }
-  #account-logo {
+  .account-logo {
     width: 193px;
     height: 49px;
   }
@@ -327,7 +327,7 @@ article {
     width: 768px;
     margin: 0 auto;
   }
-  #account-logo-step {
+  .account-logo-step {
     width: 185px;
     height: 49px;
     margin: 40px 0 0 0;
@@ -341,7 +341,7 @@ article {
   .account-header {
     height: 56px;
   }
-  #account-logo {
+  .account-logo {
     width: 128px;
     height: 33x;
   }
@@ -354,7 +354,7 @@ article {
     margin: 0 auto;
   }
 
-  #account-logo-step {
+  .account-logo-step {
     width: 120px;
     height: 33px;
     margin: 12px auto;
