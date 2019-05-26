@@ -45,7 +45,7 @@
           %th カテゴリー
           %td
             %div
-              = link_to @items.category.name, items_path, class: "category"
+              = link_to "", items_path, class: "category"
             %div
               = fa_icon 'angle-right', class: "right"
               = link_to "小物", ""
@@ -55,7 +55,7 @@
         %tr
           %th ブランド
           %td
-            = link_to @items.brand.name, items_path, class: "brand" if @items.brand.present?
+            = link_to "", items_path, class: "brand" if @items.brand.present?
         %tr
           %th サイズ
           %td= @items.size.volume if @items.size.present?

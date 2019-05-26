@@ -1,6 +1,11 @@
 #logout-main{
-  display: block;
-  margin: 40px 130px 40px;
+  @include right-container;
+  margin-top: 40px;
+  background-color: $deep-gray;
+  height: 100%;
+  width: 1020px;
+  display: flex;
+  padding-bottom: 40px;
   #logout-container{
     margin: 0 auto;
     text-align: center;
@@ -8,6 +13,9 @@
     #logout-inner{
       background: #fff;
       padding: 64px;
+      a:hover {
+        text-decoration: none;
+      }
       &__content{
         width: 320px;
         margin: 0 auto;

@@ -4,7 +4,7 @@
       %ul.mypage_block_list
         %li
         .mypage_block_list_item
-          =link_to "マイページ",root_path
+          =link_to "マイページ",user_path(current_user.id)
           = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
@@ -74,7 +74,7 @@
         .configuration_list
         %li
           .mypage_block_list_item
-            =link_to "プロフィール", "/users/profile"
+            =link_to "プロフィール", user_profile_path(current_user.id)
             = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
@@ -82,7 +82,7 @@
             = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "支払方法",new_creditcard_path
+            =link_to "支払方法",creditcards_path
             = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
@@ -90,7 +90,7 @@
             = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "本人情報","/users/personalonfomation"
+            =link_to "本人情報",user_personalinfomation_path(current_user.id)
             = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
@@ -98,5 +98,5 @@
             = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "ログアウト","/users/logout"
+            =link_to "ログアウト",user_logout_path(current_user.id)
             = fa_icon 'angle-right', class: 'icon'
