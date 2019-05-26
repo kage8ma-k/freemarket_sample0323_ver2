@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
 
   def show
     @items = Item.includes([:user, :item_images, :category]).find(params[:id])
-    @users_item = Item.where(user_id: @items.user_id).order("created_at ASC").limit(6)
+    @users_item = Item.where(user_id: @items.user_id).where.not(id: @items.id).order("created_at ASC").limit(6)
 
   end
 
