@@ -4,12 +4,23 @@ class BuyController < ApplicationController
     render layout: false
   end
 
-  def purchase
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    Payjp::Charge.create(currency: 'jpy', amount: 1000, card: params['payjp-token'])
+  def pay
+    price = 1500
+    customer_id = Creditcard.find_by(user_id: 1).customer_id
+    @current_card = Payjp::Customer.retrieve(customer_id)
 
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+    amount: price,
+    customer: customer_id,
+    currency: 'jpy',
+    )
     render layout: false
-    # redirect_to root_path, notice: "支払いが完了しました"
+
+  end
+
+  def set_card
+    @creditcard = Creditcard.find_by(user_id: 1)
   end
 
 end
