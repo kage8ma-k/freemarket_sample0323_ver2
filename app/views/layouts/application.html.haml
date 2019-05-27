@@ -19,6 +19,6 @@
       / - key = "info" if key == "notice"
       / - key = "danger"  if key == "alert"
       = content_tag :div, value, class: key
-    = breadcrumbs pretext: "", separator: " &rsaquo; "
+    = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-caret-right')} "
     = yield
     = render 'shared/footer'

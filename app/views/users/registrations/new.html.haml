@@ -1,0 +1,20 @@
+%article.maincontent
+  %h2.head-title
+    新規会員登録
+  .content-head
+    .content-inner
+      = link_to signup_registration_path, class: "btn-mail-link" do
+        .btn-mail
+          %i.far.fa-envelope
+          %span
+            メールアドレスで登録
+      = link_to signup_sms_confirmation_path, class: "btn-fb-link" do
+        .btn-fb
+          %i.fab.fa-facebook
+          %span
+            Facebookで登録
+      = link_to signup_sms_confirmation_path, class: "btn-ggl-link" do
+        .btn-ggl
+          %i.fab.fa-google
+          %span
+            Googleで登録

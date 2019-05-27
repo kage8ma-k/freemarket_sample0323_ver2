@@ -1,69 +1,94 @@
 / メインここから
 %section#main
-  %h1#itemname ベルト
+  - breadcrumb :items
+  %h1#itemname
+    = @items.name
   #item-main
     #item-left
-      %img#item-left__image/
-      #item-left__subimage
-        %div
-          %img/
+      .owl-carousel.owl-loaded.owl-drag
+        .owl-stage-outer
+          .owl-stage
+            .owl-item.active
+              .owl-item-inner
+                - @items.item_images.each do |item_images|
+                  = image_tag "#{item_images.image}", size: "300x300", id: "main_image"
+            .owl-item
+              .owl-item-inner
+            .owl-item
+              .owl-item-inner.is-higher-width
+            .owl-item
+              .owl-item-inner.is-higher-width
+        .owl-nav.disabred
+        .owl-dots
+          - @items.item_images.limit(4).each do |item_images|
+            .owl-dot
+              %span
+              .owl-dot-inner
+                = image_tag "#{item_images.image}", size: "75x75", class: "owl"
     %table#item-right
       %tbody
         %tr
           %th 出品者
           %td
-            = link_to "あきぞー" , ""
+            = link_to @items.user.nickname, items_path, class: "seller-name"
             %div
-              #rating
+              .item-user-ratings
+                = fa_icon 'smile', class: "smile"
+                %span 888
+              .item-user-ratings
+                = fa_icon 'meh', class: "meh"
+                %span 88
+              .item-user-ratings
+                = fa_icon 'frown', class: "bad"
+                %span 8
         %tr
           %th カテゴリー
           %td
             %div
-              = link_to "レディース", ""
+              = link_to "", items_path, class: "category"
             %div
+              = fa_icon 'angle-right', class: "right"
               = link_to "小物", ""
             %div
+              = fa_icon 'angle-right', class: "right"
               = link_to "ベルト", ""
         %tr
           %th ブランド
-          %td ビトン
+          %td
+            = link_to "", items_path, class: "brand" if @items.brand.present?
+        %tr
+          %th サイズ
+          %td= @items.size.volume if @items.size.present?
         %tr
           %th 商品の状態
-          %td 未使用に近い
+          %td= @items.item_condition
         %tr
           %th 配送料の負担
-          %td 送料込み(出品者負担)
+          %td= @items.delivery_burden
         %tr
           %th 配送の方法
-          %td ゆうゆうメルカリ便
+          %td= @items.delivery_method
         %tr
           %th 配送元地域
           %td
-            = link_to "埼玉県", ""
+            = link_to @items.delivery_area, items_path, class: "Prefectures"
         %tr
           %th 発送日の目安
-          %td 2~3日で発送
+          %td= @items.delivery_date
     .clear
     .item-price-box
-      %span.item-price-box__price ¥ 333
+      %span.item-price-box__price
+        ="¥" + number_with_delimiter(@items.price)
       %span.item-price-box__tax (税込)
-      %span.item-price-box__shippingfee (送料込み)
+      %span.item-price-box__shippingfee 送料込み
     = link_to "購入画面に進む" , "", class: "item-buy-btn"
     .description
       %p.description__inner
-        【商品説明】
-        しまむらで購入
-        長さ→2m3cm
-        幅→3.5cm
-        長さがありますのでゆったり使えます。
-        【状態】
-        数回使用しました。
-        ❁﻿.即購入OK
-        ❁﻿.プロフィールを一読された方が安心かと思われます
+        =@items.content
     .item-button-container
       .item-button-left
         = button_tag "",class: "item-button-left__like" do
-          %i.far.fa-heart 4
+          %i.far.fa-heart
           %span いいね!
           %span 5
         %a
@@ -96,54 +121,37 @@
       %i.fa.fa-angle-right
 / ナビリンクここまで
 .item-social-media-box
-  %ul
+  %ul.social-media-box
     %li
-      = link_to "" do
-        %i.item-social-media-box__facebook.fab.fa-facebook-square.fa-3x
+      = link_to items_path, class: "item-show-fb" do
+        %i.fab.fa-facebook
     %li
-      = link_to "" do
-        %i.item-social-media-box__twitter.fab.fa-twitter-square.fa-3x
+      = link_to items_path, class: "item-show-tw" do
+        %i.fab.fa-twitter
     %li
-      = link_to "" do
-        %i.item-social-media-box__pinterest.fab.fa-pinterest-square.fa-3x
+      = link_to items_path, class: "item-show-pin" do
+        %i.fab.fa-pinterest
 .items-in-user-profile
   %section.items-box-container
     %h2
-      = link_to "あきぞーさんのその他の出品" , ""
-    %div
-      %section.items-box.first-box
-        = link_to "" do
+      = link_to "#{@items.user.nickname}さんのその他の出品"
+  .item-box-content
+    - @users_item.each do |item|
+      %section.items-box
+        = link_to item_path(item), class: "ltem-link" do
           %figure.items-box__photo
-            = image_tag("https://static.mercdn.net/thumb/photos/m65147348981_1.jpg?1555494812")
+            = image_tag item.item_images.first.image, class: "items-box__photo"
         .items-box__body
-          %h3.items-box__name ボーダー
+          %h3.items-box__name
+            = item.name
           .items-box__num
-            .items-box__price ¥2,980
+            .items-box__price
+              = "¥" + number_with_delimiter(item.price)
             .items-box__font
               %i.far.fa-heart
-              %span 1
+              %span 33
           %p.items-box__tax (税込)
-      %section.items-box.other-box
-        = link_to "" do
-          %figure.items-box__photo
-            = image_tag("https://static.mercdn.net/thumb/photos/m34184515003_1.jpg?1555495230")
-        .items-box__body
-          %h3.items-box__name ボーダー
-          .items-box__num
-            .items-box__price ¥2,980
-            .items-box__font
-              %i.far.fa-heart
-              %span 5
-          %p.items-box__tax (税込)
-      %section.items-box.other-box
-        = link_to "" do
-          %figure.items-box__photo
-            = image_tag("https://static.mercdn.net/thumb/photos/m78904710701_1.jpg?1554028260")
-        .items-box__body
-          %h3.items-box__name ボーダー
-          .items-box__num
-            .items-box__price ¥3,200
-            .items-box__font
-              %i.far.fa-heart
-              %span 7
-          %p.items-box__tax (税込)
+
+
+
+

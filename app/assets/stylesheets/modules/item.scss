@@ -12,44 +12,118 @@ a{
   color: #0099E8;
   text-decoration: none;
 }
+a:hover{
+  text-decoration: underline;
+}
+
 
 button{
   cursor: pointer;
 }
 
 #main{
+  @include clearfix();
   width: 620px;
-  margin: 40px auto 40px;
-  padding: 11px 40px 40px;
+  margin: 40px auto 0px;
+  padding: 24px 40px 40px 40px;
   background-color: #FFFFFF;
   #itemname{
     font-size: 24px;
     text-align: center;
     display: block;
+    line-height: 1.4;
+    font-weight: bold;
   }
   #item-main{
     height: auto;
     margin: 16px 0 0;
     #item-left{
       float: left;
-      background-color: #F5F5F5;
-      &__image{
-        width: 300px;
-        height: 300px;
-        background: url(https://static.mercdn.net/item/detail/orig/photos/m79387885594_1.jpg?1556180244);
-        vertical-align: bottom;
-      }
-      &__subimage{
-        width: 300px;
-        height: 75px;
-        div{
-          width: 75px;
-          height: 75px;
-          img{
-            width: 100%;
-            height: 100%;
-            background: url(https://static.mercdn.net/item/detail/orig/photos/m79387885594_1.jpg?1556180244);
-            vertical-align: bottom;
+      min-width: 300px;
+      max-width: 300px;
+      min-height: 375px;
+      margin: 0 auto;
+      background: #fafafa;
+      .owl-carousel {
+        position: relative;
+        .owl-stage-outer {
+          position: relative;
+          overflow:hidden;
+          .owl-stage {
+            position: relative;
+            .owl-item.active {
+              width: 300px;
+              float: left;
+              .owl-item-inner {
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding: 0 0 100%;
+                img {
+                }
+              }
+            }
+            .owl-item {
+              width: 300px;
+              float: left;
+              .owl-item-inner {
+                position: relative;
+                width: 100%;
+                height: 0;
+              }
+            }
+            .owl-item {
+              float: left;
+              .owl-item-inner {
+              }
+            }
+            .owl-item {
+              float: left;
+              .owl-item-inner {
+              }
+            }
+          }
+        }
+        .owl-nav.disabred {
+        }
+        .owl-dots {
+          line-height: 0;
+          .owl-dot {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            opacity: .6;
+            span {
+            }
+            .owl-dot-inner {
+              img {
+              }
+            }
+          }
+          .owl-dot {
+            span {
+            }
+            .owl-dot-inner {
+              img {
+              }
+            }
+          }
+          .owl-dot {
+            span {
+            }
+            .owl-dot-inner {
+              img {
+              }
+            }
+          }
+          .owl-dot {
+            float: left;
+            span {
+            }
+            .owl-dot-inner {
+              img {
+              }
+            }
           }
         }
       }
@@ -79,6 +153,45 @@ button{
         border: 1px solid #f5f5f5;
         padding: 8px;
       }
+      div {
+        margin: auto 0;
+        .item-user-ratings {
+          text-align: left;
+          display: inline-block;
+          margin-top: 8px;
+          .smile {
+            font-size: 14px;
+            vertical-align: middle;
+            color: #ef5185;
+          }
+          span {
+          }
+        }
+        .item-user-ratings {
+          vertical-align: middle;
+          display: inline-block;
+          .meh {
+            margin-left: 16px;
+            color: #fba933;
+            font-size: 14px;
+          }
+          span {
+          }
+
+        }
+        .item-user-ratings {
+          .bad {
+            color: #6ab5d8;
+            font-size: 14px;
+            margin-left: 16px;
+          }
+          span {
+          }
+        }
+        .fa {
+          color: $blue;
+        }
+      }
     }
     .clear{
       clear: both;
@@ -90,7 +203,7 @@ button{
       text-align: center;
       &__price{
         color: #333333;
-        font-size: 35px;
+        font-size: 50px;
         font-weight: bold;
         margin-right: 16px;
       }
@@ -114,37 +227,50 @@ button{
       text-decoration: none;
     }
     .description{
-      color: #333333;
       font-size: 18px;
+      color: #333333;
       padding-top: 32px;
       &__inner{
         white-space: pre-wrap;
       }
     }
     .item-button-container{
-      margin-top: 10px;
+      @include clearfix();
+      margin-top: 16px;
       .item-button-left{
-        font-size: 14px;
+        width: 321px;
         float: left;
         &__like{
           color: #333;
           border: 1px solid #f5f5f5;
           background: #f5f5f5;
           border-radius: 40px;
+          height: 33px;
           span{
             margin: 1px 0 0 8px;
+            font-size: 14px;
+            height: 33px;
+          }
+          i {
+            color: #ccc;
+            border: 1px solid #f5f5f5;
           }
         }
         a{
-          width: auto;
-          display: inline-block;
+          height: 33px;
+          margin-left: 16px;
+          padding: 8px 16px;
           border: 1px solid #f5f5f5;
           background: #f5f5f5;
           border-radius: 40px;
+          color: #333;
+          vertical-align: middle;
+          font-size: 14px;
         }
       }
       .item-button-right{
         float: right;
+        margin-top: 8px;
           span{
             font-size: 14px;
           }
@@ -162,20 +288,25 @@ button{
   margin: 8px 0;
   .message-container{
     width: 700px;
-    height: 262px;
     margin: 0 auto;
     .message-content{
       padding: 24px;
       background-color: #FFF;
       &__form{
         p{
+          width: 636px;
+          height: 28px;
           padding: 8px;
           background-color: #fff6de;
+          font-size: 14px;
+          display:flex;
+          justify-content: center;
+          align-items: center;
         }
         textarea{
           margin: 8px 0 0;
           display: block;
-          width: 631px;
+          width: 630px;
           max-width: 100%;
           min-height: 104px;
           padding: 10px;
@@ -206,18 +337,24 @@ button{
   ========================================*/
 
 .navi-item-link{
+  @include clearfix();
   width: 700px;
-  height: 50px;
-  margin: 50px auto 0px;
+  margin: 24px auto 0px;
+  font-size: 14px;
   &__prev{
     float: left;
-    color: #0099E8;
     text-decoration: none;
+    display:flex;
+    justify-content: center;
+    align-items: center;
   }
   &__next{
     float: right;
-    color: #0099E8;
     text-decoration: none;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
   }
 }
 
@@ -225,38 +362,46 @@ button{
   SNSログイン
   ========================================*/
 
-.item-social-media-box{
+.item-social-media-box {
   margin: 24px auto;
   padding: 32px 0 24px;
   width: 700px;
-  background-color: #FFFFFF;
-  ul{
+  background-color: $white;
+  .social-media-box {
+    margin-top: 16px;
+    padding: 0;
     text-align: center;
-    li{
+    list-style: none;
+    display: block;
+
+    li {
+      line-height: 44px;
+      width: 44px;
+      margin: 4px;
       display: inline-block;
+      text-align: center;
+      .item-show-fb {
+        @include sns-icon(#385185);
+        .fa-facebook {
+          color: $white;
+          vertical-align: middle;
+        }
+      }
+      .item-show-tw {
+        @include sns-icon($blue);
+        .fa-twitter {
+          color: $white;
+          vertical-align: middle;
+        }
+      }
+      .item-show-pin {
+        @include sns-icon(#aa262a);
+        .fa-pinterest {
+          color: $white;
+          vertical-align: middle;
+        }
+      }
     }
-  }
-  &__facebook{
-    color: white;
-    background: #385185;
-    padding: 10px;
-    margin-right: 10px;
-    border-radius: 10px;
-    font-size: 60px;
-  }
-  &__twitter{
-    color: white;
-    background: #5D9DC9;
-    padding: 10px;
-    margin-right: 10px;
-    border-radius: 10px;
-    font-size: 60px;
-  }
-  &__pinterest{
-    color: white;
-    background: #AA262A;
-    padding: 10px;
-    border-radius: 10px;
   }
 }
 
@@ -265,30 +410,36 @@ button{
   ========================================*/
 
 .items-in-user-profile{
-  width: 700px;
-  margin: 0 auto;
+  width: 740px;
+  margin: 0 auto 40px;
+  padding-left: 20px;
+  box-sizing: border-box;
   h2{
     margin: 24px 0 8px;
     a{
       font-size: 22px;
+      font-weight: bold;
     }
   }
-  div{
+  .item-box-content {
+    @include clearfix();
     display: inline-block;
-    .first-box{
-      margin: 0 0 20px 0;
-    }
-    .other-box{
-      margin: 0 0 20px 20px;
-    }
-    .items-box{
-      background-color: #FFFFFF;
+    background-color: #f5f5f5;
+    .items-box {
+      box-sizing: border-box;
       width: 220px;
       height: 330px;
+      background-color: $white;
+      margin-right: 20px;
       float: left;
+      position: relative;
+      margin-bottom: 20px;
       a{
         width: 200px;
         height: 200px;
+      }
+      h3{
+        height:48px;
       }
       &__photo{
         width: 220px;
@@ -303,16 +454,23 @@ button{
         color: #333;
       }
       &__num{
-        margin: 8px 0 0 0;
+        margin: 8px 0 0;
+        height:17px;
       }
       &__price{
        font-weight: 600;
        color: #333;
-       padding-right: 75px;
+       float: left;
        font-size: 17px;
+       }
+      &__font{
+        float: right;
       }
       &__tax{
         font-size: 10px;
+        clear: both;
+        margin: 0 auto;
+        text-align: left;
       }
     }
   }

@@ -1,0 +1,17 @@
+%article.maincontent
+  %h2.head-title
+    電話番号認証
+  .content-head
+    .content-inner-form
+      = form_tag("/signup/sms_confirmation/sms", method: "post") do
+        .field
+          .field-title.clearfix
+            .field-label
+              = label_tag(:certification_number, "認証番号")
+            .field-necessary
+              %span 必須
+          = text_field_tag :certification_number, nil, {placeholder: '認証番号を入力', class: 'field-input'}
+          %p.text-content SMSで届いた認証番号を入力してください
+          = submit_tag('認証して完了', class: 'submit')
+          %p.text-content 30秒たっても認証番号が届かない方へ
+          電話で認証番号を聞くこともできます

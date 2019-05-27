@@ -1,0 +1,18 @@
+%article.maincontent
+  %h2.head-title
+    電話番号の確認
+  .content-head
+    .content-inner-form
+      = form_tag("/signup/sms_confirmation", method: "post") do
+        .field
+          .field-title.clearfix
+            .field-label
+              = label_tag(:phone_number, "携帯電話の番号")
+            .field-necessary
+              %span 必須
+          = text_field_tag :phone_number, nil, {placeholder: '携帯電話の番号を入力', class: 'field-input'}
+          %p.text-content 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+          = submit_tag('SMSを送信する', class: 'submit')
+          %p.text-content ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+          %p.text-content
+            %a{:href => "/", :target => "_blank"} 電話番号の確認が必要な理由>

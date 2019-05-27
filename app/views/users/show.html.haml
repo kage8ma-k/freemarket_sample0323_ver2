@@ -1,47 +1,43 @@
-.container
+.mypage
   - breadcrumb :users
-  = render "shared/sidebar"
-  .content
-    %section.mypage-user-icon
-      .icon-tag
-        = link_to "", "https://www.mercari.com/jp"
-        %figure
-          = image_tag("profile_photo.png")
-        %h2.bold 山田太郎
-        .mypage-number
-          .bold
-            評価
-            %span.bold 0
-          .bold
-            出品数
-            %span.bold 0
-    %section.mypage-tab-container-notification-todo
-      %ul.mypage-tabs
-        %li.news
-          %h3
-            = link_to "お知らせ", "#mypage-tab-notification"
-        %li.todo
-          %h3
-            = link_to "やることリスト", "mypage-tab-todo"
-      .tab-content
-        %li.tab-style
-          .tab-text
-            %figure
-              .mercari_icon
-                = image_tag("footer_mercari_icon.png")
-            .mypage-item-body
-              .mypage-item-text メルカリを始めよう
-              %time{class: "mypage_link_time"}
-              = fa_icon "clock"
-              %span 24時間前
-            %i.fas.fa-angle-right{class: "s_icon"}
-        %li.mypage-go-list
-          .ichiran 一覧を見る
-        %section
-          %h2.mypage-tab-head 購入した商品
-          %ul.mypage-tabs
-            %li.trading
-              %h3.tab 取引中
-            %li.past-trading
-              %h3.tab 過去の取引
-          %ul.mypage-tab-transaction-now 取引中の商品がありません
+  =render "shared/sidebar"
+  .contents-right
+    .content-user
+      .content-user__header
+        .content-user__header__icons
+          =link_to root_path,method: :get do
+            .none
+              =image_tag("profile_photo.png")
+            %p.user-name elmo
+          .under-content
+            %span.counter-label 評価
+            %span.counter 0
+          .under-content
+            %span.counter-label 出品数
+            %span.counter 0
+      .content-user__tab
+        %input#tab-info{type: "radio",name: "tab_btn1",checked: true}
+        %label.tab_btn1{for: "tab-info"}お知らせ
+        %input#tab-todo{type: "radio",name: "tab_btn1"}
+        %label.tab_btn1{for: "tab-todo"}やることリスト
+        .tab_pages#info-contents
+          .none-content
+            %p 現在、お知らせはありません
+        .tab_pages#todo-contents
+          .none-content
+            %p 現在、やることリストはありません
+    .content-buy-items
+      .content-buy-items__header
+        %p 購入した商品
+      .content-buy-items__tab
+        %input#tab-transaction{type: "radio",name: "tab_btn2",checked: true}
+        %label.tab_btn2{for: "tab-transaction"}取引中
+        %input#tab-past-transaction{type: "radio",name: "tab_btn2"}
+        %label.tab_btn2{for: "tab-past-transaction"}過去の取引
+        .tab_pages#transaction-contents
+          .none-content
+            %p 取引中の商品がありません
+        .tab_pages#past-transaction-contents
+          .none-content
+            %p 過去に取引した商品がありません
+=render 'shared/sell_btn'
