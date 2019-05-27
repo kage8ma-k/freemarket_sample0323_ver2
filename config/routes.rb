@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :creditcards, only: [:index, :new, :show, :edit] do
     collection do
       post 'register'
+      post 'dele'
     end
   end
   resources :buy do

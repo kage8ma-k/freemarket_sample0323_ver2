@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20190521101603) do
     t.integer  "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -42,6 +44,19 @@ ActiveRecord::Schema.define(version: 20190521101603) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_creditcards_on_user_id", using: :btree
+  end
+
+  create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "card_number",            null: false
+    t.integer  "carrd_expiration_month", null: false
+    t.integer  "card_expiration_year",   null: false
+    t.integer  "digit_code",             null: false
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "card_id"
+    t.integer  "customer_id"
+    t.index ["user_id"], name: "index_credits_on_user_id", using: :btree
   end
 
   create_table "evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -79,6 +94,7 @@ ActiveRecord::Schema.define(version: 20190521101603) do
     t.integer  "category_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.integer  "prefecture_id"
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["size_id"], name: "index_items_on_size_id", using: :btree
@@ -92,6 +108,12 @@ ActiveRecord::Schema.define(version: 20190521101603) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_orders_on_item_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
+  create_table "prefectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -116,6 +138,7 @@ ActiveRecord::Schema.define(version: 20190521101603) do
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "creditcards", "users"
+  add_foreign_key "credits", "users"
   add_foreign_key "evaluations", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"

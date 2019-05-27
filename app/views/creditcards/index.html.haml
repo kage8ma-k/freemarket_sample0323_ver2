@@ -1,15 +1,22 @@
+
 .payment
   = render partial: "shared/sidebar"
   .payment__container
     .payment__container__title
       %h2 支払い方法
-    -if @creditcards
+    -if @creditcard
       .payment__container__box
         %p クレジットカード一覧
-        .actions
-          = button_to root_path, method: :get, class: "btn action-btn" do
-            %i.fas.fa-credit-card
-            クレジットカード登録されてるよ
+        / %ul.setting-payment
+        %ul.payment__container__list
+          %li.setting-payment-list
+            %form.l-single-content
+              %figure
+                %img{src:"https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?3160895340"}
+              .l-single-content-num
+                = "************4242"
+              .l-single-content-num 12 / 20
+              = link_to "削除する" ,{action: 'dele'},{method: :post, class: "l-single-content-remove"}
       .payment__container__about
         =link_to "支払い方法について", ""
         %i.fas.fa-chevron-right
@@ -22,4 +29,3 @@
       .payment__container__about
         =link_to "支払い方法について", ""
         %i.fas.fa-chevron-right
-

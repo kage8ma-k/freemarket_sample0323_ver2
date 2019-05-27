@@ -19,4 +19,8 @@ class BuyController < ApplicationController
 
   end
 
+  def set_card
+    @creditcard = Creditcard.find_by(user_id: 1)
+  end
+
 end
