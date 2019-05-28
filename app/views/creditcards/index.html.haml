@@ -4,10 +4,9 @@
   .payment__container
     .payment__container__title
       %h2 支払い方法
-    -if @creditcard
+    -if current_user.creditcards.present?
       .payment__container__box
         %p クレジットカード一覧
-        / %ul.setting-payment
         %ul.payment__container__list
           %li.setting-payment-list
             %form.l-single-content
