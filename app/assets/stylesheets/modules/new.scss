@@ -116,6 +116,150 @@
         cursor: pointer;
         // margin-left: 2%;
       }
+      .sell-upload-file{
+        width: 114px;
+        margin: 0 0 10px 10px;
+        float: left;
+        &__image{
+        height: 114px;
+        width: 114px;
+        object-fit: cover;
+        transform: none;
+        background: #f5f5f5;
+        display: block;
+        }
+        &__buttons{
+          width: 100%;
+          &--button{
+            display: block;
+            width: 50%;
+            height: 44px;
+            line-height: 44px;
+            float: left;
+            text-align: center;
+            background: #f5f5f5;
+            color: #0099e8;
+            text-decoration: none;
+            font-size: 1.0em
+          }
+          &--button--delete{
+            display: block;
+            width: 50%;
+            height: 44px;
+            line-height: 44px;
+            float: left;
+            text-align: center;
+            background: #f5f5f5;
+            border-left: 1px solid #eee;
+            color: #0099e8;
+            text-decoration: none;
+            font-size: 1.0em
+          }
+        }
+      }
+      .sell-upload-file:first-of-type{
+        @extend .sell-upload-file;
+        margin:  0 0 10px 0px;
+      }
+
+      .sell-upload-file:nth-of-type(6){
+        @extend .sell-upload-file;
+        margin:  0 0 10px 0px;
+      }
+
+      .sell-upload-drop-file{
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+      }
+      .sell-upload-head+p {
+        margin: 8px 0 0;
+        line-height: 1.5;
+      }
+      .sell-upload-items ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+      }
+       .sell-upload-drop-box{
+        margin: 0 0 20px 0;
+       }
+
+      .sell-upload-drop-box .icon-camera {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+      }
+      .sell-upload-drop-box pre {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        pointer-events: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .form-require {
+        background: #ea352d;
+      }
+      .form-any {
+        background: #ccc;
+      }
+      .form-require, .form-arbitrary, .message-is-seller, .news-private, .form-any {
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 12px;
+        vertical-align: top;
+      }
+      .sell-dropbox-container.state-image-number-10 {
+        display: block;
+        width: 620px;
+        margin: 16px auto 0;
+      }
+      .sell-dropbox-container.state-image-number-10 .sell-upload-items-container .sell-upload-items {
+        display: inline;
+      }
+      .sell-dropbox-container.state-image-number-10 .sell-upload-items-container .sell-upload-items ul {
+        display: inline;
+      }
+
+      .sell-dropbox-container.state-image-number-10 .sell-upload-drop-box.have-item-0 {
+        width: 100%;
+        height: 162px;
+        margin-left: 0;
+      }
+      .sell-dropbox-container.state-image-number-10 .sell-upload-drop-box {
+        float: right;
+        padding: 40px;
+        position: relative;
+        min-height: 80px;
+        background: #f5f5f5;
+        border: 1px dashed #ccc;
+        font-size: 0;
+        text-align: center;
+        -webkit-transition: -webkit-box-shadow ease-out .3s;
+        transition: -webkit-box-shadow ease-out .3s;
+        transition: box-shadow ease-out .3s;
+        transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
+        cursor: pointer;
+        float: right;
+        margin-left: 2%;
+      }
+
+      pre {
+        overflow: auto;
+      }
       .form-group__name {
         width: 620px;
         height:70px;
