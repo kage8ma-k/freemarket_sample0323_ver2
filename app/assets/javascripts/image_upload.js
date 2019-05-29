@@ -1,104 +1,134 @@
-$(document).on('turbolinks:load', function() {
-  const imagesLimit = 10
-  var index = Number($(".sell-upload-drop-box input:first").attr("id").replace(/[^0-9]/g, '')) + 1
-  var path = location.pathname
+// 定義
+$(document).on('turbolinks:load', function(){
+  var dropzone = $('.dropzone-area');
+  var dropzone2 = $('.dropzone-area2');
+  var dropzone_box = $('.dropzone-box');
+  var images = [];
+  var inputs  =[];
+  var input_area = $('.input_area');
+  var preview = $('#preview');
+  var preview2 = $('#preview2');
 
-  function resetErrorMessage(){
-    if ($(".sell-upload-errors")){
-      $(".sell-upload-errors").remove()
+// 追加
+  $(document).on('change', 'input[type= "file"].upload-image',function(event) {
+    var file = $(this).prop('files')[0];
+    var files = $(this).prop('files');
+    var reader = new FileReader();
+    inputs.push($(this));
+    var img = $(`<div class= "img_view"><img></div>`);
+    reader.onload = function(e) {
+      var btn_wrapper = $('<div class="btn_wrapper"><div class="btn edit">編集</div><div class="btn delete">削除</div></div>');
+      img.append(btn_wrapper);
+      img.find('img').attr({
+        src: e.target.result
+      })
     }
-  }
+    reader.readAsDataURL(file);
+    images.push(img);
 
-  function createFileErrorMessage(){
-    var errorHtml = `<div class="sell-upload-errors" >ファイル形式はjpeg、またはpngが使用できます</div>`
-    $(".sell-upload-drop-box").after(errorHtml);
-  }
-
-  function countOverErrorMessage(){
-    var errorHtml = `<div class="sell-upload-errors" >アップロードできる画像は10枚までです。</div>`
-    $(".sell-upload-drop-box").after(errorHtml);
-  }
-
-  function isImageFile(file){
-    var result = file.type.match('image.*')
-    return result
-  }
-
-  function createThumbnail(file, index){
-    image = file.target.result
-    html = `<li class="sell-upload-file">
-            <img class="sell-upload-file__image" src="${image}"alt="1000x 1">
-            <div class="sell-upload-file__buttons clearfix">
-            <button class="sell-upload-file__buttons--button">編集</a>
-            <button class="sell-upload-file__buttons--button--delete" id="delete-button-${index - 1}" href="">削除</a>
-            </div>
-            </li>`
-    $(".sell-upload-files").append(html);
-  }
-
-  function createNewForm(thisForm, index){
-    formHtml = `<input class="sell-upload-drop-file image-input-form" type="file" name="item_image[item_image_attributes][${index}][image]" id="item_image_item_images_attributes_${index}_image">`
-    thisForm.hide();
-    $(".sell-upload-drop-box").append(formHtml);
-  }
-
-  function removeForm(targetId){
-    $("#"+ targetId).remove();
-  }
-
-  function removeThumbnail(pushButton){
-    pushButton.parent().parent().remove();
-  }
-
-  function imeageMain(thisForm, file){
-    var countImages = $(".image-input-form").length
-    var sumImages = countImages;
-    resetErrorMessage();
-    if (sumImages <= imagesLimit ){
-      if ( isImageFile(file) ){
-        createNewForm(thisForm, index);
-        var reader = new FileReader();
-        reader.onload = (function(file){
-          return function(e){
-            createThumbnail(e, index);
-            index ++
-          };
-        })(file);
-          reader.readAsDataURL(file);
-      }else{
-        createFileErrorMessage();
-        thisForm.val("");
+    if(images.length >= 5) {
+      dropzone2.css({
+        'display': 'block'
+      })
+      dropzone.css({
+        'display': 'none'
+      })
+      $.each(images, function(index, image) {
+        image.attr('data-image', index);
+        preview2.append(image);
+        dropzone2.css({
+          'width': `calc(100% - (135px * ${images.length - 5}))`
+        })
+      })
+      if(images.length == 6) {
+        dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
       }
-    }else{
-      countOverErrorMessage();
-      thisForm.val("");
+    } else {
+        $('#preview').empty();
+        $.each(images, function(index, image) {
+          image.attr('data-image', index);
+          preview.append(image);
+        })
+        dropzone.css({
+          'width': `calc(100% - (135px * ${images.length}))`
+        })
+      }
+      if(images.length == 1) {
+        dropzone.find('p').replaceWith('<i class="fa fa-camera"></i>')
+      }
+    if(images.length == 10) {
+      dropzone2.css({
+        'display': 'none'
+      })
+      return;
     }
-  }
-
-  function isExistImage(image){
-    if (image.hasClass("exist-image")){
-      return true
-    }else{
-      return false
-    }
-  };
-
-  $("body").on("change", "input[type=file].sell-upload-drop-file", function(){
-    var thisForm = $(this);
-    var file = this.files[0];
-    imeageMain(thisForm, file);
+    var new_image = $(`<input multiple= "multiple" name="item_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`);
+    input_area.prepend(new_image);
   });
 
-  $(document).on("click", ".sell-upload-file__buttons--button--delete", function(event){
-    event.preventDefault();
-    var pushButton = $(this)
-    var pushButtonId = pushButton.attr('id');
-    var targetNumber = pushButtonId.replace(/[^0-9]/g, '')
-    var targetId = "item_image_attributes_"+ targetNumber +"_image"
-    if( path.match(/^[/]item_image[/][0-9]+[/]edit/) && isExistImage(pushButton) ){
-      targetId = "item_image_item_images_attributes_"+ targetNumber +"_image_cache"
+// 削除したとき
+  $(document).on('click', '.delete', function() {
+    var target_image = $(this).parent().parent();
+    $.each(inputs, function(index, input){
+      if ($(this).data('image') == target_image.data('image')){
+        $(this).remove();
+        target_image.remove();
+        var num = $(this).data('image');
+        images.splice(num, 1);
+        inputs.splice(num, 1);
+        if(inputs.length == 0) {
+          $('input[type= "file"].upload-image').attr({
+            'data-image': 0
+          })
+        }
+      }
+    })
+    $('input[type= "file"].upload-image:first').attr({
+      'data-image': inputs.length
+    })
+    $.each(inputs, function(index, input) {
+      var input = $(this)
+      input.attr({
+        'data-image': index
+      })
+      $('input[type= "file"].upload-image:first').after(input)
+    })
+    if (images.length >= 5) {
+      dropzone2.css({
+        'display': 'block'
+      })
+      $.each(images, function(index, image) {
+        image.attr('data-image', index);
+        preview2.append(image);
+      })
+      dropzone2.css({
+        'width': `calc(100% - (135px * ${images.length - 5}))`
+      })
+      if(images.length == 9) {
+        dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
+      }
+      if(images.length == 8) {
+        dropzone2.find('i').replaceWith('<p>ドラッグアンドドロップ またはクリックしてファイルをアップロード</p>')
+      }
+    } else {
+      dropzone.css({
+        'display': 'block'
+      })
+      $.each(images, function(index, image) {
+        image.attr('data-image', index);
+        preview.append(image);
+      })
+      dropzone.css({
+        'width': `calc(100% - (135px * ${images.length}))`
+      })
     }
-    removeForm(targetId);
-    removeThumbnail(pushButton);
-  });
+    if(images.length == 4) {
+      dropzone2.css({
+        'display': 'none'
+      })
+    }
+    if(images.length == 3) {
+      dropzone.find('i').replaceWith('<p>ドラッグアンドドロップ またはクリックしてファイルをアップロード</p>')
+    }
+  })
 });

@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
 
-  // selectを追加するHTML(親要素)
+  // セレクトボックス定義
   var cat_seach = $("#new-first-category");
 
   function appendSelect(catNum) {
@@ -8,17 +8,15 @@ $(document).on('turbolinks:load', function() {
       var select_id = `m_category`
     } else if(catNum == 2) {
       var select_id = `s_category`
-// このあと親を取ってきたら子（m）とだす。違ったら孫をだす（s）。違ったらブランドとサイズカテゴリーをだす。
     }
     var html =
-    `<select class="select-default" name="item[category_id]" id="${select_id}">
+    `<select class="select-wrapper__select" name="item[category_id]" id="${select_id}">
         <option value>---</option>
     </select>`
     cat_seach.append(html)
   }
 
-
-  // optionを追加するHTML
+  // カテゴリーの条件定義
   function appendCat(catOption, catNum) {
     if (catNum == 1) {
       var appendId = $("#m_category")
@@ -76,36 +74,16 @@ $(document).on('turbolinks:load', function() {
 })
 // サイズとブランド部分の出現
 $(function() {
-  $(document).on('change', ".form-group__category", function() {
-    $('.form-group__category').nextAll().css('display', 'block');
-  });
+  $(document).on('change', ".select-wrapper#new-first-category",
+    function() {
+    $('.form-group#size').css('display', "block");
+    $('.form-group#brand').css('display', "block");
+  })
 });
 
 // 配送方法の指定
 $(function() {
-  $(document).on('change', ".form-group__fee", function() {
-    $('.form-group__fee').next().css('display', 'block');
+  $(document).on('change', ".form-group#burden", function() {
+    $('.form-group#burden').next().css('display', 'block');
   });
 });
-
-//   // submitボタンを押した時の処理
-//   $('#new-item-btn').on('submit', function(e){
-//     e.preventDefault();
-//     e.stopPropagation();
-//     var formData = new FormData(this);
-//     var url = $(this).attr('action');
-//     console.log(formData);
-//     console.log(url);
-//     $.ajax({
-//       url: url,
-//       type: 'POST',
-//       data: formData,
-//       dataType: 'json',
-//       processData: false,
-//       contentType: false
-//     })
-
-//     .always(function(data){
-//       $("#new-item-btn").prop("disabled", false);
-//     })
-//   });
