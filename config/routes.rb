@@ -9,11 +9,11 @@ Rails.application.routes.draw do
     end
   end
   resources :creditcards, only: [:index, :new, :show, :edit] do
-  collection do
-    post 'register'
-    post 'dele'
+    collection do
+      post 'register'
+      post 'dele'
+    end
   end
-end
   resources :buy do
     collection do
       post 'pay'
