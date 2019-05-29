@@ -3,11 +3,12 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :item_images, allow_destroy: true
   has_many :comments
   has_many :orders
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
   belongs_to :user
   belongs_to :brand
   belongs_to :size
   belongs_to :category
-  belongs_to :prefecture
 
   enum item_condition: {"新品、未使用": 0, "未使用に近い": 1, "目立った傷や汚れなし": 2, "やや傷や汚れあり": 3, "傷や汚れあり": 4, "全体的に状態が悪い": 5}
 
