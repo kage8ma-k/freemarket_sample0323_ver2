@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20190525092756) do
-=======
-ActiveRecord::Schema.define(version: 20190525083154) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 20190529112817) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -85,6 +81,7 @@ ActiveRecord::Schema.define(version: 20190525083154) do
     t.string   "item_condition",                null: false
     t.string   "delivery_burden",               null: false
     t.string   "delivery_method",               null: false
+    t.string   "prefecture_id",                 null: false
     t.string   "delivery_date",                 null: false
     t.integer  "price",                         null: false
     t.string   "sales_status",                  null: false
@@ -95,7 +92,6 @@ ActiveRecord::Schema.define(version: 20190525083154) do
     t.integer  "category_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.integer  "prefecture_id"
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["size_id"], name: "index_items_on_size_id", using: :btree
@@ -112,9 +108,11 @@ ActiveRecord::Schema.define(version: 20190525083154) do
   end
 
   create_table "prefectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "name"
+    t.index ["item_id"], name: "index_prefectures_on_item_id", using: :btree
   end
 
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -179,5 +177,6 @@ ActiveRecord::Schema.define(version: 20190525083154) do
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
+  add_foreign_key "prefectures", "items"
   add_foreign_key "user_profiles", "users"
 end
