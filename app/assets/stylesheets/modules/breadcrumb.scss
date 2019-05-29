@@ -1,0 +1,21 @@
+.breadcrumbs {
+    position: relative;
+    border-top: 1px solid #eee;
+    -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    background: #fff;
+    line-height: 50px;
+    a{
+        color: black;
+        position: relative;
+        left: 210px;
+    }
+    span{
+        position: relative;
+        left: 210px;
+    }
+    .fa-caret-right:before {
+        position: relative;
+        left: 210px;
+    }
+}

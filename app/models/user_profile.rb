@@ -1,20 +1,31 @@
 class UserProfile < ApplicationRecord
-  t.string :profile
-  t.string :profile_image
-  t.string :lastname, null: false
-  t.string :firstname, null: false
-  t.string :lastname_kana, null: false
-  t.string :firstname_kana, null: false
-  t.integer :birth_year
-  t.integer :birth_month
-  t.integer :birth_day
-  t.string :postal_code, null: false
-  t.string :prefecture, null: false
-  t.string :city, null: false
-  t.string :block_number, null: false
-  t.string :building_name
-  t.string :phone_number
-  t.integer :the_number_of_exhabitions
-  t.integer :points
-  t.references :user , foreign_key: true
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+  belongs_to :user, optional: true
+
+  with_options presence: true do
+    validates :lastname
+    validates :firstname
+    validates :lastname_kana
+    validates :firstname_kana
+    validates :birth_year
+    validates :birth_month
+    validates :birth_day
+  end
+
+  validates :phone_number,
+            presence: false,
+            format: {with: /\A[0-9-]{,14}\z/}, length: { minimum: 8},
+            on: :phone_number_validates
+  # context: :phone_number_validatesのときだけバリデーションをかける
+
+  with_options on: :address do |address|
+    address.validates :postal_code, presence: true, length: { maximum: 7}
+    address.validates :prefecture, presence: true
+    address.validates :city, presence: true
+    address.validates :block_number, presence: true
+    address.validates :building_name, presence: true
+    address.validates :user_id, uniqueness: true
+  end
+
 end

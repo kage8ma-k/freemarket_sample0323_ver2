@@ -46,7 +46,7 @@
       font-weight: bold;
     }
     form.buy-form {
-      height:232px;
+      // height:232px;
     }
       p.buy-price-ja.bold {
         margin-top: 8px;
@@ -109,6 +109,19 @@
   margin-top:16px;
 }
 
+.btn__default--btn-gray {
+  width: 100%;
+  display: block;
+  line-height: 48px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: solid 1px gray;
+  background-color: gray;
+  color: $white;
+  margin-top:16px;
+}
+
 .buy__content--buy-user-info {
   height:102.609px;
   width:525px;
@@ -141,4 +154,11 @@
       text-align:left;
       margin:0;
     }
+}
+
+#payjp_checkout_box input[type=button]{
+   margin-top: 16px;
+   background-color: red;
+   height: 48px;
+   width: 100%;
 }

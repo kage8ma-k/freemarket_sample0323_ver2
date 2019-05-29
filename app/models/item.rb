@@ -19,3 +19,4 @@ class Item < ApplicationRecord
 
   enum sales_status: {"published": 0, "stopped": 1, "trading": 2, "sold": 3}
   end
+

@@ -9,7 +9,7 @@
   .pickup-container {
     padding: 40px;
     text-align: center;
-    background-color: #f5f5f5;
+    background-color: $lightgray;
     .pickup-head {
       font-size: 28px;
       line-height: 1.4px;
@@ -42,8 +42,10 @@
             text-decoration: none;
             .items-box-photo {
               margin: auto;
-              top: 0;
-              position: absolute;
+              height: 220px;
+              width: 213px;
+              overflow: hidden;
+              position: relative;
             }
             .items-box-body {
               height: 110px;

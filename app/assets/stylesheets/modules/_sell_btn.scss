@@ -1,0 +1,22 @@
+.footer-sell-btn {
+  display: block;
+  height: 160px;
+  width: 160px;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  border-radius: 50%;
+  background-color: $red;
+  color: $white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  .sell {
+    font-size: 22px;
+    margin-top: 32px;
+  }
+  .fa-camera {
+    font-size: 54px;
+    margin-top: 8px;
+  }
+}

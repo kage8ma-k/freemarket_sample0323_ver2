@@ -3,98 +3,100 @@
     %nav.mypage_block
       %ul.mypage_block_list
         %li
-          .mypage_block_list_item
-            =link_to "マイページ", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+        .mypage_block_list_item
+          =link_to "マイページ",user_path(current_user.id)
+          = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            = link_to "やることリスト", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "お知らせ",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "お知らせ", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "やることリスト",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "いいね！一覧", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "いいね！一覧",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "出品", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "出品する",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "出品した商品 - 出品中", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "出品した商品-出品中",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "出品した商品 - 取引中", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "出品した商品-取引中",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "出品した商品 - 売却済", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "出品した商品-売却済み",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "過去の取引", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "購入した商品-取引中",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "購入した商品 - 取引中", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "購入した商品-過去の取引",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "ニュース", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "ニュース一覧",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "評価一覧", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "評価一覧",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "ガイド", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "ガイド",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "問い合わせ", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
-      %h3.merupay メルペイ
-      .merupay_list
+            =link_to "お問い合わせ",root_path
+            = fa_icon 'angle-right', class: 'icon'
+
+        %h3.merupay メルペイ
+        .merupay_list
         %li
           .mypage_block_list_item
-            =link_to "売り上げ・振込申請", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "売上・振込申請", root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "ポイント", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
-      %h3.configuration 設定
-      .configuration_list
+            =link_to "ポイント",root_path
+            = fa_icon 'angle-right', class: 'icon'
+
+        %h3.configuration 設定
+        .configuration_list
         %li
           .mypage_block_list_item
-            =link_to "プロフィール", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "プロフィール", user_profile_path(current_user.id)
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "発送元・お届け先住所変更", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "発送元・お届け先住所変更", root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "支払い方法", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "支払方法",creditcards_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "メール/パスワード", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "メール/パスワード",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "本人情報", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "本人情報",user_personalinfomation_path(current_user.id)
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "電話番号確認", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "電話番号の確認",root_path
+            = fa_icon 'angle-right', class: 'icon'
         %li
           .mypage_block_list_item
-            =link_to "ログアウト", href: "https://www.mercari.com/jp"
-            =fa_icon "angle-right", class: "icon"
+            =link_to "ログアウト",user_logout_path(current_user.id)
+            = fa_icon 'angle-right', class: 'icon'

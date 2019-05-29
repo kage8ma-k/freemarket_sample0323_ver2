@@ -1,0 +1,36 @@
+%article.maincontent
+  %h2.head-title
+    支払い方法
+  .content-head
+    .content-inner-form
+      = form_tag("/signup/input_payment", method: "post") do
+        .field
+          .field-title.clearfix
+            .field-label
+              = label_tag(:card_number, "カード番号")
+            .field-necessary
+              %span 必須
+          = text_field_tag :card_number, nil, {placeholder: '半角英数のみ', class: 'field-input'}
+        .field
+          .field-title.clearfix
+            .field-label
+              = label_tag(:card_expiration, "有効期限")
+            .field-necessary
+              %span 必須
+          .birthday-select-wrap
+            .select-wrap
+              = select_tag(:expiration_month, options_for_select((1..12).to_a.unshift("--")), {class:'select', id: 'card_expiration'})
+          .birthday-select-wrap
+            .select-wrap
+              = select_tag(:expiration_year, options_for_select((1..31).to_a.unshift("--")), {class:'select', id: 'card_expiration'})
+        .field
+          .field-title.clearfix
+            .field-label
+              = label_tag(:security_code, "セキュリティーコード")
+            .field-necessary
+              %span 必須
+          = text_field_tag :security_code, nil, {placeholder: 'カード背面4桁もしくは3桁の番号', class: 'field-input'}
+        .field
+          %p.text-content
+            %a{:href => "/", :target => "_blank"}> カード裏面の番号とは？
+          = submit_tag('次に進む', class: 'submit')

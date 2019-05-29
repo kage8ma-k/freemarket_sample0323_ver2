@@ -1,0 +1,22 @@
+%header.account-header-step
+  .account-header-step-box.clearfix
+    %h1
+      = link_to root_path do
+        = image_tag "logo.svg", alt: "mercari", class: "account-logo-step"
+    %nav.progress-bar.signup-bar
+      %ol.clearfix
+        %li.first{class: "#{@active[0]}"}
+          会員情報
+          .progress-status
+        %li.middle{class: "#{@active[1]}"}
+          電話番号認証
+          .progress-status
+        %li.middle{class: "#{@active[2]}"}
+          お届け先住所入力
+          .progress-status
+        %li.middle{class: "#{@active[3]}"}
+          支払い方法
+          .progress-status
+        %li.last{class: "#{@active[4]}"}
+          完了
+          .progress-status

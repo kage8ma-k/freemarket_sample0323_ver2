@@ -5,84 +5,28 @@
     %h3.text-center
       = link_to "レディース新着アイテム", items_path, class: 'genre'
     .items-box-content
-      - 4.times do
-        %section.items-box
-          = link_to items_path, class: 'item-link' do
-            %figure.items-box-photo
-              = image_tag "img1.jpeg", alt: "sample", height: "220px", width: "213px"
-            .items-box-body
-              %h3.items-box-name
-                パケオ万年筆（F)
-              .items-box-num
-                .items-box-price ¥2,000
-                .items-box-likes
-                  %i.icon-like-border
-                    %i.far.fa-heart
-                  %span.like-num 11
-                %p.item-box-tax (税込)
+      = render 'shared/items'
     .view-all
       = link_to "すべての商品を見る", items_path, class: 'all-link'
     %section.items-box-container
     %h3.text-center
       = link_to "メンズ新着アイテム", items_path, class: 'genre'
     .items-box-content
-      - 4.times do
-        %section.items-box
-          = link_to items_path, class: 'item-link' do
-            %figure.items-box-photo
-              = image_tag "img1.jpeg", alt: "sample", height: "220px", width: "213px"
-            .items-box-body
-              %h3.items-box-name
-                パケオ万年筆（F)
-              .items-box-num
-                .items-box-price ¥2,000
-                .items-box-likes
-                  %i.icon-like-border
-                    %i.far.fa-heart
-                  %span.like-num 22
-                %p.item-box-tax (税込)
+      = render 'shared/items'
     .view-all
       = link_to "すべての商品を見る", items_path, class: 'all-link'
     %section.items-box-container
     %h3.text-center
       = link_to "ベビー・キッズ新着アイテム", items_path, class: 'genre'
     .items-box-content
-      - 4.times do
-        %section.items-box
-          = link_to items_path, class: 'item-link' do
-            %figure.items-box-photo
-              = image_tag "img1.jpeg", alt: "sample", height: "220px", width: "213px"
-            .items-box-body
-              %h3.items-box-name
-                パケオ万年筆（F)
-              .items-box-num
-                .items-box-price ¥2,000
-                .items-box-likes
-                  %i.icon-like-border
-                    %i.far.fa-heart
-                  %span.like-num 33
-                %p.item-box-tax (税込)
+      = render 'shared/items'
     .view-all
       = link_to "すべての商品を見る", items_path, class: 'all-link'
     %section.items-box-container
     %h3.text-center
       = link_to "コスメ・香水・美容キッズ新着アイテム", items_path, class: 'genre'
     .items-box-content
-      - 4.times do
-        %section.items-box
-          = link_to items_path, class: 'item-link' do
-            %figure.items-box-photo
-              = image_tag "img1.jpeg", alt: "sample", height: "220px", width: "213px"
-            .items-box-body
-              %h3.items-box-name
-                パケオ万年筆（F)
-              .items-box-num
-                .items-box-price ¥2,000
-                .items-box-likes
-                  %i.icon-like-border
-                    %i.far.fa-heart
-                  %span.like-num 33
-                %p.item-box-tax (税込)
+      = render 'shared/items'
     .view-all
       = link_to "すべての商品を見る", items_path, class: 'all-link'
 %section.pickup-container
@@ -92,83 +36,28 @@
     %h3.text-center
       = link_to "シャネル新着アイテム", items_path, class: 'genre'
     .items-box-content
-      - 4.times do
-        %section.items-box
-          = link_to items_path, class: 'item-link' do
-            %figure.items-box-photo
-              = image_tag "img1.jpeg", alt: "sample", height: "220px", width: "213px"
-            .items-box-body
-              %h3.items-box-name
-                パケオ万年筆（F)
-              .items-box-num
-                .items-box-price ¥2,000
-                .items-box-likes
-                  %i.icon-like-border
-                    %i.far.fa-heart
-                  %span.like-num 11
-                %p.item-box-tax (税込)
+      = render 'shared/items'
     .view-all
       = link_to "すべての商品を見る", items_path, class: 'all-link'
-    %section.items-box-container
+  %section.items-box-container
     %h3.text-center
       = link_to "ルイヴィトン新着アイテム", items_path, class: 'genre'
     .items-box-content
-      - 4.times do
-        %section.items-box
-          = link_to items_path, class: 'item-link' do
-            %figure.items-box-photo
-              = image_tag "img1.jpeg", alt: "sample", height: "220px", width: "213px"
-            .items-box-body
-              %h3.items-box-name
-                パケオ万年筆（F)
-              .items-box-num
-                .items-box-price ¥2,000
-                .items-box-likes
-                  %i.icon-like-border
-                    %i.far.fa-heart
-                  %span.like-num 22
-                %p.item-box-tax (税込)
+      = render 'shared/items'
     .view-all
       = link_to "すべての商品を見る", items_path, class: 'all-link'
-    %section.items-box-container
+  %section.items-box-container
     %h3.text-center
       = link_to "シュプリーム新着アイテム", items_path, class: 'genre'
     .items-box-content
-      - 4.times do
-        %section.items-box
-          = link_to items_path, class: 'item-link' do
-            %figure.items-box-photo
-              = image_tag "img1.jpeg", alt: "sample", height: "220px", width: "213px"
-            .items-box-body
-              %h3.items-box-name
-                パケオ万年筆（F)
-              .items-box-num
-                .items-box-price ¥2,000
-                .items-box-likes
-                  %i.icon-like-border
-                    %i.far.fa-heart
-                  %span.like-num 33
-                %p.item-box-tax (税込)
+      = render 'shared/items'
     .view-all
       = link_to "すべての商品を見る", items_path, class: 'all-link'
     %section.items-box-container
     %h3.text-center
       = link_to "ナイキ新着アイテム", items_path, class: 'genre'
     .items-box-content
-      - 4.times do
-        %section.items-box
-          = link_to items_path, class: 'item-link' do
-            %figure.items-box-photo
-              = image_tag "img1.jpeg", alt: "sample", height: "220px", width: "213px"
-            .items-box-body
-              %h3.items-box-name
-                パケオ万年筆（F)
-              .items-box-num
-                .items-box-price ¥2,000
-                .items-box-likes
-                  %i.icon-like-border
-                    %i.far.fa-heart
-                  %span.like-num 33
-                %p.item-box-tax (税込)
+      = render 'shared/items'
     .view-all
       = link_to "すべての商品を見る", items_path, class: 'all-link'
+=render 'shared/sell_btn'
