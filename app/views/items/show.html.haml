@@ -1,3 +1,6 @@
+%nav.bread-crumbs
+  - breadcrumb :items
+  = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
 / メインここから
 %section#main
   - breadcrumb :items
@@ -45,7 +48,7 @@
           %th カテゴリー
           %td
             %div
-              = link_to "", items_path, class: "category"
+              = link_to @items.category.name, items_path, class: "category"
             %div
               = fa_icon 'angle-right', class: "right"
               = link_to "小物", ""
@@ -55,7 +58,7 @@
         %tr
           %th ブランド
           %td
-            = link_to "", items_path, class: "brand" if @items.brand.present?
+            = link_to @items.brand.name, items_path, class: "brand" if @items.brand.present?
         %tr
           %th サイズ
           %td= @items.size.volume if @items.size.present?
@@ -71,7 +74,7 @@
         %tr
           %th 配送元地域
           %td
-            = link_to @items.delivery_area, items_path, class: "Prefectures"
+            / = link_to @items.user_profile.prefacture_id,items_path, class: "Prefectures"
         %tr
           %th 発送日の目安
           %td= @items.delivery_date
