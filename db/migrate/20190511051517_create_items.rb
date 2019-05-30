@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
      t.string  :delivery_burden,null: false
      t.string  :delivery_method,null: false
      t.string  :delivery_area,null: false
+     t.string  :prefecture_id, null: false
      t.string  :delivery_date,null: false
      t.integer :price,null: false
      t.string  :sales_status,null: false
@@ -15,7 +16,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
      t.references :brand,foreign_key: true
      t.references :size,foreign_key: true
      t.references :category,foreign_key:true
-      t.timestamps
+     t.timestamps
     end
   end
 end
