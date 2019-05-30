@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :new]
+  before_action :move_to_index, except: [:index, :show, :new, :create]
 
   def index
     @items = Item.includes(:user).limit(4).order("created_at DESC")
@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    # 10.times{@item.photos.build}画像S3に保存するとき
     @item.item_images.build
     render layout: nil
   end
