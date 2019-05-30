@@ -1,5 +1,7 @@
-.mypage
+%nav.bread-crumbs
   - breadcrumb :users
+  = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
+.mypage
   =render "shared/sidebar"
   .contents-right
     .content-user
