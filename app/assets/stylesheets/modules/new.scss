@@ -196,8 +196,10 @@
           float: right;
           .select-wrapper-all {
             .select-wrapper {
+              float: right;
             position: relative;
             &__select {
+              float:right;
               -webkit-appearance: none;
               -moz-appearance: none;
               appearance: none;
