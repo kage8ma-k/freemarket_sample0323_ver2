@@ -15,7 +15,6 @@ $(document).on('turbolinks:load', function() {
     </select>`
     cat_seach.append(html)
   }
-
   // カテゴリーの条件定義
   function appendCat(catOption, catNum) {
     if (catNum == 1) {
@@ -34,11 +33,10 @@ $(document).on('turbolinks:load', function() {
   $("#l_category").on('change', function() {
     l_cat = $(this).val()
     $("#m_category, #s_category").remove()
-
     // ajaxでリクエストを送信
       $.ajax({
         type: "GET",
-        url: "/items/search",
+        url: "/items/new/search",
         data: {l_cat: l_cat},
         dataType: 'json'
       })
@@ -56,10 +54,9 @@ $(document).on('turbolinks:load', function() {
   $(document).on('change', "#m_category", function() {
     m_cat = $(this).val()
     $("#s_category").remove()
-
     $.ajax({
       type: "GET",
-      url: "/items/search",
+      url: "/items/new/search",
       data: {m_cat: m_cat},
       dataType: 'json'
     })
