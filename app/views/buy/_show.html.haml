@@ -24,7 +24,7 @@
                   %span
                     ="¥" + number_with_delimiter(@item.price)
               -if current_user.creditcards.present?
-                = link_to "購入する", pay_buy_index_path,class: 'btn__default--btn-red bold',type: "submit", method: :post
+                = link_to "購入する", pay_buy_index_path(@item.id),class: 'btn__default--btn-red bold',type: "submit", method: :post
               -else
                 = link_to "クレジットカードの登録がありません", creditcards_path, type: "submit", method: :get, class: 'btn__default--btn-gray bold'
       %section.buy__content--buy-user-info
