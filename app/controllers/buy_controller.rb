@@ -1,7 +1,7 @@
 class BuyController < ApplicationController
 
   before_action :set_card, only: [:pay]
-  before_action :set_item, only: [:show,:pay]
+  before_action :set_item, only: [:show,:pay,:destroy]
 
   def show
     @item = Item.find(params[:id])
@@ -20,6 +20,10 @@ class BuyController < ApplicationController
     )
     render layout: false
 
+  end
+
+  def destroy
+    @item.destroy
   end
 
   def set_card

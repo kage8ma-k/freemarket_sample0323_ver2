@@ -84,7 +84,12 @@
         ="¥" + number_with_delimiter(@items.price)
       %span.item-price-box__tax (税込)
       %span.item-price-box__shippingfee 送料込み
-    = link_to "購入画面に進む" , buy_path(@items.id), class: "item-buy-btn"
+    -if (current_user.id == @items.user_id)
+      = link_to "商品を編集する" , edit_item_path(@items.id), class: "item-edit-btn"
+      %p.or_btn or
+      = link_to "商品を削除する" , buy_path(@items.id),method: :delete, class: "item-delete-btn"
+    -else
+      = link_to "購入画面に進む" , buy_path(@items.id), class: "item-buy-btn"
     .description
       %p.description__inner
         =@items.content
