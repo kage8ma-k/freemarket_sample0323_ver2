@@ -67,8 +67,8 @@
           %label.form-group__label
           = f.label :brand_id do
             ブランド
-            %span.form-group__optional
-              任意
+            %span.form-group__require
+              必須
           .select-wrapper
             = f.collection_select :brand_id, Brand.all, :id, :name, {prompt: "---"}, class: "select-wrapper__select"
             = fa_icon 'chevron-down', class: "select-wrapper__icon"
