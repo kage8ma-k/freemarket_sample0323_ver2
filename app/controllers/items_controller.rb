@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.build
-    render layout: nil
   end
 
   def search
@@ -37,7 +36,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.includes([:user, :item_images, :category]).find(params[:id])
+    @items = Item.find(params[:id])
     @users_item = Item.where(user_id: @items.user_id).where.not(id: @items.id).order("created_at ASC").limit(6)
 
   end

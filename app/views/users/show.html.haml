@@ -1,5 +1,6 @@
+= render 'shared/header'
 %nav.bread-crumbs
-  - breadcrumb :users
+  - breadcrumb :mypage
   = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
 .mypage
   =render "shared/sidebar"
@@ -42,4 +43,5 @@
         .tab_pages#past-transaction-contents
           .none-content
             %p 過去に取引した商品がありません
-=render 'shared/sell_btn'
+= render 'shared/sell_btn'
+= render 'shared/footer'
