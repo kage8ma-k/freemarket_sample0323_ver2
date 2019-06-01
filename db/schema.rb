@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190526100749) do
+ActiveRecord::Schema.define(version: 20190529092756) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20190526100749) do
     t.integer  "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -33,6 +35,15 @@ ActiveRecord::Schema.define(version: 20190526100749) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_comments_on_item_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "creditcards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "card_id",     null: false
+    t.string   "customer_id", null: false
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_creditcards_on_user_id", using: :btree
   end
 
   create_table "credits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -70,7 +81,6 @@ ActiveRecord::Schema.define(version: 20190526100749) do
     t.string   "item_condition",                null: false
     t.string   "delivery_burden",               null: false
     t.string   "delivery_method",               null: false
-    t.string   "delivery_area",                 null: false
     t.string   "delivery_date",                 null: false
     t.integer  "price",                         null: false
     t.string   "sales_status",                  null: false
@@ -130,8 +140,12 @@ ActiveRecord::Schema.define(version: 20190526100749) do
     t.string   "nickname",               default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
-    t.string   "uid"
-    t.string   "provider"
+    t.string   "facebook_uid"
+    t.string   "facebook_provider"
+    t.string   "google_provider"
+    t.string   "google_uid"
+    t.string   "google_token"
+    t.string   "google_meta"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -144,6 +158,7 @@ ActiveRecord::Schema.define(version: 20190526100749) do
 
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
+  add_foreign_key "creditcards", "users"
   add_foreign_key "credits", "users"
   add_foreign_key "evaluations", "users"
   add_foreign_key "item_images", "items"

@@ -1,10 +1,11 @@
 class User < ApplicationRecord
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook google_oauth2]
   has_one :user_profile
-  has_one :credit
+  has_many :creditcards
   validates :nickname, presence: true
   # validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 
@@ -14,5 +15,6 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end
   end
+
 
 end

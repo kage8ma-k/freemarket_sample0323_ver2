@@ -5,11 +5,13 @@
       %section.buy-content--buy-item
         .buy-content-inner
           %h3.buy-item-image
-            = image_tag "confimation.jpg", alt: "sample", height: "148px", width: "148px"
-          %p.buy-item-name--bold Nissy2ndマスコッピー
+            - @item.item_images.each do |item_images|
+              = image_tag "#{item_images.image}", alt: "sample", height: "148px", width: "148px"
+          %p.buy-item-name--bold
+            = @item.name
           %form.buy-form
             %p.buy-price-ja.bold
-              ¥ 1,500
+              ="¥" + number_with_delimiter(@item.price)
               %span.item-shipping-fee.f14.bold 送料込み
             %ul.buy__accordion--not-have
               %li.accordion-parent
@@ -19,21 +21,22 @@
               %li.buy__price__row--buy-you-pay.bold
                 .buy-price-cell 支払い金額
                 .buy-price-cell
-                  %span¥ 1,500
-            / %button.btn__default--btn-red.bold{:disabled => "disabled", :type => "submit"} 購入する
-          = form_tag(action: :purchase, method: :post) do
-            %script.payjp-button{"data-key":'pk_test_0f478928652178c3402b438c', :src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する"}
+                  %span
+                    ="¥" + number_with_delimiter(@item.price)
+              -if current_user.creditcards.present?
+                = link_to "購入する", pay_buy_index_path(@item.id),class: 'btn__default--btn-red bold',type: "submit", method: :post
+              -else
+                = link_to "クレジットカードの登録がありません", creditcards_path, type: "submit", method: :get, class: 'btn__default--btn-gray bold'
       %section.buy__content--buy-user-info
         .buy__content--inner
           %h3 配送先
           %address.buy-user-info-text
-            〒123-4556
+            /= "〒#{current_user.user_profile.postal_code}"
+            = @prefecture
             %br/
-            大阪府 いい市
-            いい1-3-9
-            あああ
+            弘前市ケルベロス1-3
             %br/
-            田中 太郎
+            鈴木 彩
           %p.buy-user-info-text
           = link_to "#", target: '_blank', class: 'buy-user-info-fix' do
             %span 変更する

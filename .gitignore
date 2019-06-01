@@ -21,3 +21,4 @@
 log/development.log
 tmp/pids/server.pid
 config/secrets.yml
+public/uploads/*

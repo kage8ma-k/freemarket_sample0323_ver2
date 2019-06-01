@@ -1,6 +1,9 @@
+= render 'shared/header'
+%nav.bread-crumbs
+  - breadcrumb :items
+  = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
 / メインここから
 %section#main
-  - breadcrumb :items
   %h1#itemname
     = @items.name
   #item-main
@@ -71,7 +74,7 @@
         %tr
           %th 配送元地域
           %td
-            = link_to @items.delivery_area, items_path, class: "Prefectures"
+            = link_to @items.prefecture_id, items_path, class: "prefecture"
         %tr
           %th 発送日の目安
           %td= @items.delivery_date
@@ -81,7 +84,12 @@
         ="¥" + number_with_delimiter(@items.price)
       %span.item-price-box__tax (税込)
       %span.item-price-box__shippingfee 送料込み
-    = link_to "購入画面に進む" , "", class: "item-buy-btn"
+    -if (current_user.id == @items.user_id)
+      = link_to "商品を編集する" , edit_item_path(@items.id), class: "item-edit-btn"
+      %p.or_btn or
+      = link_to "商品を削除する" , buy_path(@items.id),method: :delete, class: "item-delete-btn"
+    -else
+      = link_to "購入画面に進む" , buy_path(@items.id), class: "item-buy-btn"
     .description
       %p.description__inner
         =@items.content
@@ -151,6 +159,7 @@
               %i.far.fa-heart
               %span 33
           %p.items-box__tax (税込)
+= render 'shared/footer'
 
 
 

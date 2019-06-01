@@ -5,6 +5,9 @@
 .field {
   max-width: 320px;
   margin: 0 auto;
+  a {
+  text-decoration: none;
+  }
 
   .field-title {
     @include clearfix;

@@ -18,26 +18,25 @@
                 %i.fas.fa-tags
                 = link_to "ブランドから探す", items_path, class: 'header-nav-root'
 
-          / - if user_signed_in?
-          .header-right
-            .header-mypage
-              .header-mypage-notice
-                %i.far.fa-bell
-                %span.header-notice お知らせ
-              .header-mypage-todo
-                %i.far.fa-check
-                %span.header-todo やることリスト
-              = link_to root_path, class: 'header-nav' do
-                .header-mypage-link
-                  = image_tag "profile_photo.png", class: "my-avatar"
-                  %span.header-mypage
-                    / = current_user.nickname
-                    さんのマイページ
+          - if user_signed_in?
+            .header-right
+              .header-mypage
+                =link_to user_path(current_user), class: 'header-nav' do
+                  .header-mypage-notice
+                    %i.far.fa-bell
+                    %span.header-notice お知らせ
+                  .header-mypage-todo
+                    %i.far.fa-check
+                    %span.header-todo やることリスト
+                  .header-mypage-link
+                    = image_tag "profile_photo.png", class: "my-avatar"
+                    %span.header-mypage
+                      マイページ
 
-          / - if user_signed_in?
-          / .header-right
-          /   .header-login-nav
-          /     .login-btn
-          /       = link_to "ログイン", items_path, class: 'btn-red'
-          /     .register-btn
-          /       = link_to "新規会員登録", items_path, class: 'header-signup'
+          - else
+            .header-right
+              .header-login-nav
+                .login-btn
+                  = link_to "ログイン", new_user_session_path, class: 'btn-red'
+                .register-btn
+                  = link_to "新規会員登録", new_user_registration_path, class: 'header-signup'

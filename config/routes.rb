@@ -3,12 +3,18 @@ Rails.application.routes.draw do
   resources :items
 
   root 'items#index'
-  resources :items,only: [:index, :edit, :new, :show]
+  get '/items/new/search' => 'items#search'
+  resources :items,only: [:index, :edit, :new, :create, :show] do
+  end
   resources :creditcards, only: [:index, :new, :show, :edit] do
+    collection do
+      post 'register'
+      post 'dele'
+    end
   end
   resources :buy do
     collection do
-      post 'purchase'
+      post 'pay/:id' => 'buy#pay', as: 'pay'
     end
   end
   resources :users, only: [:show] do
