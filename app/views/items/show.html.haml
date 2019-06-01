@@ -84,7 +84,7 @@
         ="¥" + number_with_delimiter(@items.price)
       %span.item-price-box__tax (税込)
       %span.item-price-box__shippingfee 送料込み
-    = link_to "購入画面に進む" , "", class: "item-buy-btn"
+    = link_to "購入画面に進む" , buy_path(@items.id), class: "item-buy-btn"
     .description
       %p.description__inner
         =@items.content
