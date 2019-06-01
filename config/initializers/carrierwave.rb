@@ -13,5 +13,5 @@ CarrierWave.configure do |config|
    }
 
    config.fog_directory  = 'frema-img'
-   config.asset_host = 'arn:aws:iam::232623227866:user/frema-img'
+   config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/frema-img'
 end
