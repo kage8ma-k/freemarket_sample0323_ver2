@@ -1,17 +1,14 @@
 class BuyController < ApplicationController
 
-  before_action :set_card, :set_item
-
-  def index
-    render layout: false
-  end
+  before_action :set_card, only: [:pay]
+  before_action :set_item, only: [:show,:pay]
 
   def show
     @item = Item.find(params[:id])
   end
 
   def pay
-    price = 1500
+    price = @item.price
     customer_id = Creditcard.find_by(user_id: current_user.id).customer_id
     @current_card = Payjp::Customer.retrieve(customer_id)
 
@@ -30,7 +27,7 @@ class BuyController < ApplicationController
   end
 
   def set_item
-    # @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
     @prefecture = Prefecture.find_by(id: current_user.user_profile.prefecture_id).name
   end
 

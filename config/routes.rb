@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   resources :buy do
     collection do
-      post 'pay'
+      post 'pay/:id' => 'buy#pay', as: 'pay'
     end
   end
   resources :users, only: [:show] do
