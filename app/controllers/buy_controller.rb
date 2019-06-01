@@ -7,7 +7,7 @@ class BuyController < ApplicationController
   end
 
   def show
-
+    @item = Item.find(params[:id])
   end
 
   def pay
@@ -30,9 +30,8 @@ class BuyController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
-    # @pre = Prefecture.where(id: current_user.user_profile.prefecture_id)
-    # @pre = Prefecture.first.id
+    # @item = Item.find(params[:id])
+    @prefecture = Prefecture.find_by(id: current_user.user_profile.prefecture_id).name
   end
 
 
