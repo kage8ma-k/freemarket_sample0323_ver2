@@ -1,9 +1,9 @@
+= render 'shared/header'
 %nav.bread-crumbs
   - breadcrumb :items
   = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
 / メインここから
 %section#main
-  - breadcrumb :items
   %h1#itemname
     = @items.name
   #item-main
@@ -74,7 +74,7 @@
         %tr
           %th 配送元地域
           %td
-            / = link_to @items.user_profile.prefacture_id,items_path, class: "Prefectures"
+            = link_to @items.prefecture_id, items_path, class: "prefecture"
         %tr
           %th 発送日の目安
           %td= @items.delivery_date
@@ -154,6 +154,7 @@
               %i.far.fa-heart
               %span 33
           %p.items-box__tax (税込)
+= render 'shared/footer'
 
 
 

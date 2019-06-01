@@ -6,24 +6,31 @@
   position: relative;
 }
 
-
 .breadcrumbs{
   width: 1020px;
   margin: 0 auto;
   padding: 16px 0;
   a{
-    color: #333333;
+    color: $black;
     font-size: 14px;
+    &:hover {
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+  }
+  span {
+    color: $black;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .current {
+    color: $black;
+    font-size: 14px;
+    font-weight: bold;
   }
   i {
-      opacity: 0.8;
-      margin: 0 5px;
-      color: #888;
-      font-size: 16px;
-      }
-  span{
-    font-weight: bold;
-    font-size: 14px;
+    margin: 0 5px;
+    color: #888;
+    font-size: 16px;
   }
 }
-

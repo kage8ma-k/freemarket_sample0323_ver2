@@ -1,3 +1,7 @@
+= render 'shared/header'
+%nav.bread-crumbs
+  - breadcrumb :logout
+  = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
 %main#logout-main
   = render 'shared/sidebar'
   #logout-container
@@ -6,3 +10,4 @@
         = link_to destroy_user_session_path, method: :delete, id: "logout-inner__btn",type: "submit" do
           ログアウト
   .clearfix
+= render 'shared/footer'

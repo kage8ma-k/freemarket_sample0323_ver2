@@ -2,10 +2,30 @@ crumb :root do
   link "メルカリ", root_path
 end
 
-crumb :users do
-  link 'マイページ', user_path
+crumb :mypage do
+  link "マイページ", user_path(current_user.id)
+  parent :root
+end
+
+crumb :profile do
+  link "プロフィール", user_profile_path
+  parent :mypage
+end
+
+crumb :creditcards do
+  link "支払い方法", creditcards_path
+  parent :mypage
+end
+
+crumb :logout do
+  link "ログアウト", user_logout_path
+  parent :mypage
 end
 
 crumb :items do
-  link "ベルト", edit_item_path
+  link "", item_path(params[:id])
+  parent :root
 end
+
+
+

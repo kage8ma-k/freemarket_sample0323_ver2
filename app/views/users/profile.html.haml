@@ -1,3 +1,7 @@
+= render 'shared/header'
+%nav.bread-crumbs
+  - breadcrumb :profile
+  = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
 .profile
   = render partial: "shared/sidebar"
   .profile__container
@@ -10,4 +14,5 @@
       %textarea.profile__text--input{type: "textarea", placeholder: "例) こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。 気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
       .profile__container__submit
         変更する
-=render 'shared/sell_btn'
+= render 'shared/footer'
+= render 'shared/sell_btn'

@@ -1,4 +1,7 @@
-
+= render 'shared/header'
+%nav.bread-crumbs
+  - breadcrumb :creditcards
+  = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
 .payment
   = render partial: "shared/sidebar"
   .payment__container
@@ -28,3 +31,5 @@
       .payment__container__about
         =link_to "支払い方法について", ""
         %i.fas.fa-chevron-right
+= render 'shared/footer'
+= render 'shared/sell_btn'

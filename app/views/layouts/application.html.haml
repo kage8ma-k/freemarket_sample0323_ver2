@@ -13,7 +13,7 @@
     %link{crossorigin: :"anonymous", href: :"https://use.fontawesome.com/releases/v5.6.1/css/all.css", integrity: :"sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP", rel: :"stylesheet"}/
 
   %body
-    = render 'shared/header'
+    / = render 'shared/header'
     / .notifications
     / - flash.each do |key, value|
     /   / - key = "info" if key == "notice"
@@ -21,4 +21,4 @@
     /   = content_tag :div, value, class: key
     / = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
     = yield
-    = render 'shared/footer'
+    / = render 'shared/footer'
