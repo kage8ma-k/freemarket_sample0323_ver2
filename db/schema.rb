@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 20190529092756) do
     t.string   "item_condition",                null: false
     t.string   "delivery_burden",               null: false
     t.string   "delivery_method",               null: false
-    t.string   "prefecture_id",                 null: false
     t.string   "delivery_date",                 null: false
     t.integer  "price",                         null: false
     t.string   "sales_status",                  null: false
