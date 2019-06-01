@@ -91,7 +91,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user_profile = UserProfile.find_by(user_id: @user_id)
     @user_profile.attributes = user_profile_detail_params
     if @user_profile.save(context: :address)
-      redirect_to signup_input_payment_path
+      resource_name = :user
+      resource = User.find(@user_id)
+      sign_in(resource_name, resource)
+      redirect_to signup_complete_path
     else
       @active = ['active', 'active', 'active', '', '']
       @user = User.find(@user_id)
