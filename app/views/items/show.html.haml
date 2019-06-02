@@ -85,12 +85,15 @@
       %span.item-price-box__tax (税込)
       %span.item-price-box__shippingfee
         = truncate(Item.delivery_burdens.keys[1],length: 4, omission: '')
+  -unless (@items.sales_status == "sold")
     -if (current_user.id == @item.user_id)
       = link_to "商品を編集する" , edit_item_path(@item.id), class: "item-edit-btn"
       %p.or_btn or
       = link_to "商品を削除する" , buy_path(@item.id),method: :delete, class: "item-delete-btn"
     -else
       = link_to "購入画面に進む" , buy_path(@item.id), class: "item-buy-btn"
+    -else
+      = link_to "売り切れました" , root_path, class: "item-sold-btn"
     .description
       %p.description__inner
         =@item.content
