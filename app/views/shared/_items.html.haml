@@ -2,7 +2,12 @@
   %section.items-box
     = link_to item_path(item.id), class: "item-link" do
       %figure.items-box-photo
-        = image_tag item.item_images.first.image, class: "items-box-photo"
+        -if item.sales_status == "sold"
+          = image_tag item.item_images.first.image, class: "items-box-photo"
+          .sold-tag
+          .sold-tag-name SOLD
+        -else
+          = image_tag item.item_images.first.image, class: "items-box-photo"
       .items-box-body
         %h3.items-box-name
           = item.name
