@@ -7,6 +7,7 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'facebook'
 
     %link{href: :"https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css", :rel => "stylesheet"}/
     %script{src: :"https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"}
@@ -14,6 +15,7 @@
     %link{crossorigin: :"anonymous", href: :"https://use.fontawesome.com/releases/v5.6.1/css/all.css", integrity: :"sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP", rel: :"stylesheet"}/
 
   %body
+    = javascript_include_tag 'facebook_sdk'
     -# 横767pxでスマホ用、横768pxでPC用
     .account-wrapper
       = render 'shared/account-header'
