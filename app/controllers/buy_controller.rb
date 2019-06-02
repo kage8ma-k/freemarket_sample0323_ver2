@@ -11,6 +11,7 @@ class BuyController < ApplicationController
     price = @item.price
     customer_id = Creditcard.find_by(user_id: current_user.id).customer_id
     @current_card = Payjp::Customer.retrieve(customer_id)
+    @item.update(sales_status: 3)
 
     Payjp.api_key = 'sk_test_244fdd265d93b5b68f27d238'
     Payjp::Charge.create(
