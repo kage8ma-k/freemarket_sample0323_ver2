@@ -5,7 +5,7 @@
 / メインここから
 %section#main
   %h1#itemname
-    = @items.name
+    = @item.name
   #item-main
     #item-left
       .owl-carousel.owl-loaded.owl-drag
@@ -13,7 +13,7 @@
           .owl-stage
             .owl-item.active
               .owl-item-inner
-                - @items.item_images.each do |item_images|
+                - @item.item_images.each do |item_images|
                   = image_tag "#{item_images.image}", size: "300x300", id: "main_image"
             .owl-item
               .owl-item-inner
@@ -23,7 +23,7 @@
               .owl-item-inner.is-higher-width
         .owl-nav.disabred
         .owl-dots
-          - @items.item_images.limit(4).each do |item_images|
+          - @item.item_images.limit(4).each do |item_images|
             .owl-dot
               %span
               .owl-dot-inner
@@ -33,7 +33,7 @@
         %tr
           %th 出品者
           %td
-            = link_to @items.user.nickname, items_path, class: "seller-name"
+            = link_to @item.user.nickname, items_path, class: "seller-name"
             %div
               .item-user-ratings
                 = fa_icon 'smile', class: "smile"
@@ -48,51 +48,52 @@
           %th カテゴリー
           %td
             %div
-              = link_to @items.category.name, items_path, class: "category"
+              = link_to @item.category.parent.parent.name,items_path
             %div
               = fa_icon 'angle-right', class: "right"
-              = link_to "小物", ""
+              = link_to @item.category.parent.name,items_path
             %div
               = fa_icon 'angle-right', class: "right"
-              = link_to "ベルト", ""
+              = link_to @item.category.name, items_path
         %tr
           %th ブランド
           %td
-            = link_to @items.brand.name, items_path, class: "brand" if @items.brand.present?
+            = link_to @item.brand.name, items_path, class: "brand" if @item.brand.present?
         %tr
           %th サイズ
-          %td= @items.size.volume if @items.size.present?
+          %td= @item.size.volume if @item.size.present?
         %tr
           %th 商品の状態
-          %td= @items.item_condition
+          %td= Item.item_conditions.keys[1]
         %tr
           %th 配送料の負担
-          %td= @items.delivery_burden
+          %td= Item.delivery_burdens.keys[1]
         %tr
           %th 配送の方法
-          %td= @items.delivery_method
+          %td= Item.delivery_methods.keys[1]
         %tr
           %th 配送元地域
           %td
-            = link_to @items.prefecture_id, items_path, class: "prefecture"
+            = link_to @prefecture.name, items_path
         %tr
           %th 発送日の目安
-          %td= @items.delivery_date
+          %td= Item.delivery_dates.keys[1]
     .clear
     .item-price-box
       %span.item-price-box__price
-        ="¥" + number_with_delimiter(@items.price)
+        ="¥" + number_with_delimiter(@item.price)
       %span.item-price-box__tax (税込)
-      %span.item-price-box__shippingfee 送料込み
-    -if (current_user.id == @items.user_id)
-      = link_to "商品を編集する" , edit_item_path(@items.id), class: "item-edit-btn"
+      %span.item-price-box__shippingfee
+        = truncate(Item.delivery_burdens.keys[1],length: 4, omission: '')
+    -if (current_user.id == @item.user_id)
+      = link_to "商品を編集する" , edit_item_path(@item.id), class: "item-edit-btn"
       %p.or_btn or
-      = link_to "商品を削除する" , buy_path(@items.id),method: :delete, class: "item-delete-btn"
+      = link_to "商品を削除する" , buy_path(@item.id),method: :delete, class: "item-delete-btn"
     -else
-      = link_to "購入画面に進む" , buy_path(@items.id), class: "item-buy-btn"
+      = link_to "購入画面に進む" , buy_path(@item.id), class: "item-buy-btn"
     .description
       %p.description__inner
-        =@items.content
+        =@item.content
     .item-button-container
       .item-button-left
         = button_tag "",class: "item-button-left__like" do
@@ -141,10 +142,31 @@
         %i.fab.fa-pinterest
 .items-in-user-profile
   %section.items-box-container
+  - if @users_item.present?
     %h2
-      = link_to "#{@items.user.nickname}さんのその他の出品"
+      = link_to "#{@item.user.nickname}さんのその他の出品"
   .item-box-content
     - @users_item.each do |item|
+      %section.items-box
+        = link_to item_path(item), class: "ltem-link" do
+          %figure.items-box__photo
+            = image_tag item.item_images.first.image, class: "items-box__photo"
+        .items-box__body
+          %h3.items-box__name
+            = item.name
+          .items-box__num
+            .items-box__price
+              = "¥" + number_with_delimiter(item.price)
+            .items-box__font
+              %i.far.fa-heart
+              %span 33
+          %p.items-box__tax (税込)
+  %section.items-box-container
+  - if @same_brand.present?
+    %h2
+      = link_to "#{@item.brand.name}のその他の出品"
+  .item-box-content
+    - @same_brand.each do |item|
       %section.items-box
         = link_to item_path(item), class: "ltem-link" do
           %figure.items-box__photo
