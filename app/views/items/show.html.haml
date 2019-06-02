@@ -64,27 +64,27 @@
           %td= @item.size.volume if @item.size.present?
         %tr
           %th 商品の状態
-          %td= Item.item_conditions.keys[1]
+          %td= @item.item_condition
         %tr
           %th 配送料の負担
-          %td= Item.delivery_burdens.keys[1]
+          %td= @item.delivery_burden
         %tr
           %th 配送の方法
-          %td= Item.delivery_methods.keys[1]
+          %td= @item.delivery_method
         %tr
           %th 配送元地域
           %td
             = link_to @prefecture.name, items_path
         %tr
           %th 発送日の目安
-          %td= Item.delivery_dates.keys[1]
+          %td= @item.delivery_date
     .clear
     .item-price-box
       %span.item-price-box__price
         ="¥" + number_with_delimiter(@item.price)
       %span.item-price-box__tax (税込)
       %span.item-price-box__shippingfee
-        = truncate(Item.delivery_burdens.keys[1],length: 4, omission: '')
+        = truncate(@item.delivery_burden,length: 4, omission: '')
     -unless (@item.sales_status == "sold")
       -if (current_user.id == @item.user_id)
         = link_to "商品を編集する" , edit_item_path(@item.id), class: "item-edit-btn"
