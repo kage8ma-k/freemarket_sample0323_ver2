@@ -11,7 +11,8 @@
           =link_to root_path,method: :get do
             .none
               =image_tag("profile_photo.png")
-            %p.user-name elmo
+            %p.user-name
+              = current_user.nickname
           .under-content
             %span.counter-label 評価
             %span.counter 0

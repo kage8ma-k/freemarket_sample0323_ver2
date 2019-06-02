@@ -2,7 +2,14 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :new, :create, :search]
 
   def index
-    @items = Item.includes(:user).limit(4).order("created_at DESC")
+    @ladies = Item.set_index(category_id: 14..211)
+    @mens = Item.set_index(category_id: 226..355)
+    @kids = Item.set_index(category_id: 371..489)
+    @cosme = Item.set_index(category_id: 811..898)
+    @chanel = Item.set_index(brand_id: 1)
+    @vuitton = Item.set_index(brand_id: 2)
+    @supreme = Item.set_index(brand_id: 3)
+    @nike = Item.set_index(brand_id: 4)
   end
 
   def new
@@ -36,9 +43,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.find(params[:id])
-    @users_item = Item.where(user_id: @items.user_id).where.not(id: @items.id).order("created_at ASC").limit(6)
-
+    @item = Item.find(params[:id])
+    @users_item = Item.where(user_id: @item.user_id).where.not(id: @item.id).order("created_at ASC").limit(6)
+    @same_brand = Item.where(brand_id: @item.brand_id).where.not(id: @item.id, user_id: @item.user_id).order("created_at ASC").limit(6)
+    @prefecture = Prefecture.find(@item.prefecture_id)
   end
 
   private
