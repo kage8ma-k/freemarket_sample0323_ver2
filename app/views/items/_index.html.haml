@@ -1,33 +1,37 @@
 %section.pickup-container
   %h2.pickup-head ピックアップカテゴリー
   %section.items-box-container
-    %h3.text-center
-      = link_to "レディース新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'items/toppage/ladies'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
-    %section.items-box-container
-    %h3.text-center
-      = link_to "メンズ新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'items/toppage/mens'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
-    %section.items-box-container
-    %h3.text-center
-      = link_to "ベビー・キッズ新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'items/toppage/kids'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
-    %section.items-box-container
-    %h3.text-center
-      = link_to "コスメ・香水・美容キッズ新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'items/toppage/cosme'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
+    - if @ladies.present?
+      %h3.text-center
+        = link_to "レディース新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        = render 'items/toppage/ladies'
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
+  %section.items-box-container
+    - if @mens.present?
+      %h3.text-center
+        = link_to "メンズ新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        = render 'items/toppage/mens'
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
+  %section.items-box-container
+    - if @kids.present?
+      %h3.text-center
+        = link_to "ベビー・キッズ新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        = render 'items/toppage/kids'
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
+  %section.items-box-container
+    - if @cosme.present?
+      %h3.text-center
+        = link_to "コスメ・香水・美容キッズ新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        = render 'items/toppage/cosme'
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
 %section.pickup-container
   %h2.pickup-head ピックアップブランド
   %section.items-box-container
@@ -38,24 +42,27 @@
     .view-all
       = link_to "すべての商品を見る", items_path, class: 'all-link'
   %section.items-box-container
-    %h3.text-center
-      = link_to "ルイヴィトン新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'items/toppage/vuitton'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
+    - if @vuitton.present?
+      %h3.text-center
+        = link_to "ルイヴィトン新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        = render 'items/toppage/vuitton'
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
   %section.items-box-container
-    %h3.text-center
-      = link_to "シュプリーム新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'items/toppage/supreme'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
-    %section.items-box-container
-    %h3.text-center
-      = link_to "ナイキ新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'items/toppage/nike'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
+    - if @supreme.present?
+      %h3.text-center
+        = link_to "シュプリーム新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        = render 'items/toppage/supreme'
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
+  %section.items-box-container
+    - if @nike.present?
+      %h3.text-center
+        = link_to "ナイキ新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        = render 'items/toppage/nike'
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
 =render 'shared/sell_btn'
