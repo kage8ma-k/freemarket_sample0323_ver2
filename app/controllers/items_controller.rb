@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :new, :create, :search]
+  before_action :move_to_index, unless: :user_signed_in?, only: :new
 
   def index
     @ladies = Item.set_index(category_id: 14..211)
@@ -53,5 +54,9 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :content, :category_id, :brand_id, :size_id, :delivery_burden, :delivery_method, :prefecture_id, :delivery_date, :price, :item_condition, item_images_attributes:[:image]).merge(user_id: current_user.id, sales_status: 0)
+  end
+
+  def move_to_index
+    redirect_to new_user_session_path
   end
 end
