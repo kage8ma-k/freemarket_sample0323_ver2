@@ -35,12 +35,13 @@
 %section.pickup-container
   %h2.pickup-head ピックアップブランド
   %section.items-box-container
-    %h3.text-center
-      = link_to "シャネル新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'items/toppage/chanel'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
+    - if @chanel.present?
+      %h3.text-center
+        = link_to "シャネル新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        = render 'items/toppage/chanel'
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
   %section.items-box-container
     - if @vuitton.present?
       %h3.text-center
