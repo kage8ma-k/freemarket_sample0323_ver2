@@ -31,12 +31,13 @@
         .buy__content--inner
           %h3 配送先
           %address.buy-user-info-text
-            /= "〒#{current_user.user_profile.postal_code}"
-            = @prefecture
+            = "〒" + current_user.user_profile.postal_code.to_s
             %br/
-            弘前市ケルベロス1-3
+            = current_user.user_profile.prefecture.name
             %br/
-            鈴木 彩
+            = current_user.user_profile.city + current_user.user_profile.block_number + current_user.user_profile.building_name
+            %br/
+            = current_user.user_profile.lastname + current_user.user_profile.firstname
           %p.buy-user-info-text
           = link_to "#", target: '_blank', class: 'buy-user-info-fix' do
             %span 変更する
