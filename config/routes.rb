@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:show] do
+    patch '/users', to: 'users#update', as: 'update'
     get 'personalinfomation'
     get 'logout'
     get 'profile'

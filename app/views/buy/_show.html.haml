@@ -12,7 +12,8 @@
           %form.buy-form
             %p.buy-price-ja.bold
               ="¥" + number_with_delimiter(@item.price)
-              %span.item-shipping-fee.f14.bold 送料込み
+              %span.item-shipping-fee.f14.bold
+                = truncate(@item.delivery_burden,length: 4, omission: '')
             %ul.buy__accordion--not-have
               %li.accordion-parent
                 .accordion-toggle
