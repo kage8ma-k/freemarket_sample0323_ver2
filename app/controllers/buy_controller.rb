@@ -33,8 +33,6 @@ class BuyController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-    @prefecture = Prefecture.find_by(id: current_user.user_profile.prefecture_id).name
   end
-
 
 end

@@ -53,6 +53,8 @@ class ItemsController < ApplicationController
     @users_item = Item.where(user_id: @item.user_id).where.not(id: @item.id).order("created_at ASC").limit(6)
     @same_brand = Item.where(brand_id: @item.brand_id).where.not(id: @item.id, user_id: @item.user_id).order("created_at ASC").limit(6)
     @prefecture = Prefecture.find(@item.prefecture_id)
+    @previous = @item.next_to_item("previous")
+    @next_item = @item.next_to_item("next_item")
   end
 
   def update

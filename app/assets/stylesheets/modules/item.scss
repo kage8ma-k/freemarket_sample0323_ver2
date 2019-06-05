@@ -57,6 +57,21 @@ button{
                 padding: 0 0 100%;
                 img {
                 }
+                .sold-tag{
+                  border-right: 100px solid transparent;
+                  border-top: 100px solid red;
+                  position: absolute;
+                  top: 0;
+                }
+                .sold-tag-name{
+                  position: absolute;
+                  top: 0;
+                  color: #fff;
+                  font-size: 23px;
+                  font-weight: 600;
+                  transform: rotate(-45deg);
+                  padding: 20px 10px 0 0;
+                }
               }
             }
             .owl-item {

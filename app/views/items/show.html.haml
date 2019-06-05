@@ -13,8 +13,14 @@
           .owl-stage
             .owl-item.active
               .owl-item-inner
-                - @item.item_images.each do |item_images|
-                  = image_tag "#{item_images.image}", size: "300x300", id: "main_image"
+                -if @item.sales_status == "sold"
+                  - @item.item_images.each do |item_images|
+                    = image_tag "#{item_images.image}", size: "300x300", id: "main_image"
+                    .sold-tag
+                    .sold-tag-name SOLD
+                -else
+                  - @item.item_images.each do |item_images|
+                    = image_tag "#{item_images.image}", size: "300x300", id: "main_image"
             .owl-item
               .owl-item-inner
             .owl-item
@@ -124,13 +130,15 @@
     / ナビリンクここから
 %ul.navi-item-link
   %li.navi-item-link__prev
-    = link_to "" do
-      %i.fa.fa-angle-left
-      %span ポロシャツ
+    -if @previous
+      = link_to item_path (@previous.id) do
+        %i.fa.fa-angle-left
+        = @previous.name
   %li.navi-item-link__next
-    = link_to "" do
-      %span スニーカー
-      %i.fa.fa-angle-right
+    -if @next_item
+      = link_to item_path (@next_item.id), class: "navi-item-link__next" do
+        = @next_item.name
+        %i.fa.fa-angle-right
 / ナビリンクここまで
 .item-social-media-box
   %ul.social-media-box
@@ -185,7 +193,3 @@
               %span 33
           %p.items-box__tax (税込)
 = render 'shared/footer'
-
-
-
-
