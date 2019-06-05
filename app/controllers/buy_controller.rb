@@ -2,7 +2,7 @@ class BuyController < ApplicationController
 
   before_action :set_card, only: [:pay]
   before_action :set_item, only: [:show,:pay,:destroy]
-
+   before_action :move_to_index, unless: :user_signed_in?, only: [:show]
   def show
     @item = Item.find(params[:id])
   end
@@ -33,6 +33,11 @@ class BuyController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+private
+  def move_to_index
+  redirect_to new_user_session_path
   end
 
 end

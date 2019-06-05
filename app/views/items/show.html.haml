@@ -92,7 +92,7 @@
       %span.item-price-box__shippingfee
         = truncate(@item.delivery_burden,length: 4, omission: '')
     -unless (@item.sales_status == "sold")
-      -if (current_user.id == @item.user_id)
+      -if (user_signed_in? && @item.user_id == current_user.id)
         = link_to "商品を編集する" , edit_item_path(@item.id), class: "item-edit-btn"
         %p.or_btn or
         = link_to "商品を削除する" , buy_path(@item.id),method: :delete, class: "item-delete-btn"

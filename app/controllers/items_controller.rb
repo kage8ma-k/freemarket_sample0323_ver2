@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :new, :create, :search, :edit, :update]
-  before_action :move_to_index, except: [:index, :show, :new, :create, :search]
-  before_action :move_to_index, unless: :user_signed_in?, only: [:new, :show]
+  before_action :move_to_index, unless: :user_signed_in?, only: [:new]
 
   def index
     @ladies = Item.set_index(category_id: 14..211)
