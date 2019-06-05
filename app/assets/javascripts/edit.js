@@ -86,8 +86,6 @@ $(document).on('turbolinks:load', function() {
       })
     })
   })
-  // 孫まで出しとく
-
   // サイズとブランド部分の出現
   $(function() {
     $(document).ready(".select-wrapper#edit-first-category",

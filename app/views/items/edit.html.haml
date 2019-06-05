@@ -49,11 +49,13 @@
               必須
           .select-wrapper-all
             .select-wrapper#edit-first-category
-              = f.select :category_id, Category.roots.map {|i| ["#{i.name}", i.id]}, { selected: @item.category.root_id, prompt: "---"}, {class: 'select-wrapper__select', id: "l_category"}
+              = f.select :category_id, Category.roots.map {|i| ["#{i.name}", i.id]}, { selected: @item.category.root_id}, {class: 'select-wrapper__select', id: "l_category"}
               = fa_icon 'chevron-down', class: "select-wrapper__icon"
               .select-wrap#m_category
+                = f.select :category_id, Category.roots.map {|i| ["#{i.name}", i.id]}, { selected: @item.category.root_id}, {class: "select-wrapper__select",id: "m_category"}
                 = fa_icon 'chevron-down', class: "select-wrapper__icon"
               .select-wrap#s_category
+                = f.select :category_id, Category.roots.map {|i| ["#{i.name}", i.id]}, { selected: @item.category.root_id}, {class: "select-wrapper__select",id: "s_category"}
                 = fa_icon 'chevron-down', class: "select-wrapper__icon"
         .form-group#size
           %label.form-group__label
