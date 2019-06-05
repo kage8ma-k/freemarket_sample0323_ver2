@@ -124,13 +124,15 @@
     / ナビリンクここから
 %ul.navi-item-link
   %li.navi-item-link__prev
-    = link_to "" do
-      %i.fa.fa-angle-left
-      %span ポロシャツ
+    -if @previous
+      = link_to item_path (@previous.id) do
+        %i.fa.fa-angle-left
+        = @previous.name
   %li.navi-item-link__next
-    = link_to "" do
-      %span スニーカー
-      %i.fa.fa-angle-right
+    -if @next_item
+      = link_to item_path (@next_item.id), class: "navi-item-link__next" do
+        = @next_item.name
+        %i.fa.fa-angle-right
 / ナビリンクここまで
 .item-social-media-box
   %ul.social-media-box
@@ -185,7 +187,3 @@
               %span 33
           %p.items-box__tax (税込)
 = render 'shared/footer'
-
-
-
-

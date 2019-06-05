@@ -23,4 +23,13 @@ class Item < ApplicationRecord
   def self.set_index(id)
     Item.where(id).order("created_at DESC").limit(4)
   end
+
+  def next_to_item(next_or_previous)
+    if next_or_previous == "previous"
+      Item.where('id < ?', self.id).order('id DESC').first
+    else
+      Item.where('id > ?', self.id).order('id DESC').first
+    end
   end
+
+end
