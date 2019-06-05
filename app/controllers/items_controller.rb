@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :move_to_index, except: [:index, :show, :new, :create, :search, :edit, :update]
   before_action :move_to_index, except: [:index, :show, :new, :create, :search]
   before_action :move_to_index, unless: :user_signed_in?, only: [:new, :show]
 
@@ -43,6 +44,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find_by(id: params[:id])
+  end
+
   def show
     @item = Item.find(params[:id])
     @users_item = Item.where(user_id: @item.user_id).where.not(id: @item.id).order("created_at ASC").limit(6)
@@ -52,10 +57,23 @@ class ItemsController < ApplicationController
     @next_item = @item.next_to_item("next_item")
   end
 
+  def update
+    item = Item.find(params[:id])
+    if item.update(update_item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def item_params
     params.require(:item).permit(:name, :content, :category_id, :brand_id, :size_id, :delivery_burden, :delivery_method, :prefecture_id, :delivery_date, :price, :item_condition, item_images_attributes:[:image]).merge(user_id: current_user.id, sales_status: 0)
+  end
+
+  def update_item_params
+   params.require(:item).permit(:name, :content, :category_id, :brand_id, :size_id, :delivery_burden, :delivery_method, :prefecture_id, :delivery_date, :price, :item_condition, item_images_attributes:[:image, :_destroy, :id]).merge(user_id: current_user.id, sales_status: 0)
   end
 
   def move_to_index
