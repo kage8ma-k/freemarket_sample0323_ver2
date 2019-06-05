@@ -24,6 +24,9 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
+set :rails_env, "production"
+set :unicorn_rack_env, "production"
+
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
