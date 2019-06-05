@@ -24,7 +24,7 @@
         .group-form
           %label.group-form__lbl 郵便番号
           %span.group-form--any 任意
-          %input.group-form__input-data{:placeholder => "例) 1234567", :type => "text"}/
+          %input.group-form__input-data{:value => @user.user_profile.postal_code, :type => "text"}/
         .group-form
           %label.group-form__lbl 都道府県
           %span.group-form--any 任意
@@ -32,15 +32,15 @@
         .group-form
           %label.group-form__lbl 市区町村
           %span.group-form--any 任意
-          %input.group-form__input-data{:placeholder => "例 )横浜市緑区", :type => "text"}/
+          %input.group-form__input-data{:value => @user.user_profile.city, :type => "text"}/
         .group-form
           %label.group-form__lbl 番地
           %span.group-form--any 任意
-          %input.group-form__input-data{:placeholder => "例 )青山1-1-1", :type => "text"}/
+          %input.group-form__input-data{:value => @user.user_profile.block_number, :type => "text"}/
         .group-form
           %label.group-form__lbl 建物名
           %span.group-form--any 任意
-          %input.group-form__input-data{:placeholder => "例) 柳ビル103", :type => "text"}/
+          %input.group-form__input-data{:value => @user.user_profile.building_name, :type => "text"}/
         %button.btn-regist{:type => "submit"} 登録する
         .group-form
           %p.group-form__supplement
