@@ -28,7 +28,7 @@ class Item < ApplicationRecord
     if next_or_previous == "previous"
       Item.where('id < ?', self.id).order('id DESC').first
     else
-      Item.where('id > ?', self.id).order('id DESC').first
+      Item.where('id > ?', self.id).order('id ASC').first
     end
   end
 
