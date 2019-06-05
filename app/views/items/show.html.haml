@@ -13,8 +13,14 @@
           .owl-stage
             .owl-item.active
               .owl-item-inner
-                - @item.item_images.each do |item_images|
-                  = image_tag "#{item_images.image}", size: "300x300", id: "main_image"
+                -if @item.sales_status == "sold"
+                  - @item.item_images.each do |item_images|
+                    = image_tag "#{item_images.image}", size: "300x300", id: "main_image"
+                    .sold-tag
+                    .sold-tag-name SOLD
+                -else
+                  - @item.item_images.each do |item_images|
+                    = image_tag "#{item_images.image}", size: "300x300", id: "main_image"
             .owl-item
               .owl-item-inner
             .owl-item
