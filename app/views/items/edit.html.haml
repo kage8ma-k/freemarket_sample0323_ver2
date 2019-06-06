@@ -58,10 +58,10 @@
               必須
           .select-wrapper-all
             .select-wrapper#edit-first-category
-              = f.collection_select :category_id, Category.roots, :id, :name, {}, selected: @item.category.root, class: 'select-wrapper__select', id: "l_category"
+              = f.collection_select :category_id, Category.roots, :id, :name, { selected: @item.category.root_id}, {class: 'select-wrapper__select', id: "l_category"}
               = fa_icon 'chevron-down', class: "select-wrapper__icon"
               .select-wrap#m_category
-                = f.collection_select :category_id, @item.category.parent.siblings, :id, :name, {}, selected: @item.category.parent, class: 'select-wrapper__select', id: "l_category"
+                = f.collection_select :category_id, @item.category.parent.siblings, :id, :name, { selected: @item.category.parent_id}, {class: 'select-wrapper__select', id: "m_category"}
                 = fa_icon 'chevron-down', class: "select-wrapper__icon"
               .select-wrap#s_category
                 = f.collection_select :category_id, @item.category.siblings, :id, :name, {}, selected: @item.category, class: "select-wrapper__select",id: "s_category"
