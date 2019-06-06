@@ -60,6 +60,13 @@ class ItemsController < ApplicationController
   def update
     item = Item.find(params[:id])
     if item.update(update_item_params)
+      destroy_images = item.item_images.where.not(id: params[:image_ids])
+      destroy_images.each do |image|
+        image.destroy
+      end
+      params[:item_images][:image].each do |image|
+        item.item_images.create(image: image, item_id: item.id)
+      end
       redirect_to root_path
     else
       render :edit
