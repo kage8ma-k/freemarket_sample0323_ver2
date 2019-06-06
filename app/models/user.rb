@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :user_profile
   has_many :creditcards
   validates :nickname, presence: true
+  has_many :items
   # validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 
   def self.from_omniauth(auth)
