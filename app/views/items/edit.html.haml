@@ -11,6 +11,7 @@
         必須
       %p
         最大10枚までアップロードできます
+        %br ※ファイルを追加しない場合エラーになります。
         .dropzone-container.clearfix
           #preview
             - @item.item_images.each_with_index do |image, i|
