@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get 'profile'
   end
 
-  devise_for :users, skip: :all
+  devise_for :users, { only: [:omniauth_callbacks], controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } }
   devise_scope :user do
     get    'login'                        =>  'users/sessions#new', as: :new_user_session
     post   'login'                        =>  'users/sessions#create', as: :user_session

@@ -10,6 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def reg_first_view
+    @user = User.new
     @active = ['active', '', '', '', '']
     render layout: 'user_registration2'
   end
@@ -43,22 +44,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def reg_first_post
-    @user = User.new(user_params)
-    @user_profile = UserProfile.new(user_profile_params)
-    if [@user.valid?, @user_profile.valid?, password_confirmation_validates].all?
-      ActiveRecord::Base.transaction do
-        @user.save
-        @user_profile.save
-        ActiveRecord::Base.transaction do
-          @user_profile.user_id = @user.id
-          @user_profile.save
-        end
-      end
-      session[:user_id] = @user.id
-      redirect_to signup_sms_confirmation_path(@user)
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      @user_profile = user.create_user_profile(user_profile_params)
+      session[:user_id] = @user_profile.user_id
+      redirect_to signup_sms_confirmation_path(user)
     else
-      @active = ['active', '', '', '', '']
-      render :reg_first_view, locals: { active: @active }, layout: 'user_registration2'
+      @user = User.new(user_params)
+      @user_profile = UserProfile.new(user_profile_params)
+      if [@user.valid?, @user_profile.valid?, password_confirmation_validates].all?
+        ActiveRecord::Base.transaction do
+          @user.save
+          @user_profile.save
+          ActiveRecord::Base.transaction do
+            @user_profile.user_id = @user.id
+            @user_profile.save
+          end
+        end
+        session[:user_id] = @user.id
+        redirect_to signup_sms_confirmation_path(@user)
+      else
+        @active = ['active', '', '', '', '']
+        render :reg_first_view, locals: {active: @active}, layout: 'user_registration2'
+      end
     end
 
   end
@@ -71,7 +79,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to signup_sms_confirmation_sms_path
     else
       @active = ['active', 'active', '', '', '']
-      render :reg_second_view, locals: { active: @active }, layout: 'user_registration2'
+      render :reg_second_view, locals: {active: @active}, layout: 'user_registration2'
     end
   end
 
@@ -82,7 +90,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to signup_input_address_path
     else
       @active = ['active', 'active', '', '', '']
-      render :reg_third_view, locals: { active: @active }, layout: 'user_registration2'
+      render :reg_third_view, locals: {active: @active}, layout: 'user_registration2'
     end
   end
 
@@ -99,7 +107,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @active = ['active', 'active', 'active', '', '']
       @user = User.find(@user_id)
       @prefectures = Prefecture.all
-      render :reg_forth_view, locals: { active: @active, user: @user, prefectures: @prefectures }, layout: 'user_registration2'
+      render :reg_forth_view, locals: {active: @active, user: @user, prefectures: @prefectures}, layout: 'user_registration2'
     end
   end
 
@@ -110,7 +118,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to signup_complete_path
     else
       @active = ['active', 'active', 'active', 'active', '']
-      render :reg_fifth_view, locals: { active: @active }, layout: 'user_registration2'
+      render :reg_fifth_view, locals: {active: @active}, layout: 'user_registration2'
     end
   end
 

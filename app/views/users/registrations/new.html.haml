@@ -8,13 +8,15 @@
           %i.far.fa-envelope
           %span
             メールアドレスで登録
-      = link_to signup_sms_confirmation_path, class: "btn-fb-link" do
-        .btn-fb
-          %i.fab.fa-facebook
-          %span
-            Facebookで登録
-      = link_to signup_sms_confirmation_path, class: "btn-ggl-link" do
-        .btn-ggl
-          %i.fab.fa-google
-          %span
-            Googleで登録
+      - if devise_mapping.omniauthable?
+        = link_to omniauth_authorize_path(resource_name, :facebook), class: "btn-fb-link-reg" do
+          .btn-fb
+            %i.fab.fa-facebook
+            %span
+              Facebookで登録
+      - if devise_mapping.omniauthable?
+        = link_to omniauth_authorize_path(resource_name, :google_oauth2), class: "btn-ggl-link" do
+          .btn-ggl
+            %i.fab.fa-google
+            %span
+              Googleで登録
