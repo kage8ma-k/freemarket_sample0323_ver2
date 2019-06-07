@@ -1,63 +1,77 @@
 %section.pickup-container
   %h2.pickup-head ピックアップカテゴリー
-
   %section.items-box-container
-    %h3.text-center
-      = link_to "レディース新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'shared/items'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
-    %section.items-box-container
-    %h3.text-center
-      = link_to "メンズ新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'shared/items'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
-    %section.items-box-container
-    %h3.text-center
-      = link_to "ベビー・キッズ新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'shared/items'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
-    %section.items-box-container
-    %h3.text-center
-      = link_to "コスメ・香水・美容キッズ新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'shared/items'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
+    - if @ladies.present?
+      %h3.text-center
+        = link_to "レディース新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        - @ladies.each do |item|
+          = render partial: 'items/item', locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
+  %section.items-box-container
+    - if @mens.present?
+      %h3.text-center
+        = link_to "メンズ新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        - @mens.each do |item|
+          = render partial: 'items/item', locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
+  %section.items-box-container
+    - if @kids.present?
+      %h3.text-center
+        = link_to "ベビー・キッズ新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        - @kids.each do |item|
+          = render partial: 'items/item', locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
+  %section.items-box-container
+    - if @cosme.present?
+      %h3.text-center
+        = link_to "コスメ・香水・美容キッズ新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        - @cosme.each do |item|
+          = render partial: 'items/item', locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
 %section.pickup-container
   %h2.pickup-head ピックアップブランド
-
   %section.items-box-container
-    %h3.text-center
-      = link_to "シャネル新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'shared/items'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
+    - if @chanel.present?
+      %h3.text-center
+        = link_to "シャネル新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        - @chanel.each do |item|
+          = render partial: 'items/item', locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
   %section.items-box-container
-    %h3.text-center
-      = link_to "ルイヴィトン新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'shared/items'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
+    - if @vuitton.present?
+      %h3.text-center
+        = link_to "ルイヴィトン新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        - @vuitton.each do |item|
+          = render partial: 'items/item', locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
   %section.items-box-container
-    %h3.text-center
-      = link_to "シュプリーム新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'shared/items'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
-    %section.items-box-container
-    %h3.text-center
-      = link_to "ナイキ新着アイテム", items_path, class: 'genre'
-    .items-box-content
-      = render 'shared/items'
-    .view-all
-      = link_to "すべての商品を見る", items_path, class: 'all-link'
+    - if @supreme.present?
+      %h3.text-center
+        = link_to "シュプリーム新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        - @supreme.each do |item|
+          = render partial: 'items/item', locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
+  %section.items-box-container
+    - if @nike.present?
+      %h3.text-center
+        = link_to "ナイキ新着アイテム", items_path, class: 'genre'
+      .items-box-content
+        - @nike.each do |item|
+          = render partial: 'items/item', locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", items_path, class: 'all-link'
 =render 'shared/sell_btn'

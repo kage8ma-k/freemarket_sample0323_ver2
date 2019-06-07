@@ -8,7 +8,7 @@ $(document).on('turbolinks:load',function(){
   });
 });
 
-// $(document).on('turbolinks:load',function() {
-//   $("table tr td:empty").parent("tr").remove(
-//     );
-// });
+$(document).on('turbolinks:load',function() {
+  $("table tr td:empty").parent("tr").remove(
+    );
+});

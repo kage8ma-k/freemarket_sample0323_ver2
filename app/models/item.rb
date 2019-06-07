@@ -19,4 +19,17 @@ class Item < ApplicationRecord
   enum delivery_date: {"1~2日で発送": 0, "2~3日で発送": 1, "4~7日で発送": 2}
 
   enum sales_status: {"published": 0, "stopped": 1, "trading": 2, "sold": 3}
+
+  def self.set_index(id)
+    Item.where(id).order("created_at DESC").limit(4)
   end
+
+  def next_to_item(next_or_previous)
+    if next_or_previous == "previous"
+      Item.where('id < ?', self.id).order('id DESC').first
+    else
+      Item.where('id > ?', self.id).order('id ASC').first
+    end
+  end
+
+end

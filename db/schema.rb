@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190606094744) do
+ActiveRecord::Schema.define(version: 20190603171545) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -78,13 +78,12 @@ ActiveRecord::Schema.define(version: 20190606094744) do
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                          null: false
     t.text     "content",         limit: 65535, null: false
-    t.string   "item_condition",                null: false
-    t.string   "delivery_burden",               null: false
-    t.string   "delivery_method",               null: false
-    t.string   "prefecture_id",                 null: false
-    t.string   "delivery_date",                 null: false
+    t.integer  "item_condition",                null: false
+    t.integer  "delivery_burden",               null: false
+    t.integer  "delivery_method",               null: false
+    t.integer  "delivery_date",                 null: false
     t.integer  "price",                         null: false
-    t.string   "sales_status",                  null: false
+    t.integer  "sales_status",                  null: false
     t.integer  "likes"
     t.integer  "user_id"
     t.integer  "brand_id"
@@ -124,7 +123,7 @@ ActiveRecord::Schema.define(version: 20190606094744) do
     t.integer  "birth_month"
     t.integer  "birth_day"
     t.integer  "postal_code"
-    t.string   "prefecture_id"
+    t.integer  "prefecture_id"
     t.string   "city"
     t.string   "block_number"
     t.string   "building_name"
@@ -149,7 +148,6 @@ ActiveRecord::Schema.define(version: 20190606094744) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "certification_number"
-    t.string   "access_token"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

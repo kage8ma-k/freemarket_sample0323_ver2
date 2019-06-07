@@ -1,0 +1,6 @@
+-if item.sales_status == "sold"
+  = image_tag item.item_images.first.image, class: "items-box-photo"
+  .sold-tag
+  .sold-tag-name SOLD
+-else
+  = image_tag item.item_images.first.image, class: "items-box-photo"

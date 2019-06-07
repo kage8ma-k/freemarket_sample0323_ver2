@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
   get '/items/new/search' => 'items#search'
-  resources :items,only: [:index, :edit, :new, :create, :show] do
+  resources :items,only: [:index, :edit, :new, :create, :show, :edit, :update] do
   end
   resources :creditcards, only: [:index, :new, :show, :edit] do
     collection do
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:show] do
+    patch '/users', to: 'users#update', as: 'update'
     get 'personalinfomation'
     get 'logout'
     get 'profile'

@@ -23,7 +23,8 @@ crumb :logout do
 end
 
 crumb :items do
-  link "", item_path(params[:id])
+  @item = Item.find(params[:id])
+  link "#{@item.name}", item_path
   parent :root
 end
 

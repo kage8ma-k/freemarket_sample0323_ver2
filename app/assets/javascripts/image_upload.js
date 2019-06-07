@@ -9,12 +9,7 @@ $(document).on('turbolinks:load', function(){
   var preview = $('#preview');
   var preview2 = $('#preview2');
 
-// 追加
-  $(document).on('change', 'input[type= "file"].upload-image',function(event) {
-    var file = $(this).prop('files')[0];
-    var files = $(this).prop('files');
-    var reader = new FileReader();
-    inputs.push($(this));
+  var appendPreview = function(file, reader) {
     var img = $(`<div class= "img_view"><img></div>`);
     reader.onload = function(e) {
       var btn_wrapper = $('<div class="btn_wrapper"><div class="btn edit">編集</div><div class="btn delete">削除</div></div>');
@@ -25,6 +20,21 @@ $(document).on('turbolinks:load', function(){
     }
     reader.readAsDataURL(file);
     images.push(img);
+  }
+
+  $('.upload-image').each(function(i, ele){
+    inputs.push(ele);
+  })
+  // $('.img_view').each(function(i, ele){
+  //   images.push(ele);
+  // })
+// 追加
+  $(document).on('change', 'input[type= "file"].upload-image',function(event) {
+    var file = $(this).prop('files')[0];
+    var files = $(this).prop('files');
+    var reader = new FileReader();
+    appendPreview(file, reader)
+    inputs.push($(this));
 
     if(images.length >= 5) {
       dropzone2.css({
@@ -44,8 +54,9 @@ $(document).on('turbolinks:load', function(){
         dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
       }
     } else {
-        $('#preview').empty();
+        // $('#preview').empty();
         $.each(images, function(index, image) {
+          console.log(image)
           image.attr('data-image', index);
           preview.append(image);
         })
@@ -64,12 +75,14 @@ $(document).on('turbolinks:load', function(){
     }
     var new_image = $(`<input multiple= "multiple" name="item_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image);
+    console.log(images)
   });
 
 // 削除したとき
   $(document).on('click', '.delete', function() {
     var target_image = $(this).parent().parent();
     $.each(inputs, function(index, input){
+      console.log($(this))
       if ($(this).data('image') == target_image.data('image')){
         $(this).remove();
         target_image.remove();
