@@ -15,7 +15,8 @@ module FreemarketSample0323
       g.helper false
       g.test_framework false
     end
-    config.assets.precompile += %w(facebook.js)
+    config.assets.precompile += %w(facebook_reg.js)
+    config.assets.precompile += %w(facebook_login.js)
     config.assets.precompile += %w(facebook_sdk.js)
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local

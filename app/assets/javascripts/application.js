@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= stub facebook.js
+//= stub facebook_login.js
+//= stub facebook_reg.js
 //= stub facebook_sdk.js
 //= require_tree .

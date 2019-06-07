@@ -6,12 +6,12 @@
         %a{:href => "/signup/registration"}
           .blue-button 新規会員登録
     .content-inner
-      .btn-fb-link
+      = link_to omniauth_authorize_path(resource_name, :facebook), class: "btn-fb-link-login" do
         .btn-fb
           %i.fab.fa-facebook
           %span
             Facebookでログイン
-      = link_to signup_sms_confirmation_path, class: "btn-ggl-link" do
+      = link_to omniauth_authorize_path(resource_name, :google_oauth2), class: "btn-ggl-link" do
         .btn-ggl
           %i.fab.fa-google
           %span
