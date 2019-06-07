@@ -161,7 +161,12 @@
       %section.items-box
         = link_to item_path(item), class: "ltem-link" do
           %figure.items-box__photo
-            = image_tag item.item_images.first.image, class: "items-box__photo"
+            -if item.sales_status == "sold"
+              = image_tag item.item_images.first.image, class: "items-box__photo"
+              .sold-tag
+              .sold-tag-name SOLD
+            -else
+              = image_tag item.item_images.first.image, class: "items-box__photo"
         .items-box__body
           %h3.items-box__name
             = item.name
@@ -181,7 +186,12 @@
       %section.items-box
         = link_to item_path(item), class: "ltem-link" do
           %figure.items-box__photo
-            = image_tag item.item_images.first.image, class: "items-box__photo"
+            -if item.sales_status == "sold"
+              = image_tag item.item_images.first.image, class: "items-box__photo"
+              .sold-tag
+              .sold-tag-name SOLD
+            -else
+              = image_tag item.item_images.first.image, class: "items-box__photo"
         .items-box__body
           %h3.items-box__name
             = item.name
