@@ -24,11 +24,8 @@ Rails.application.routes.draw do
     get 'profile'
   end
 
-  # devise_for :users, skip: :all
   devise_for :users, { only: [:omniauth_callbacks], controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } }
   devise_scope :user do
-    # get    'signup/facebook_reg'          =>  'users/omniauth_callbacks#facebook', as: :facebook_user_registration
-    # post   'signup/facebook_reg'          =>  'users/omniauth_callbacks#facebook'
     get    'login'                        =>  'users/sessions#new', as: :new_user_session
     post   'login'                        =>  'users/sessions#create', as: :user_session
     delete 'logout'                       =>  'users/sessions#destroy', as: :destroy_user_session
