@@ -65,7 +65,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         redirect_to signup_sms_confirmation_path(@user)
       else
         @active = ['active', '', '', '', '']
-        render :reg_first_view, locals: {active: @active}, layout: 'user_registration2'
+        @error = @user.errors.full_messages.push(@user_profile.errors.full_messages).flatten!
+        render :reg_first_view, locals: {active: @active, error: @error}, layout: 'user_registration2'
       end
     end
 
@@ -79,7 +80,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to signup_sms_confirmation_sms_path
     else
       @active = ['active', 'active', '', '', '']
-      render :reg_second_view, locals: {active: @active}, layout: 'user_registration2'
+      @error = @user_profile.errors.full_messages
+      render :reg_second_view, locals: {active: @active, error: @error}, layout: 'user_registration2'
     end
   end
 
@@ -90,7 +92,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to signup_input_address_path
     else
       @active = ['active', 'active', '', '', '']
-      render :reg_third_view, locals: {active: @active}, layout: 'user_registration2'
+      @error = @user.errors.full_messages
+      render :reg_third_view, locals: {active: @active, error: @error}, layout: 'user_registration2'
     end
   end
 
@@ -107,7 +110,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @active = ['active', 'active', 'active', '', '']
       @user = User.find(@user_id)
       @prefectures = Prefecture.all
-      render :reg_forth_view, locals: {active: @active, user: @user, prefectures: @prefectures}, layout: 'user_registration2'
+      @error = @user_profile.errors.full_messages
+      render :reg_forth_view, locals: {active: @active, user: @user, prefectures: @prefectures, error: @error}, layout: 'user_registration2'
     end
   end
 
@@ -118,7 +122,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to signup_complete_path
     else
       @active = ['active', 'active', 'active', 'active', '']
-      render :reg_fifth_view, locals: {active: @active}, layout: 'user_registration2'
+      @error = @credit.errors.full_messages
+      render :reg_fifth_view, locals: {active: @active, error: @error}, layout: 'user_registration2'
     end
   end
 

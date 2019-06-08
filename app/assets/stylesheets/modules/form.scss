@@ -2,6 +2,15 @@
 
 }
 
+.error-messages {
+  color: $red;
+  margin: 0 auto 20px auto;
+  background-color: $light-gray;
+  p {
+    text-align: center;
+  }
+}
+
 .field {
   max-width: 320px;
   margin: 0 auto;

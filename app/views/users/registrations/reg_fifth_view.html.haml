@@ -2,6 +2,11 @@
   %h2.head-title
     支払い方法
   .content-head
+    - if @error
+      .error-messages
+        - @error.each do |error|
+          %p
+            = error
     .content-inner-form
       = form_tag("/signup/input_payment", method: "post") do
         .field

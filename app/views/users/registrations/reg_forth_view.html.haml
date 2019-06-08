@@ -2,6 +2,11 @@
   %h2.head-title
     発送元・お届け先住所入力
   .content-head
+    - if @error
+      .error-messages
+        - @error.each do |error|
+          %p
+            = error
     .content-inner-form
       = form_tag("/signup/input_address", method: "post") do
         .field
