@@ -5,8 +5,7 @@
       %section.buy-content--buy-item
         .buy-content-inner
           %h3.buy-item-image
-            - @item.item_images.each do |item_images|
-              = image_tag "#{item_images.image}", alt: "sample", height: "148px", width: "148px"
+            = image_tag @item.item_images.first.image, alt: "sample", height: "148px", width: "148px"
           %p.buy-item-name--bold
             = @item.name
           %form.buy-form
