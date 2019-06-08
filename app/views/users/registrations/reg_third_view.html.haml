@@ -2,6 +2,11 @@
   %h2.head-title
     電話番号認証
   .content-head
+    - if @error
+      .error-messages
+        - @error.each do |error|
+          %p
+            = error
     .content-inner-form
       = form_tag("/signup/sms_confirmation/sms", method: "post") do
         .field

@@ -2,6 +2,11 @@
   %h2.head-title
     会員情報入力
   .content-head
+    - if @error
+      .error-messages
+        - @error.each do |error|
+          %p
+            = error
     .content-inner-form
       = form_tag("/signup/registration", method: "post") do
         .field
@@ -23,13 +28,13 @@
               = label_tag(:password, "パスワード")
             .field-necessary
               %span 必須
-          = text_field_tag :password, nil, {placeholder: '6文字以上', class: 'field-input'}
+          = password_field_tag :password, nil, {placeholder: '6文字以上', class: 'field-input'}
           .field-title.clearfix
             .field-label
               = label_tag(:password_confirmation, "パスワード(確認)")
             .field-necessary
               %span 必須
-          = text_field_tag :password_confirmation, nil, {placeholder: '6文字以上', class: 'field-input'}
+          = password_field_tag :password_confirmation, nil, {placeholder: '6文字以上', class: 'field-input'}
         .field-text
           %h3.text-title 本人確認
           %p.text-content 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
