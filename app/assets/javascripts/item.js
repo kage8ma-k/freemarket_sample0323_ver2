@@ -5,9 +5,13 @@ $(document).on('turbolinks:load', function() {
 
   function appendSelect(catNum) {
     if(catNum == 1) {
-      var select_id = `m_category`
+      var select_id = 'm_category'
+      $('.form-group#size').css('display', "none");
+      $('.form-group#brand').css('display', "none");
     } else if(catNum == 2) {
-      var select_id = `s_category`
+      var select_id = 's_category'
+      $('.form-group#size').css('display', "none");
+      $('.form-group#brand').css('display', "none");
     }
     var html =
     `<select class="select-wrapper__select" name="item[category_id]" id="${select_id}">
