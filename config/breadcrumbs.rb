@@ -28,5 +28,9 @@ crumb :items do
   parent :root
 end
 
+crumb :searchkeyword do |keyword|
+  link "#{keyword[:name_cont]}"
+end
+
 
 
