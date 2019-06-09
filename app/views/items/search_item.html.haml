@@ -1,0 +1,15 @@
+= render 'shared/header'
+%nav.bread-crumbs
+  - breadcrumb :searchkeyword, params[:q]
+  = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
+.contents
+  %section.search-result-container
+    .search-result-head
+      = "検索結果 #{@result.length}件"
+
+    %section.items-box-container
+      .items-box-content
+
+        = render @result
+=render 'shared/sell_btn'
+= render 'shared/footer'

@@ -1,0 +1,123 @@
+.contents {
+  margin: 0 auto;
+  .search-result-container {
+    padding: 40px;
+    .search-result-head {
+      margin-left: 60px;
+      font-size: 22px;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+    .items-box-container {
+      margin: 0 auto;
+      width: 960px;
+      .text-center {
+        font-size: 22px;
+        margin: 26px 11px;
+        text-align: center;
+        .genre {
+          @include link($blue);
+        }
+      }
+
+      .items-box-content {
+        @include clearfix();
+        .items-box {
+          box-sizing: border-box;
+          width: 213px;
+          height: 330px;
+          background-color: $white;
+          margin: 0 10px;
+          float: left;
+          margin-bottom: 80px;
+          position: relative;
+          .item-link {
+            text-decoration: none;
+            .items-box-photo {
+              margin: auto;
+              height: 220px;
+              width: 213px;
+              overflow: hidden;
+              position: relative;
+              .sold-tag{
+                border-right: 100px solid transparent;
+                border-top: 100px solid red;
+                position: absolute;
+                top: 0;
+              }
+              .sold-tag-name{
+                position: absolute;
+                top: 0;
+                color: #fff;
+                font-size: 23px;
+                font-weight: 600;
+                transform: rotate(-45deg);
+                padding: 20px 10px 0 0;
+              }
+            }
+            .items-box-body {
+              height: 110px;
+              width: 213px;
+              position: absolute;
+              bottom: 0;
+              padding: 16px;
+              box-sizing: border-box;
+              display: block;
+              .items-box-name {
+                @include box();
+                font-weight: 400;
+                margin: auto;
+                height: 3em;
+                overflow: hidden;
+                color: $black;
+                line-height: 1.5em;
+                white-space: normal;
+                font-size: 16px;
+                text-align: left;
+              }
+              .items-box-num {
+                @include clearfix();
+                margin-top: 5px;
+                color: $black;
+                .items-box-price {
+                  float: left;
+                  font-weight: 600;
+                }
+                .items-box-likes {
+                  float: right;
+                  .icon-like-border {
+                    font-size: 16px;
+                    margin-right: 4px;
+                    display: inline-block;
+                  }
+                  .like-num {
+                    margin-top: 1px;
+                    display: inline-block;
+                    font-weight: 400;
+                    font-size: 12px;
+                  }
+                }
+                .item-box-tax {
+                  font-size: 10px;
+                  clear: both;
+                  margin: 0 auto;
+                  text-align: left;
+                }
+              }
+            }
+          }
+        }
+      }
+      .view-all {
+        box-sizing: border-box;
+        text-align: right;
+        padding: 20px 20px 30px 0;
+        width: 99.5%;
+        font-size: 15px;
+        .all-link {
+          @include link($blue);
+        }
+      }
+    }
+  }
+}

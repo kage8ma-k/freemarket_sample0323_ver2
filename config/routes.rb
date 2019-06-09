@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'items#index'
   get '/items/new/search' => 'items#search'
+  get '/items/item/search', to: 'items#search_item'
+
   resources :items,only: [:index, :edit, :new, :create, :show, :edit, :update] do
   end
   resources :creditcards, only: [:index, :new, :show, :edit] do

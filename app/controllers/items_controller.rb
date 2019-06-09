@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :new, :create, :search, :edit, :update]
+  before_action :move_to_index, except: [:index, :show, :new, :create, :search, :edit, :update, :search_item]
   before_action :move_to_index, unless: :user_signed_in?, only: [:new]
 
   def index
@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     @vuitton = Item.set_index(brand_id: 2)
     @supreme = Item.set_index(brand_id: 3)
     @nike = Item.set_index(brand_id: 4)
+    @search = Item.ransack(params[:q])
   end
 
   def new
@@ -54,6 +55,7 @@ class ItemsController < ApplicationController
     @prefecture = Prefecture.find(@item.prefecture_id)
     @previous = @item.next_to_item("previous")
     @next_item = @item.next_to_item("next_item")
+    @search = Item.ransack(params[:q])
   end
 
   def update
@@ -70,6 +72,11 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+    def search_item
+    @search = Item.ransack(params[:q])
+    @result = @search.result
   end
 
   private
