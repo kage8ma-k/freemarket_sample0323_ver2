@@ -5,7 +5,7 @@ class CreditcardsController < ApplicationController
   # Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
   Payjp.api_key = 'sk_test_244fdd265d93b5b68f27d238'
   def index
-
+    @search = Item.ransack(params[:q])
   end
 
   def edit

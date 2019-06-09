@@ -21,28 +21,42 @@
         position: relative;
         width: calc(100% - 170px);
         float: right;
+        display:inline-flex;
         .input-default {
           width: 100%;
           height: 40px;
-          padding: 0px 42px 0px 10px;
-          background: $form;
-          border-radius: 4px;
+          padding: 0px 0px 0px 10px;
+          background: $lightgray;
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;
           border: 1px solid #ccc;
           line-height: 1.5;
           font-size: 16px;
+          outline: 0;
         }
-        .fa-search {
+        .actions {
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+          width: 40px;
+          height: 40px;
+          outline: 0;
+          }
+        .fa-search{
+          font-size: 14px;
+          display: inline-block;
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
           position: absolute;
           top: 0;
           right: 0;
-          line-height: 35px;
+          line-height: 40px;
           text-align: center;
           height: 20px;
-          background: $form;
-          margin-top: 1px;
-          margin-right: 5px;
-          width: 35px;
-          height: 34px;
+          background: rgb(102, 102, 102);
+          width: 40px;
+          height: 40px;
+          color: white;
+          cursor: pointer;
         }
       }
     }
