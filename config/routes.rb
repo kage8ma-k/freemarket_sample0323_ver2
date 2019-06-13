@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     get 'profile'
   end
 
+  resources :categories do
+    get :select_top, on: :collection
+  end
+
   devise_for :users, { only: [:omniauth_callbacks], controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } }
   devise_scope :user do
     get    'login'                        =>  'users/sessions#new', as: :new_user_session
