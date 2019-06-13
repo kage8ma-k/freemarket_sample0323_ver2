@@ -68,7 +68,6 @@
         float: left;
         .header-nav {
           font-size: 14px;
-          font-weight: bold;
           .search-category{
             display: inline-block;
             position: relative;
@@ -77,6 +76,7 @@
               line-height: 32px;
               text-decoration: none;
               color: $black;
+              font-weight: bold;
               &:hover {
                 color: $blue;
               }
@@ -90,6 +90,7 @@
               line-height: 32px;
               text-decoration: none;
               color: $black;
+              font-weight: bold;
               &:hover {
                 color: $blue;
               }

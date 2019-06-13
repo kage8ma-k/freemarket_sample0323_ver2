@@ -32,5 +32,10 @@ crumb :searchkeyword do |keyword|
   link "#{keyword[:name_cont]}"
 end
 
+crumb :categories do
+  link "カテゴリー一覧", categories_path
+  parent :root
+end
+
 
 
