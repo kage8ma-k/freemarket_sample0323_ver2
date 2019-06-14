@@ -3,28 +3,26 @@ class UsersController < ApplicationController
 
   def personalinfomation
     @user = User.find_by(id: current_user.id)
-    @search = Item.ransack(params[:q])
+
   end
 
   def logout
-    @search = Item.ransack(params[:q])
+
   end
 
   def profile
-    @search = Item.ransack(params[:q])
 
   end
 
   def show
-    @search = Item.ransack(params[:q])
+
   end
 
   def creditcards
-    @search = Item.ransack(params[:q])
+
   end
 
   def update
-    @search = Item.ransack(params[:q])
     binding.pry
     @user = User.find_by(id: current_user.id)
     @user.user_profile.update(user_params)

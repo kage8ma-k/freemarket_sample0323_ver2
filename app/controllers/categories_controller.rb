@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
   def index
-    @search = Item.ransack(params[:q])
     @categories = Category.all
 
     respond_to do |format|

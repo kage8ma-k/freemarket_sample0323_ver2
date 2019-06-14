@@ -1,11 +1,15 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
-
+  before_action :search_item
   protect_from_forgery with: :exception
 
   add_flash_types :success, :info, :warning, :danger
 
   # before_action :authenticate_user!
+  def search_item
+    @search = Item.ransack(params[:q])
+    @result = @search.result
+  end
 private
 
   def production?
