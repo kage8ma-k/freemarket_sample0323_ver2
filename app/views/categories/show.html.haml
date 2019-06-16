@@ -1,0 +1,19 @@
+= render 'shared/header'
+%nav.bread-crumbs
+  - breadcrumb :show_categories
+  = breadcrumbs separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right')} "
+.contents
+  .pickup-head
+    %ul.parts-nav
+      -if @category.has_children?
+        -@category.children.limit(5).each do |child|
+          %li.parts-nav-child
+            =link_to child.name, category_path(child)
+  %section.items-box-container-show
+    %h3.text-box
+      = @category.name
+      の商品一覧
+    .items-box-content
+      = render @items
+= render 'shared/sell_btn'
+= render 'shared/footer'
