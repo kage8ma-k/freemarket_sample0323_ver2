@@ -37,5 +37,7 @@ crumb :categories do
   parent :root
 end
 
-
-
+crumb :show_categories do
+  link "#{Category.find_by(id: params[:id]).name}",categories_path
+    parent :categories
+  end
