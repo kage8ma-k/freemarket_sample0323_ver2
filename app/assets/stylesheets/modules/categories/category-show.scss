@@ -1,0 +1,122 @@
+.contents {
+  margin-top: 40px;
+  width: 1040px;
+  .top-image {
+    width: 100%;
+    display: block;
+    background-color: white;
+  }
+  .pickup-container {
+    padding: 40px;
+    text-align: center;
+    .pickup-head {
+      font-size: 28px;
+      line-height: 1.4px;
+      display: inline-block;
+    }
+  }
+    .parts-nav {
+      margin-left: 10px;
+    &-child {
+      display: inline-block;
+      margin: 16px 16px 0 0;
+    }
+  }
+  .items-box-container-show {
+      margin: 0 auto;
+      width: 1040px;
+      .text-box {
+        font-size: 22px;
+        margin: 24px 0 8px 10px;
+        font-weight: bold;
+      }
+    }
+
+      .items-box-content {
+        @include clearfix();
+        .items-box {
+          box-sizing: border-box;
+          width: 188px;
+          height: 298px;
+          background-color: $white;
+          margin: 0 10px;
+          float: left;
+          margin-bottom: 80px;
+          position: relative;
+          .item-link {
+            text-decoration: none;
+            .items-box-photo {
+              margin: auto;
+              height: 188px;
+              width: 188px;
+              overflow: hidden;
+              position: relative;
+              .sold-tag{
+                border-right: 100px solid transparent;
+                border-top: 100px solid red;
+                position: absolute;
+                top: 0;
+              }
+              .sold-tag-name{
+                position: absolute;
+                top: 0;
+                color: #fff;
+                font-size: 23px;
+                font-weight: 600;
+                transform: rotate(-45deg);
+                padding: 20px 10px 0 0;
+              }
+            }
+            .items-box-body {
+              height: 110px;
+              width: 188px;
+              position: absolute;
+              bottom: 0;
+              padding: 16px;
+              box-sizing: border-box;
+              display: block;
+              .items-box-name {
+                @include box();
+                font-weight: 400;
+                margin: auto;
+                height: 3em;
+                color: $black;
+                line-height: 1.5em;
+                white-space: normal;
+                font-size: 16px;
+                text-align: left;
+              }
+              .items-box-num {
+                @include clearfix();
+                margin-top: 5px;
+                color: $black;
+                .items-box-price {
+                  float: left;
+                  font-weight: 600;
+                }
+                .items-box-likes {
+                  float: right;
+                  .icon-like-border {
+                    font-size: 16px;
+                    margin-right: 4px;
+                    display: inline-block;
+                  }
+                  .like-num {
+                    margin-top: 1px;
+                    display: inline-block;
+                    font-weight: 400;
+                    font-size: 12px;
+                  }
+                }
+                .item-box-tax {
+                  font-size: 10px;
+                  clear: both;
+                  margin: 0 auto;
+                  text-align: left;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
