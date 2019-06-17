@@ -16,17 +16,11 @@ class CreditcardsController < ApplicationController
     customer = Payjp::Customer.create(
       card: params['payjp-token'],
       )
-    # @creditcards = Creditcards.new(user_id: 1,customer_id: customer.id, card_id: customer.default_card)
+
     @creditcards = Creditcard.new(user_id: current_user.id,customer_id:  customer.id, card_id: customer.default_card)
 
     @creditcards.save
     redirect_to creditcards_path
-
-    # if @creditcards.save
-    #   redirect_to creditcards_path, notice: "カードが登録されました。"
-    # else
-    #   redirect_to creditcards_path, alert: "カードの登録に失敗しました。"
-    # end
 
   end
 
